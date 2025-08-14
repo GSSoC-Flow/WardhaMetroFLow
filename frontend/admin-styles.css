@@ -22,6 +22,67 @@
     --header-bg: rgba(255, 255, 255, 0.98);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light-color: #1f2937; /* Dark background */
+    --text-primary: #f9fafb; /* White text */
+    --text-secondary: #d1d5db; /* Lighter gray text */
+    --primary-color: #3b82f6; /* Softer blue */
+    --secondary-color: #60a5fa; /* Accent blue */
+  }
+
+  body {
+    background-color: var(--light-color);
+    color: var(--text-primary);
+  }
+
+  .card, .overview-card {
+    background: rgba(31, 41, 55, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav {
+    background-color: rgba(17, 24, 39, 0.95);
+  }
+
+  /* ✅ Dark mode style for live alerts */
+  .side-section .section-content {
+    background-color: #1e293b; /* deep slate background */
+    border-radius: 8px;
+    padding: 0.75rem;
+  }
+  .alert-item.critical {
+    background-color: #7f1d1d;
+    color: #fee2e2;
+  }
+  .alert-item.warning {
+    background-color: #78350f;
+    color: #ffedd5;
+  }
+  .alert-item.info {
+    background-color: #1e3a8a;
+    color: #dbeafe;
+  }
+
+  /* Targets the AI Predictions section container */ 
+  #predictions .main-section,
+  #predictions .side-section {
+    background-color: rgba(31, 41, 55, 0.95);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  #predictions .prediction-item {
+    background-color: rgba(31, 41, 55, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+  }
+}
+
+
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
