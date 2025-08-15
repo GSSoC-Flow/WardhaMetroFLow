@@ -1,0 +1,38 @@
+.home {
+  width: 70%;
+  height: 70%;
+}
+.route-planner-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 70%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+input {
+  border: none;
+  outline: none;
+}
+input:focus {
+  border: none;
+  border-bottom: 1px solid black;
+}
+.map {
+  width: 50%;
+}
+.userInput-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  background-color: #fff;
+}
+button:hover {
+  border: 1px solid red;
+}
