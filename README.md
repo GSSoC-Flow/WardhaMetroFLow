@@ -55,7 +55,6 @@ Whether you're contributing code, suggesting features, or just curious about the
 ## Tech Stack 
 
 ### Frontend
-- React.js
 - HTML / CSS / JavaScript
 - Leaflet.js (Map rendering)
 
