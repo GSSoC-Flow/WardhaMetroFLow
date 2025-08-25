@@ -1,569 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+// admin-script.js
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WardhaMetroFlow - Admin Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- STATE MANAGEMENT ---
+    const appState = {
+        activeSection: 'dashboard',
+        activeChartView: 'hourly',
+    };
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background: linear-gradient(135deg, #1f3b73, #00c2a8);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      transition: background 0.5s, color 0.5s;
-    }
-    body.light {
-      background: #f4f4f4;
-      color: #222;
-    }
+    // --- DOM ELEMENTS ---
+    const sections = document.querySelectorAll('.dashboard-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const chartBtns = document.querySelectorAll('.chart-btn');
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
 
-  /* Header style */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(0,0,0,0.25);
-      backdrop-filter: blur(5px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    header .logo {
-      font-size: 1.4rem;
-      font-weight: 600;
-    }
-    nav a {
-      color: inherit;
-      text-decoration: none;
-      margin: 0 0.8rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #00ffe5;
-    }
-    .clock {
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
+    // --- CHART INSTANCES ---
+    let trafficChart, trafficAnalysisChart, predictionAccuracyChart, performanceChart;
 
-
-    /* Main Style */
-    main {
-      flex: 1;
-      padding: 2rem;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: rgba(255,255,255,0.12);
-      padding: 1.5rem;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .icon > i {
-      font-size: 1.1rem;
-      background: linear-gradient(45deg, #ea580c, #16a34a);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-
-    }
-
-
-    body.light .card {
-      background: white;
-      color: #222;
-    }
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .number {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #00ffe5;
-    }
-    body.light .number {
-      color: #007f7f;
-    }
-    .trend {
-      font-size: 0.85rem;
-      margin-top: 5px;
-    }
-    .trend.up { color: #00ff9d; }
-    .trend.down { color: #ff6b6b; }
-    .panels {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .panel {
-      background: rgba(255,255,255,0.12);
-      padding: 1.5rem;
-      border-radius: 12px;
-    }
-    body.light .panel {
-      background: white;
-      color: #222;
-    }
-    .panel h2 { margin-bottom: 1rem; }
-    .ai-predictions ul { list-style: none; line-height: 1.6; }
-    .ai-predictions li::before {
-      content: "🔹";
-      margin-right: 6px;
-    }
-
-    .panel h2 > i {
-      font-size: 2rem;
-      position: relative;
-      top: 0.2rem;
-      background: linear-gradient(45deg, #ea580c, #16a34a);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      background: rgba(0,0,0,0.2);
-    }
-    .top-actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .btn {
-      background: #00ffe5;
-      color: #000;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .btn:hover {
-      background: #00ccbb;
-    }
-    .last-updated {
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <i class="fas fa-subway"></i>
-      WardhaMetroFlow - Admin
-    </div>
-    <nav>
-      <a href="#dashboard" onclick="showSection('dashboard')">Dashboard</a>
-      <a href="#stations" onclick="showSection('stations')">Stations</a>
-      <a href="#traffic" onclick="showSection('traffic')">Traffic</a>
-      <a href="#predictions" onclick="showSection('predictions')">AI Predictions</a>
-      <a href="#analytics" onclick="showSection('analytics')">Analytics</a>
-    </nav>
-    <div class="clock" id="clock"></div>
-  </header>
-
-  <main>
-    <div class="top-actions">
-      <button class="btn" id="refreshBtn"><i class="fas fa-sync-alt"></i> Refresh Data</button>
-      <button class="btn" id="themeToggle"><i class="fas fa-adjust"></i> Toggle Theme</button>
-    </div>
-
-    <section class="stats-grid">
-      <div class="card">
-        <h3 class="icon"><i class="fas fa-users"></i> Total Passengers Today</h3>
-        <p class="number" id="passengerCount">12,458</p>
-        <div class="trend up">▲ +5% from yesterday</div>
-        <div class="last-updated" id="updateTime"></div>
-      </div>
-      <div class="card">
-        <h3 class="icon"><i class="fas fa-train"></i> Active Trains</h3>
-        <p class="number" id="trainCount">18</p>
-        <div class="trend up">▲ +2 since morning</div>
-      </div>
-      <div class="card">
-        <h3 class="icon"><i class="fas fa-clock"></i> Avg. Delay</h3>
-        <p class="number">2.4 min</p>
-        <div class="trend down">▼ -0.5 min better</div>
-      </div>
-      <div class="card">
-        <h3 class="icon"><i class="fas fa-chart-line"></i> Predicted Peak Hour</h3>
-        <p class="number">6:00 PM</p>
-        <div class="trend">No change</div>
-      </div>
-    </section>
-
-    <section class="panels">
-      <div class="panel">
-        <h2><i class="fas fa-traffic-light"></i> Live Traffic Monitor</h2>
-        <canvas id="trafficChart" height="200"></canvas>
-      </div>
-      <div class="panel ai-predictions">
-        <h2><i class="fas fa-brain"></i> AI Predictions</h2>
-        <ul>
-          <li>Tomorrow’s expected ridership: <strong style="color:#00ff9d">+8%</strong></li>
-          <li>High congestion at <strong>Market Square</strong> station</li>
-          <li>Recommendation: Add 2 extra trains on Orange Line</li>
-        </ul>
-      </div>
-    </section>
-  </main>
-=======
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WardhaMetroFlow - Admin Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="admin-styles.css">
-</head>
-<body>
-    <header class="header">
-        <nav class="nav container">
-            <div class="logo">
-                <i class="fas fa-subway"></i>
-                WardhaMetroFlow Admin
-            </div>
-            <ul class="nav-links">
-                <li><a href="#dashboard" class="active" onclick="showSection('dashboard')">Dashboard</a></li>
-                <li><a href="#stations" onclick="showSection('stations')">Stations</a></li>
-                <li><a href="#traffic" onclick="showSection('traffic')">Traffic</a></li>
-                <li><a href="#predictions" onclick="showSection('predictions')">AI Predictions</a></li>
-                <li><a href="#analytics" onclick="showSection('analytics')">Analytics</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="main-content container">
-        <!-- Page Header -->
-        <section class="page-header fade-in">
-            <h1><i class="fas fa-chart-line"></i> Metro Control Center</h1>
-            <p>Monitor traffic, manage stations, and optimize the metro system with AI insights</p>
-        </section>
-
-        <!-- Dashboard Overview -->
-        <section id="dashboard" class="dashboard-section active">
-            <div class="dashboard-overview fade-in">
-                <div class="overview-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Total Passengers Today</h3>
-                    <div class="metric">12,458</div>
-                    <div class="trend positive">+8% from yesterday</div>
-                </div>
-                <div class="overview-card">
-                    <i class="fas fa-train"></i>
-                    <h3>Active Trains</h3>
-                    <div class="metric">18</div>
-                    <div class="trend positive">All lines operational</div>
-                </div>
-                <div class="overview-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>Average Delay</h3>
-                    <div class="metric">2.4 min</div>
-                    <div class="trend negative">+0.3 min from target</div>
-                </div>
-                <div class="overview-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>AI Prediction Accuracy</h3>
-                    <div class="metric">94.2%</div>
-                    <div class="trend positive">+2.1% improvement</div>
-                </div>
-            </div>
-
-            <!-- Main Dashboard Sections -->
-            <div class="dashboard-sections">
-                <div class="main-section">
-                    <div class="section-header">
-                        <h2><i class="fas fa-chart-area"></i> Live Traffic Monitor</h2>
-                        <div class="chart-controls">
-                            <button class="chart-btn active" onclick="switchChart('hourly')">Hourly</button>
-                            <button class="chart-btn" onclick="switchChart('daily')">Daily</button>
-                            <button class="chart-btn" onclick="switchChart('weekly')">Weekly</button>
-                        </div>
-                    </div>
-                    <div class="section-content">
-                        <div class="traffic-chart-container">
-                            <canvas id="trafficChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="side-section">
-                    <div class="section-header">
-                        <h2><i class="fas fa-exclamation-triangle"></i> Live Alerts</h2>
-                    </div>
-                    <div class="section-content">
-                        <div class="alert-item critical">
-                            <i class="fas fa-exclamation-circle alert-icon critical"></i>
-                            <div class="alert-content">
-                                <div class="alert-title">High Congestion Alert</div>
-                                <div class="alert-description">Market Square station experiencing 85% capacity</div>
-                            </div>
-                        </div>
-                        <div class="alert-item warning">
-                            <i class="fas fa-clock alert-icon warning"></i>
-                            <div class="alert-content">
-                                <div class="alert-title">Delay Warning</div>
-                                <div class="alert-description">Line 2 delayed by 5 minutes due to maintenance</div>
-                            </div>
-                        </div>
-                        <div class="alert-item info">
-                            <i class="fas fa-info-circle alert-icon info"></i>
-                            <div class="alert-content">
-                                <div class="alert-title">Peak Hour Approaching</div>
-                                <div class="alert-description">Expected high traffic in next 30 minutes</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stations Management Section -->
-        <section id="stations" class="dashboard-section">
-            <div class="main-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-building"></i> Station Management</h2>
-                    <button class="btn btn-edit" onclick="showAddStationModal()">
-                        <i class="fas fa-plus"></i> Add Station
-                    </button>
-                </div>
-                <div class="section-content">
-                    <table class="station-table">
-                        <thead>
-                            <tr>
-                                <th>Station Name</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                                <th>Passenger Load</th>
-                                <th>Last Updated</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="stationsTableBody">
-                            <!-- Stations will be populated by JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- Traffic Analysis Section -->
-        <section id="traffic" class="dashboard-section">
-            <div class="dashboard-sections">
-                <div class="main-section">
-                    <div class="section-header">
-                        <h2><i class="fas fa-traffic-light"></i> Traffic Analysis</h2>
-                    </div>
-                    <div class="section-content">
-                        <div class="traffic-chart-container">
-                            <canvas id="trafficAnalysisChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="side-section">
-                    <div class="section-header">
-                        <h2><i class="fas fa-chart-pie"></i> Station Load Distribution</h2>
-                    </div>
-                    <div class="section-content">
-                        <canvas id="stationLoadChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI Predictions Section -->
-        <section id="predictions" class="dashboard-section">
-            <div class="dashboard-sections">
-                <div class="main-section">
-                    <div class="section-header">
-                        <h2><i class="fas fa-brain"></i> AI Predictions & Insights</h2>
-                    </div>
-                    <div class="section-content">
-                        <div class="prediction-item">
-                            <div class="prediction-header">
-                                <div class="prediction-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <div class="prediction-title">Peak Hour Prediction</div>
-                            </div>
-                            <div class="prediction-description">
-                                Tomorrow's peak hour is expected at 6:00 PM with 15% higher ridership than usual. 
-                                Consider adding 2 extra trains on the Orange Line between 5:30 PM and 7:30 PM.
-                            </div>
-                        </div>
-                        <div class="prediction-item">
-                            <div class="prediction-header">
-                                <div class="prediction-icon">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </div>
-                                <div class="prediction-title">Maintenance Alert</div>
-                            </div>
-                            <div class="prediction-description">
-                                Line 2 equipment shows 87% wear. Schedule maintenance within 3 days to prevent 
-                                potential failures during peak hours.
-                            </div>
-                        </div>
-                        <div class="prediction-item">
-                            <div class="prediction-header">
-                                <div class="prediction-icon">
-                                    <i class="fas fa-route"></i>
-                                </div>
-                                <div class="prediction-title">Route Optimization</div>
-                            </div>
-                            <div class="prediction-description">
-                                AI analysis suggests 15% efficiency improvement by adjusting train intervals 
-                                on Line 1 during off-peak hours (10 AM - 2 PM).
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="side-section">
-                    <div class="section-header">
-                        <h2><i class="fas fa-chart-line"></i> Prediction Accuracy</h2>
-                    </div>
-                    <div class="section-content">
-                        <canvas id="predictionAccuracyChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Analytics Section -->
-        <section id="analytics" class="dashboard-section">
-            <div class="dashboard-sections">
-                <div class="main-section">
-                    <div class="section-header">
-                        <h2><i class="fas fa-chart-bar"></i> Performance Analytics</h2>
-                    </div>
-                    <div class="section-content">
-                        <div class="traffic-chart-container">
-                            <canvas id="performanceChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="side-section">
-                    <div class="section-header">
-                        <h2><i class="fas fa-trophy"></i> Key Metrics</h2>
-                    </div>
-                    <div class="section-content">
-                        <div class="overview-card" style="margin-bottom: 1rem;">
-                            <h3>On-time Performance</h3>
-                            <div class="metric">94.2%</div>
-                            <div class="trend positive">Above industry standard</div>
-                        </div>
-                        <div class="overview-card" style="margin-bottom: 1rem;">
-                            <h3>Customer Satisfaction</h3>
-                            <div class="metric">4.6/5</div>
-                            <div class="trend positive">+0.2 from last month</div>
-                        </div>
-                        <div class="overview-card">
-                            <h3>Energy Efficiency</h3>
-                            <div class="metric">87%</div>
-                            <div class="trend positive">+5% improvement</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-
-  <script>
-    // Clock
-    function updateClock() {
-      document.getElementById('clock').textContent = new Date().toLocaleTimeString();
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // Refresh Data button
-    document.getElementById('refreshBtn').addEventListener('click', () => {
-      const passengers = Math.floor(Math.random() * 5000) + 10000;
-      const trains = Math.floor(Math.random() * 10) + 10;
-      document.getElementById('passengerCount').textContent = passengers.toLocaleString();
-      document.getElementById('trainCount').textContent = trains;
-      document.getElementById('updateTime').textContent = "Last updated: " + new Date().toLocaleTimeString();
-    });
-
-    // Theme toggle
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      document.body.classList.toggle('light');
-    });
-
-    // Chart.js
-    const ctx = document.getElementById('trafficChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['8 AM', '10 AM', '12 PM', '2 PM', '4 PM', '6 PM', '8 PM'],
-        datasets: [
-          {
-            label: 'Today',
-            data: [1200, 1900, 2300, 1800, 2400, 3000, 2000],
-            borderColor: '#00ffe5',
-            backgroundColor: 'rgba(0, 255, 229, 0.2)',
-            tension: 0.3,
-            fill: true
-          },
-          {
-            label: 'Last Week',
-            data: [1000, 1700, 2100, 1600, 2200, 2800, 1900],
-            borderColor: '#ff6b6b',
-            backgroundColor: 'rgba(255, 107, 107, 0.2)',
-            tension: 0.3,
-            fill: true
-          }
-        ]
-      },
-      options: {
-        plugins: { 
-          legend: { labels: { color: 'white' } },
-          tooltip: { mode: 'index', intersect: false }
+    // --- MOCK DATA ---
+    const sampleData = {
+        dashboard: {
+            cards: [
+                { title: 'Total Passengers Today', metric: '14,821', trend: '+12%', status: 'positive' },
+                { title: 'Active Trains', metric: '21', trend: 'All lines operational', status: 'positive' },
+                { title: 'Average Delay', metric: '1.8 min', trend: '-0.6 min from target', status: 'positive' },
+                { title: 'AI Prediction Accuracy', metric: '95.1%', trend: '+1.3% improvement', status: 'positive' },
+            ],
+            alerts: [
+                { type: 'critical', title: 'High Congestion Alert', description: 'Market Square station at 92% capacity.' },
+                { type: 'warning', title: 'Maintenance Due', description: 'Line 2 Train #14 needs inspection.' },
+            ],
+            charts: {
+                hourly: { labels: ['8 AM', '10 AM', '12 PM', '2 PM', '4 PM', '6 PM'], data: [1200, 1900, 2300, 1800, 2800, 3500] },
+                daily: { labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], data: [12500, 14000, 13200, 15100, 18500, 21000] },
+                weekly: { labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'], data: [95000, 110000, 102000, 125000] },
+            }
         },
-        scales: {
-          x: { ticks: { color: 'white' } },
-          y: { ticks: { color: 'white' } }
+        stations: [
+            { name: 'Central Hub', line: 'Blue', status: 'Operational', load: '78%', updated: '2 min ago' },
+            { name: 'Market Square', line: 'Red', status: 'Operational', load: '92%', updated: '1 min ago' },
+            { name: 'Tech Park', line: 'Green', status: 'Maintenance', load: '15%', updated: '1 hour ago' },
+            { name: 'Airport Terminal', line: 'Blue', status: 'Operational', load: '65%', updated: '5 min ago' },
+            { name: 'City Hall', line: 'Red', status: 'Closed', load: '0%', updated: '3 hours ago' },
+        ],
+        traffic: {
+            metrics: [
+                { title: 'Busiest Station', metric: 'Market Square', trend: '3,500 passengers (peak)', status: 'negative' },
+                { title: 'Busiest Line', metric: 'Red Line', trend: 'Peak hours: 5-7 PM', status: 'positive' },
+                { title: 'Avg. Travel Time', metric: '22 min', trend: 'On par with target', status: 'positive' },
+            ],
+            analysisChart: {
+                labels: ['Central Hub', 'Market Square', 'Tech Park', 'Airport', 'City Hall'],
+                data: [3100, 3500, 1200, 2500, 500]
+            }
+        },
+        predictions: {
+            list: [
+                { icon: 'fa-users', title: 'Peak Hour Surge Tomorrow', description: 'Expect 15% higher ridership at 6:00 PM. Recommend adding 2 extra trains on the Red Line.' },
+                { icon: 'fa-triangle-exclamation', title: 'Preventative Maintenance', description: 'Train #14 on the Blue Line shows 87% brake wear. Schedule maintenance within 48 hours to avoid failure.' },
+                { icon: 'fa-route', title: 'Route Optimization', description: 'Analysis suggests a 7% efficiency gain by reducing off-peak train frequency on the Green Line by 10 minutes.' },
+            ],
+            accuracy: {
+                labels: ['Accurate', 'Minor Error', 'Major Error'],
+                data: [95.1, 4.2, 0.7]
+            }
+        },
+        analytics: {
+            kpis: [
+                { name: 'On-Time Performance', actual: 98, target: 95, status: 'positive' },
+                { name: 'Customer Satisfaction', actual: 92, target: 90, status: 'positive' },
+                { name: 'Energy Efficiency', actual: 85, target: 90, status: 'negative' },
+                { name: 'Operational Cost', actual: 94, target: 100, status: 'positive' },
+            ],
+            performanceChart: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [
+                    { type: 'bar', label: 'Revenue (in thousands)', data: [120, 135, 130, 145, 160, 155], backgroundColor: 'rgba(16, 185, 129, 0.6)' },
+                    { type: 'line', label: 'Customer Satisfaction (%)', data: [88, 89, 91, 90, 92, 92], borderColor: 'rgba(79, 70, 229, 1)', tension: 0.4, fill: false }
+                ]
+            }
         }
-      }
+    };
+
+    // --- RENDER FUNCTIONS ---
+    const renderContent = () => {
+        populateDashboardCards();
+        populateAlerts();
+        populateStationsTable();
+        populateTrafficMetrics();
+        populatePredictionsList();
+        populateKpiTable();
+    };
+    
+    const initCharts = () => {
+        initTrafficChart();
+        initTrafficAnalysisChart();
+        initPredictionAccuracyChart();
+        initPerformanceChart();
+    };
+
+    const handleNavigation = (sectionId) => {
+        appState.activeSection = sectionId;
+        sections.forEach(s => s.classList.toggle('active', s.id === sectionId));
+        navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === sectionId));
+    };
+
+    // Populate Functions
+    const populateDashboardCards = () => document.getElementById('dashboard-cards').innerHTML = sampleData.dashboard.cards.map(c => `<div class="overview-card"><h3>${c.title}</h3><div class="metric">${c.metric}</div><div class="trend ${c.status}">${c.trend}</div></div>`).join('');
+    const populateAlerts = () => document.getElementById('live-alerts').innerHTML = sampleData.dashboard.alerts.map(a => `<div class="alert-item ${a.type}"><i class="fas fa-exclamation-circle alert-icon ${a.type}"></i><div><div class="alert-title">${a.title}</div><div class="alert-description">${a.description}</div></div></div>`).join('');
+    const populateStationsTable = () => document.getElementById('stationsTableBody').innerHTML = sampleData.stations.map(s => `<tr><td>${s.name}</td><td>${s.line}</td><td><span class="status status-${s.status.toLowerCase()}">${s.status}</span></td><td>${s.load}</td><td>${s.updated}</td></tr>`).join('');
+    const populateTrafficMetrics = () => document.getElementById('traffic-metrics').innerHTML = sampleData.traffic.metrics.map(m => `<div class="overview-card"><h3>${m.title}</h3><div class="metric">${m.metric}</div><div class="trend ${m.status}">${m.trend}</div></div>`).join('');
+    const populatePredictionsList = () => document.getElementById('predictions-list').innerHTML = sampleData.predictions.list.map(p => `<div class="prediction-item"><i class="fas ${p.icon} prediction-icon"></i><div><div class="prediction-title">${p.title}</div><div class="prediction-description">${p.description}</div></div></div>`).join('');
+    const populateKpiTable = () => document.getElementById('kpi-table-body').innerHTML = sampleData.analytics.kpis.map(k => {
+        const percentage = Math.min((k.actual / k.target) * 100, 100);
+        return `<tr><td><div class="kpi-metric-name">${k.name}</div><div class="kpi-values">${k.actual}% of ${k.target}% Target</div></td><td><div class="kpi-performance-bar-bg"><div class="kpi-performance-bar ${k.status}" style="width: ${percentage}%"></div></div></td></tr>`}).join('');
+
+    // Chart Initialization
+    const initTrafficChart = () => {
+        const ctx = document.getElementById('trafficChart').getContext('2d');
+        trafficChart = new Chart(ctx, { type: 'line', data: { labels: sampleData.dashboard.charts.hourly.labels, datasets: [{ label: 'Passenger Traffic', data: sampleData.dashboard.charts.hourly.data, backgroundColor: 'rgba(79, 70, 229, 0.1)', borderColor: 'rgba(79, 70, 229, 1)', borderWidth: 2, fill: true, tension: 0.4 }] }, options: { responsive: true, maintainAspectRatio: false } });
+    };
+
+    const initTrafficAnalysisChart = () => {
+        const ctx = document.getElementById('trafficAnalysisChart').getContext('2d');
+        trafficAnalysisChart = new Chart(ctx, { type: 'bar', data: { labels: sampleData.traffic.analysisChart.labels, datasets: [{ label: 'Peak Hour Passengers', data: sampleData.traffic.analysisChart.data, backgroundColor: ['#4f46e5', '#ef4444', '#10b981', '#3b82f6', '#6b7280'] }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+    };
+    
+    const initPredictionAccuracyChart = () => {
+        const ctx = document.getElementById('predictionAccuracyChart').getContext('2d');
+        predictionAccuracyChart = new Chart(ctx, { type: 'doughnut', data: { labels: sampleData.predictions.accuracy.labels, datasets: [{ data: sampleData.predictions.accuracy.data, backgroundColor: ['#10b981', '#f59e0b', '#ef4444'], borderColor: '#ffffff' }] }, options: { responsive: true, maintainAspectRatio: false } });
+    };
+
+    const initPerformanceChart = () => {
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        performanceChart = new Chart(ctx, { data: { labels: sampleData.analytics.performanceChart.labels, datasets: sampleData.analytics.performanceChart.datasets }, options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } } });
+    };
+
+    // --- EVENT LISTENERS ---
+    navLinks.forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); handleNavigation(link.dataset.section); }));
+    chartBtns.forEach(btn => btn.addEventListener('click', () => {
+        appState.activeChartView = btn.dataset.view;
+        const chartData = sampleData.dashboard.charts[appState.activeChartView];
+        chartBtns.forEach(b => b.classList.toggle('active', b === btn));
+        trafficChart.data.labels = chartData.labels;
+        trafficChart.data.datasets[0].data = chartData.data;
+        trafficChart.update();
+    }));
+    themeToggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        themeToggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
-  </script>
-    <script src="admin-script.js"></script>
-</body>
-</html>
 
-
+    // --- INITIALIZATION ---
+    (() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        renderContent();
+        initCharts();
+    })();
+});

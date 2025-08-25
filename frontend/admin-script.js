@@ -1,357 +1,165 @@
-// Metro station data
-const metroStations = [
-    {
-        id: 1,
-        name: 'Wardha Central',
-        type: 'Terminal',
-        status: 'active',
-        passengerLoad: 'High',
-        lastUpdated: '2 min ago'
-    },
-    {
-        id: 2,
-        name: 'Railway Station',
-        type: 'Interchange',
-        status: 'active',
-        passengerLoad: 'Medium',
-        lastUpdated: '1 min ago'
-    },
-    {
-        id: 3,
-        name: 'Market Square',
-        type: 'Regular',
-        status: 'maintenance',
-        passengerLoad: 'Very High',
-        lastUpdated: '5 min ago'
-    },
-    {
-        id: 4,
-        name: 'Civil Hospital',
-        type: 'Regular',
-        status: 'active',
-        passengerLoad: 'Low',
-        lastUpdated: '3 min ago'
-    },
-    {
-        id: 5,
-        name: 'Wardha College',
-        type: 'Regular',
-        status: 'active',
-        passengerLoad: 'Medium',
-        lastUpdated: '1 min ago'
-    },
-    {
-        id: 6,
-        name: 'Industrial Area',
-        type: 'Terminal',
-        status: 'active',
-        passengerLoad: 'Low',
-        lastUpdated: '4 min ago'
-    }
-];
+// admin-script.js
 
-// Chart instances
-let trafficChart, trafficAnalysisChart, stationLoadChart, predictionAccuracyChart, performanceChart;
+document.addEventListener('DOMContentLoaded', () => {
+    // --- STATE MANAGEMENT ---
+    const appState = {
+        activeSection: 'dashboard',
+        activeChartView: 'hourly',
+    };
 
-// Initialize dashboard
-document.addEventListener('DOMContentLoaded', function() {
-    initializeCharts();
-    populateStationsTable();
-    updateDashboardData();
-    
-    // Auto-refresh dashboard data every 30 seconds
-    setInterval(updateDashboardData, 30000);
-});
+    // --- DOM ELEMENTS ---
+    const sections = document.querySelectorAll('.dashboard-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const chartBtns = document.querySelectorAll('.chart-btn');
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
 
-// Initialize all charts
-function initializeCharts() {
-    // Traffic Chart
-    const trafficCtx = document.getElementById('trafficChart').getContext('2d');
-    trafficChart = new Chart(trafficCtx, {
-        type: 'line',
-        data: {
-            labels: ['8 AM', '10 AM', '12 PM', '2 PM', '4 PM', '6 PM', '8 PM'],
-            datasets: [{
-                label: 'Passengers per Hour',
-                data: [1200, 1900, 2300, 1800, 2400, 3000, 2000],
-                borderColor: '#ea580c',
-                backgroundColor: 'rgba(234, 88, 12, 0.2)',
-                tension: 0.3,
-                fill: true
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: { color: '#1c1917' }
-                }
-            },
-            scales: {
-                x: { ticks: { color: '#1c1917' } },
-                y: { ticks: { color: '#1c1917' } }
+    // --- CHART INSTANCES ---
+    let trafficChart, trafficAnalysisChart, predictionAccuracyChart, performanceChart;
+
+    // --- MOCK DATA ---
+    const sampleData = {
+        dashboard: {
+            cards: [
+                { title: 'Total Passengers Today', metric: '14,821', trend: '+12%', status: 'positive' },
+                { title: 'Active Trains', metric: '21', trend: 'All lines operational', status: 'positive' },
+                { title: 'Average Delay', metric: '1.8 min', trend: '-0.6 min from target', status: 'positive' },
+                { title: 'AI Prediction Accuracy', metric: '95.1%', trend: '+1.3% improvement', status: 'positive' },
+            ],
+            alerts: [
+                { type: 'critical', title: 'High Congestion Alert', description: 'Market Square station at 92% capacity.' },
+                { type: 'warning', title: 'Maintenance Due', description: 'Line 2 Train #14 needs inspection.' },
+            ],
+            charts: {
+                hourly: { labels: ['8 AM', '10 AM', '12 PM', '2 PM', '4 PM', '6 PM'], data: [1200, 1900, 2300, 1800, 2800, 3500] },
+                daily: { labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], data: [12500, 14000, 13200, 15100, 18500, 21000] },
+                weekly: { labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'], data: [95000, 110000, 102000, 125000] },
             }
-        }
-    });
-
-    // Traffic Analysis Chart
-    const trafficAnalysisCtx = document.getElementById('trafficAnalysisChart').getContext('2d');
-    trafficAnalysisChart = new Chart(trafficAnalysisCtx, {
-        type: 'bar',
-        data: {
-            labels: ['Wardha Central', 'Railway Station', 'Market Square', 'Civil Hospital', 'Wardha College', 'Industrial Area'],
-            datasets: [{
-                label: 'Current Passenger Load',
-                data: [85, 65, 95, 45, 70, 30],
-                backgroundColor: [
-                    '#ea580c', '#f97316', '#dc2626', '#16a34a', '#22c55e', '#78716c'
+        },
+        stations: [
+            { name: 'Central Hub', line: 'Blue', status: 'Operational', load: '78%', updated: '2 min ago' },
+            { name: 'Market Square', line: 'Red', status: 'Operational', load: '92%', updated: '1 min ago' },
+            { name: 'Tech Park', line: 'Green', status: 'Maintenance', load: '15%', updated: '1 hour ago' },
+            { name: 'Airport Terminal', line: 'Blue', status: 'Operational', load: '65%', updated: '5 min ago' },
+            { name: 'City Hall', line: 'Red', status: 'Closed', load: '0%', updated: '3 hours ago' },
+        ],
+        traffic: {
+            metrics: [
+                { title: 'Busiest Station', metric: 'Market Square', trend: '3,500 passengers (peak)', status: 'negative' },
+                { title: 'Busiest Line', metric: 'Red Line', trend: 'Peak hours: 5-7 PM', status: 'positive' },
+                { title: 'Avg. Travel Time', metric: '22 min', trend: 'On par with target', status: 'positive' },
+            ],
+            analysisChart: {
+                labels: ['Central Hub', 'Market Square', 'Tech Park', 'Airport', 'City Hall'],
+                data: [3100, 3500, 1200, 2500, 500]
+            }
+        },
+        predictions: {
+            list: [
+                { icon: 'fa-users', title: 'Peak Hour Surge Tomorrow', description: 'Expect 15% higher ridership at 6:00 PM. Recommend adding 2 extra trains on the Red Line.' },
+                { icon: 'fa-triangle-exclamation', title: 'Preventative Maintenance', description: 'Train #14 on the Blue Line shows 87% brake wear. Schedule maintenance within 48 hours to avoid failure.' },
+                { icon: 'fa-route', title: 'Route Optimization', description: 'Analysis suggests a 7% efficiency gain by reducing off-peak train frequency on the Green Line by 10 minutes.' },
+            ],
+            accuracy: {
+                labels: ['Accurate', 'Minor Error', 'Major Error'],
+                data: [95.1, 4.2, 0.7]
+            }
+        },
+        analytics: {
+            kpis: [
+                { name: 'On-Time Performance', actual: 98, target: 95, status: 'positive' },
+                { name: 'Customer Satisfaction', actual: 92, target: 90, status: 'positive' },
+                { name: 'Energy Efficiency', actual: 85, target: 90, status: 'negative' },
+                { name: 'Operational Cost', actual: 94, target: 100, status: 'positive' },
+            ],
+            performanceChart: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [
+                    { type: 'bar', label: 'Revenue (in thousands)', data: [120, 135, 130, 145, 160, 155], backgroundColor: 'rgba(16, 185, 129, 0.6)' },
+                    { type: 'line', label: 'Customer Satisfaction (%)', data: [88, 89, 91, 90, 92, 92], borderColor: 'rgba(79, 70, 229, 1)', tension: 0.4, fill: false }
                 ]
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: { color: '#1c1917' }
-                }
-            },
-            scales: {
-                x: { ticks: { color: '#1c1917' } },
-                y: { ticks: { color: '#1c1917' } }
             }
         }
-    });
+    };
 
-    // Station Load Distribution Chart
-    const stationLoadCtx = document.getElementById('stationLoadChart').getContext('2d');
-    stationLoadChart = new Chart(stationLoadCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['High Load', 'Medium Load', 'Low Load'],
-            datasets: [{
-                data: [2, 2, 2],
-                backgroundColor: ['#dc2626', '#f97316', '#16a34a']
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: { color: '#1c1917' }
-                }
-            }
-        }
-    });
-
-    // Prediction Accuracy Chart
-    const predictionAccuracyCtx = document.getElementById('predictionAccuracyChart').getContext('2d');
-    predictionAccuracyChart = new Chart(predictionAccuracyCtx, {
-        type: 'radar',
-        data: {
-            labels: ['Passenger Flow', 'Maintenance', 'Route Optimization', 'Peak Hours', 'Delays'],
-            datasets: [{
-                label: 'Current Accuracy',
-                data: [94, 89, 92, 96, 91],
-                borderColor: '#ea580c',
-                backgroundColor: 'rgba(234, 88, 12, 0.2)',
-                pointBackgroundColor: '#ea580c'
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: { color: '#1c1917' }
-                }
-            },
-            scales: {
-                r: {
-                    ticks: { color: '#1c1917' },
-                    grid: { color: '#78716c' }
-                }
-            }
-        }
-    });
-
-    // Performance Chart
-    const performanceCtx = document.getElementById('performanceChart').getContext('2d');
-    performanceChart = new Chart(performanceCtx, {
-        type: 'line',
-        data: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            datasets: [{
-                label: 'On-time Performance (%)',
-                data: [92, 94, 93, 95, 94, 96, 94],
-                borderColor: '#16a34a',
-                backgroundColor: 'rgba(22, 163, 74, 0.2)',
-                tension: 0.3,
-                fill: true
-            }, {
-                label: 'Customer Satisfaction',
-                data: [4.2, 4.4, 4.3, 4.5, 4.4, 4.6, 4.5],
-                borderColor: '#ea580c',
-                backgroundColor: 'rgba(234, 88, 12, 0.2)',
-                tension: 0.3,
-                fill: false,
-                yAxisID: 'y1'
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: { color: '#1c1917' }
-                }
-            },
-            scales: {
-                x: { ticks: { color: '#1c1917' } },
-                y: {
-                    ticks: { color: '#1c1917' },
-                    position: 'left'
-                },
-                y1: {
-                    ticks: { color: '#1c1917' },
-                    position: 'right',
-                    grid: { drawOnChartArea: false }
-                }
-            }
-        }
-    });
-}
-
-// Populate stations table
-function populateStationsTable() {
-    const tableBody = document.getElementById('stationsTableBody');
-    tableBody.innerHTML = '';
-
-    metroStations.forEach(station => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${station.name}</td>
-            <td>${station.type}</td>
-            <td><span class="station-status status-${station.status}">${station.status}</span></td>
-            <td>${station.passengerLoad}</td>
-            <td>${station.lastUpdated}</td>
-            <td class="action-buttons">
-                <button class="btn btn-edit" onclick="editStation(${station.id})">
-                    <i class="fas fa-edit"></i> Edit
-                </button>
-                <button class="btn btn-delete" onclick="deleteStation(${station.id})">
-                    <i class="fas fa-trash"></i> Delete
-                </button>
-            </td>
-        `;
-        tableBody.appendChild(row);
-    });
-}
-
-// Show different sections
-function showSection(sectionName) {
-    // Hide all sections
-    document.querySelectorAll('.dashboard-section').forEach(section => {
-        section.style.display = 'none';
-    });
-
-    // Show selected section
-    document.getElementById(sectionName).style.display = 'block';
-
-    // Update navigation active state
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-    });
-    event.target.classList.add('active');
-}
-
-// Switch chart views
-function switchChart(type) {
-    // Update button states
-    document.querySelectorAll('.chart-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.classList.add('active');
-
-    // Update chart data based on type
-    let labels, data;
-    switch(type) {
-        case 'hourly':
-            labels = ['8 AM', '10 AM', '12 PM', '2 PM', '4 PM', '6 PM', '8 PM'];
-            data = [1200, 1900, 2300, 1800, 2400, 3000, 2000];
-            break;
-        case 'daily':
-            labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-            data = [8500, 9200, 8800, 9500, 10200, 7800, 6500];
-            break;
-        case 'weekly':
-            labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
-            data = [65000, 68000, 72000, 75000];
-            break;
-    }
-
-    trafficChart.data.labels = labels;
-    trafficChart.data.datasets[0].data = data;
-    trafficChart.update();
-}
-
-// Update dashboard data
-function updateDashboardData() {
-    // Simulate real-time data updates
-    const passengerCount = Math.floor(Math.random() * 2000) + 11000;
-    const activeTrains = Math.floor(Math.random() * 5) + 15;
-    const avgDelay = (Math.random() * 2 + 1.5).toFixed(1);
-    const aiAccuracy = (Math.random() * 3 + 92).toFixed(1);
-
-    // Update overview cards
-    document.querySelector('.overview-card:nth-child(1) .metric').textContent = passengerCount.toLocaleString();
-    document.querySelector('.overview-card:nth-child(2) .metric').textContent = activeTrains;
-    document.querySelector('.overview-card:nth-child(3) .metric').textContent = avgDelay + ' min';
-    document.querySelector('.overview-card:nth-child(4) .metric').textContent = aiAccuracy + '%';
-
-    // Update last updated times for stations
-    metroStations.forEach(station => {
-        const minutes = Math.floor(Math.random() * 5) + 1;
-        station.lastUpdated = `${minutes} min ago`;
-    });
-    populateStationsTable();
-}
-
-// Station management functions
-function editStation(stationId) {
-    const station = metroStations.find(s => s.id === stationId);
-    alert(`Edit station: ${station.name}\nThis will open an edit modal in the full implementation.`);
-}
-
-function deleteStation(stationId) {
-    const station = metroStations.find(s => s.id === stationId);
-    if (confirm(`Are you sure you want to delete ${station.name}?`)) {
-        const index = metroStations.findIndex(s => s.id === stationId);
-        metroStations.splice(index, 1);
+    // --- RENDER FUNCTIONS ---
+    const renderContent = () => {
+        populateDashboardCards();
+        populateAlerts();
         populateStationsTable();
-        alert(`${station.name} has been deleted.`);
-    }
-}
+        populateTrafficMetrics();
+        populatePredictionsList();
+        populateKpiTable();
+    };
+    
+    const initCharts = () => {
+        initTrafficChart();
+        initTrafficAnalysisChart();
+        initPredictionAccuracyChart();
+        initPerformanceChart();
+    };
 
-function showAddStationModal() {
-    alert('Add Station Modal\nThis will open a form to add new stations in the full implementation.');
-}
+    const handleNavigation = (sectionId) => {
+        appState.activeSection = sectionId;
+        sections.forEach(s => s.classList.toggle('active', s.id === sectionId));
+        navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === sectionId));
+    };
 
-// Simulate real-time alerts
-function generateRandomAlert() {
-    const alerts = [
-        { type: 'critical', title: 'High Congestion Alert', description: 'Market Square station experiencing 85% capacity' },
-        { type: 'warning', title: 'Delay Warning', description: 'Line 2 delayed by 5 minutes due to maintenance' },
-        { type: 'info', title: 'Peak Hour Approaching', description: 'Expected high traffic in next 30 minutes' },
-        { type: 'warning', title: 'Equipment Alert', description: 'Escalator maintenance required at Railway Station' },
-        { type: 'info', title: 'Weather Advisory', description: 'Light rain may affect outdoor station access' }
-    ];
+    // Populate Functions
+    const populateDashboardCards = () => document.getElementById('dashboard-cards').innerHTML = sampleData.dashboard.cards.map(c => `<div class="overview-card"><h3>${c.title}</h3><div class="metric">${c.metric}</div><div class="trend ${c.status}">${c.trend}</div></div>`).join('');
+    const populateAlerts = () => document.getElementById('live-alerts').innerHTML = sampleData.dashboard.alerts.map(a => `<div class="alert-item ${a.type}"><i class="fas fa-exclamation-circle alert-icon ${a.type}"></i><div><div class="alert-title">${a.title}</div><div class="alert-description">${a.description}</div></div></div>`).join('');
+    const populateStationsTable = () => document.getElementById('stationsTableBody').innerHTML = sampleData.stations.map(s => `<tr><td>${s.name}</td><td>${s.line}</td><td><span class="status status-${s.status.toLowerCase()}">${s.status}</span></td><td>${s.load}</td><td>${s.updated}</td></tr>`).join('');
+    const populateTrafficMetrics = () => document.getElementById('traffic-metrics').innerHTML = sampleData.traffic.metrics.map(m => `<div class="overview-card"><h3>${m.title}</h3><div class="metric">${m.metric}</div><div class="trend ${m.status}">${m.trend}</div></div>`).join('');
+    const populatePredictionsList = () => document.getElementById('predictions-list').innerHTML = sampleData.predictions.list.map(p => `<div class="prediction-item"><i class="fas ${p.icon} prediction-icon"></i><div><div class="prediction-title">${p.title}</div><div class="prediction-description">${p.description}</div></div></div>`).join('');
+    const populateKpiTable = () => document.getElementById('kpi-table-body').innerHTML = sampleData.analytics.kpis.map(k => {
+        const percentage = Math.min((k.actual / k.target) * 100, 100);
+        return `<tr><td><div class="kpi-metric-name">${k.name}</div><div class="kpi-values">${k.actual}% of ${k.target}% Target</div></td><td><div class="kpi-performance-bar-bg"><div class="kpi-performance-bar ${k.status}" style="width: ${percentage}%"></div></div></td></tr>`}).join('');
 
-    const randomAlert = alerts[Math.floor(Math.random() * alerts.length)];
-    // In a real implementation, this would update the alerts section dynamically
-}
+    // Chart Initialization
+    const initTrafficChart = () => {
+        const ctx = document.getElementById('trafficChart').getContext('2d');
+        trafficChart = new Chart(ctx, { type: 'line', data: { labels: sampleData.dashboard.charts.hourly.labels, datasets: [{ label: 'Passenger Traffic', data: sampleData.dashboard.charts.hourly.data, backgroundColor: 'rgba(79, 70, 229, 0.1)', borderColor: 'rgba(79, 70, 229, 1)', borderWidth: 2, fill: true, tension: 0.4 }] }, options: { responsive: true, maintainAspectRatio: false } });
+    };
 
-// Generate random alerts every 2 minutes
-setInterval(generateRandomAlert, 120000);
+    const initTrafficAnalysisChart = () => {
+        const ctx = document.getElementById('trafficAnalysisChart').getContext('2d');
+        trafficAnalysisChart = new Chart(ctx, { type: 'bar', data: { labels: sampleData.traffic.analysisChart.labels, datasets: [{ label: 'Peak Hour Passengers', data: sampleData.traffic.analysisChart.data, backgroundColor: ['#4f46e5', '#ef4444', '#10b981', '#3b82f6', '#6b7280'] }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+    };
+    
+    const initPredictionAccuracyChart = () => {
+        const ctx = document.getElementById('predictionAccuracyChart').getContext('2d');
+        predictionAccuracyChart = new Chart(ctx, { type: 'doughnut', data: { labels: sampleData.predictions.accuracy.labels, datasets: [{ data: sampleData.predictions.accuracy.data, backgroundColor: ['#10b981', '#f59e0b', '#ef4444'], borderColor: '#ffffff' }] }, options: { responsive: true, maintainAspectRatio: false } });
+    };
+
+    const initPerformanceChart = () => {
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        performanceChart = new Chart(ctx, { data: { labels: sampleData.analytics.performanceChart.labels, datasets: sampleData.analytics.performanceChart.datasets }, options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } } });
+    };
+
+    // --- EVENT LISTENERS ---
+    navLinks.forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); handleNavigation(link.dataset.section); }));
+    chartBtns.forEach(btn => btn.addEventListener('click', () => {
+        appState.activeChartView = btn.dataset.view;
+        const chartData = sampleData.dashboard.charts[appState.activeChartView];
+        chartBtns.forEach(b => b.classList.toggle('active', b === btn));
+        trafficChart.data.labels = chartData.labels;
+        trafficChart.data.datasets[0].data = chartData.data;
+        trafficChart.update();
+    }));
+    themeToggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        themeToggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // --- INITIALIZATION ---
+    (() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        renderContent();
+        initCharts();
+    })();
+});
