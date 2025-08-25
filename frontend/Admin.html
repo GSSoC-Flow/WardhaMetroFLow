@@ -1,215 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WardhaMetroFlow - Admin Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background: linear-gradient(135deg, #1f3b73, #00c2a8);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      transition: background 0.5s, color 0.5s;
-    }
-    body.light {
-      background: #f4f4f4;
-      color: #222;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(0,0,0,0.25);
-      backdrop-filter: blur(5px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    header .logo {
-      font-size: 1.4rem;
-      font-weight: 600;
-    }
-    nav a {
-      color: inherit;
-      text-decoration: none;
-      margin: 0 0.8rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #00ffe5;
-    }
-    .clock {
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-    main {
-      flex: 1;
-      padding: 2rem;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: rgba(255,255,255,0.12);
-      padding: 1.5rem;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      position: relative;
-      overflow: hidden;
-    }
-    body.light .card {
-      background: white;
-      color: #222;
-    }
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .number {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #00ffe5;
-    }
-    body.light .number {
-      color: #007f7f;
-    }
-    .trend {
-      font-size: 0.85rem;
-      margin-top: 5px;
-    }
-    .trend.up { color: #00ff9d; }
-    .trend.down { color: #ff6b6b; }
-    .panels {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .panel {
-      background: rgba(255,255,255,0.12);
-      padding: 1.5rem;
-      border-radius: 12px;
-    }
-    body.light .panel {
-      background: white;
-      color: #222;
-    }
-    .panel h2 { margin-bottom: 1rem; }
-    .ai-predictions ul { list-style: none; line-height: 1.6; }
-    .ai-predictions li::before {
-      content: "🔹";
-      margin-right: 6px;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      background: rgba(0,0,0,0.2);
-    }
-    .top-actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .btn {
-      background: #00ffe5;
-      color: #000;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .btn:hover {
-      background: #00ccbb;
-    }
-    .last-updated {
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">🚈 WardhaMetroFlow - Admin</div>
-    <nav>
-      <a href="#dashboard" onclick="showSection('dashboard')">Dashboard</a>
-      <a href="#stations" onclick="showSection('stations')">Stations</a>
-      <a href="#traffic" onclick="showSection('traffic')">Traffic</a>
-      <a href="#predictions" onclick="showSection('predictions')">AI Predictions</a>
-      <a href="#analytics" onclick="showSection('analytics')">Analytics</a>
-    </nav>
-    <div class="clock" id="clock"></div>
-  </header>
-
-  <main>
-    <div class="top-actions">
-      <button class="btn" id="refreshBtn">🔄 Refresh Data</button>
-      <button class="btn" id="themeToggle">🌙 Toggle Theme</button>
-    </div>
-
-    <section class="stats-grid">
-      <div class="card">
-        <h3>👥 Total Passengers Today</h3>
-        <p class="number" id="passengerCount">12,458</p>
-        <div class="trend up">▲ +5% from yesterday</div>
-        <div class="last-updated" id="updateTime"></div>
-      </div>
-      <div class="card">
-        <h3>🚆 Active Trains</h3>
-        <p class="number" id="trainCount">18</p>
-        <div class="trend up">▲ +2 since morning</div>
-      </div>
-      <div class="card">
-        <h3>⏳ Avg. Delay</h3>
-        <p class="number">2.4 min</p>
-        <div class="trend down">▼ -0.5 min better</div>
-      </div>
-      <div class="card">
-        <h3>📈 Predicted Peak Hour</h3>
-        <p class="number">6:00 PM</p>
-        <div class="trend">No change</div>
-      </div>
-    </section>
-
-    <section class="panels">
-      <div class="panel">
-        <h2>📊 Live Traffic Monitor</h2>
-        <canvas id="trafficChart" height="200"></canvas>
-      </div>
-      <div class="panel ai-predictions">
-        <h2>🤖 AI Predictions</h2>
-        <ul>
-          <li>Tomorrow’s expected ridership: <strong style="color:#00ff9d">+8%</strong></li>
-          <li>High congestion at <strong>Market Square</strong> station</li>
-          <li>Recommendation: Add 2 extra trains on Orange Line</li>
-        </ul>
-      </div>
-    </section>
-  </main>
-=======
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WardhaMetroFlow - Admin Dashboard</title>
@@ -389,7 +180,7 @@
                                 <div class="prediction-title">Peak Hour Prediction</div>
                             </div>
                             <div class="prediction-description">
-                                Tomorrow's peak hour is expected at 6:00 PM with 15% higher ridership than usual. 
+                                Tomorrow's peak hour is expected at 6:00 PM with 15% higher ridership than usual.
                                 Consider adding 2 extra trains on the Orange Line between 5:30 PM and 7:30 PM.
                             </div>
                         </div>
@@ -401,7 +192,7 @@
                                 <div class="prediction-title">Maintenance Alert</div>
                             </div>
                             <div class="prediction-description">
-                                Line 2 equipment shows 87% wear. Schedule maintenance within 3 days to prevent 
+                                Line 2 equipment shows 87% wear. Schedule maintenance within 3 days to prevent
                                 potential failures during peak hours.
                             </div>
                         </div>
@@ -413,7 +204,7 @@
                                 <div class="prediction-title">Route Optimization</div>
                             </div>
                             <div class="prediction-description">
-                                AI analysis suggests 15% efficiency improvement by adjusting train intervals 
+                                AI analysis suggests 15% efficiency improvement by adjusting train intervals
                                 on Line 1 during off-peak hours (10 AM - 2 PM).
                             </div>
                         </div>
@@ -470,68 +261,6 @@
         </section>
     </main>
 
-
-  <script>
-    // Clock
-    function updateClock() {
-      document.getElementById('clock').textContent = new Date().toLocaleTimeString();
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // Refresh Data button
-    document.getElementById('refreshBtn').addEventListener('click', () => {
-      const passengers = Math.floor(Math.random() * 5000) + 10000;
-      const trains = Math.floor(Math.random() * 10) + 10;
-      document.getElementById('passengerCount').textContent = passengers.toLocaleString();
-      document.getElementById('trainCount').textContent = trains;
-      document.getElementById('updateTime').textContent = "Last updated: " + new Date().toLocaleTimeString();
-    });
-
-    // Theme toggle
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      document.body.classList.toggle('light');
-    });
-
-    // Chart.js
-    const ctx = document.getElementById('trafficChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['8 AM', '10 AM', '12 PM', '2 PM', '4 PM', '6 PM', '8 PM'],
-        datasets: [
-          {
-            label: 'Today',
-            data: [1200, 1900, 2300, 1800, 2400, 3000, 2000],
-            borderColor: '#00ffe5',
-            backgroundColor: 'rgba(0, 255, 229, 0.2)',
-            tension: 0.3,
-            fill: true
-          },
-          {
-            label: 'Last Week',
-            data: [1000, 1700, 2100, 1600, 2200, 2800, 1900],
-            borderColor: '#ff6b6b',
-            backgroundColor: 'rgba(255, 107, 107, 0.2)',
-            tension: 0.3,
-            fill: true
-          }
-        ]
-      },
-      options: {
-        plugins: { 
-          legend: { labels: { color: 'white' } },
-          tooltip: { mode: 'index', intersect: false }
-        },
-        scales: {
-          x: { ticks: { color: 'white' } },
-          y: { ticks: { color: 'white' } }
-        }
-      }
-    });
-  </script>
     <script src="admin-script.js"></script>
 </body>
 </html>
-
-
