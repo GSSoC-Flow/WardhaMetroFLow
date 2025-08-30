@@ -94,3 +94,16 @@ Check our Issues page and look for labels like:
 
 
 **You can also suggest your own ideas!**
+
+## Contribution Points
+We value all contributions and assign points based on complexity and effort.  
+This helps us track and reward contributor impact.  
+
+| **Area**              | **Points** | **Difficulty Level** |
+|------------------------|------------|-----------------------|
+| Backend Development    | 30         | 3                     |
+| Map / Leaflet.js       | 30         | 3                     |
+| Frontend Development   | 15         | 2                     |
+| Documentation          | 10         | 1                     |
+
+
