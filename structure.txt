@@ -1,6 +1,10 @@
 .
 ├── ai-models
+│   ├── congestion_heatmap.py
+│   ├── fare_estimation.py
+│   ├── wardha_passenger_view.py
 │   └── passenger_flow_model.py
+│
 ├── api_models
 │   └── train_model.ipynb
 ├── backend
@@ -23,12 +27,16 @@
 ├── database
 │   └── wardha.db
 ├── frontend
-│   ├── about.css
+│   ├── scripts
+│   │   ├── about.js
+│   │   ├── admin-script.js
+│   │   └── passenger.js
+│   ├── styles
+│   │   ├── about.css
+│   │   ├── admin-script.css
+│   │   └── passenger.css  
 │   ├── about.html
-│   ├── about.js
-│   ├── Admin.html
-│   ├── admin-script.js
-│   ├── admin-styles.css
+│   ├── Admin.html 
 │   └── passenger.html
 ├── LICENSE
 ├── README.md
