@@ -1,5 +1,8 @@
-# WardhaMetroFlow
+<div align="center">
+  
+#  WardhaMetroFlow
 An AI-powered metro simulation designed for the city of Wardha, envisioning a smarter, data-driven public transit system.
+</div>
 
 ## Featured Website Image
 <img width="1880" height="1192" alt="WardhaMetroFlow Dashboard" src="https://github.com/user-attachments/assets/687c003b-e22b-4899-82f2-97927d71ced4" />
@@ -17,7 +20,7 @@ An AI-powered metro simulation designed for the city of Wardha, envisioning a sm
 
 Be part of the discussion, get real-time updates, and collaborate with other contributors on **WardhaMetroFlow**.
 
-[**Join our Discord Server**](https://discord.gg/GGpWdd639J)  
+[Join our Discord](https://discord.gg/GGpWdd639J)
 
 Whether you're contributing code, suggesting features, or just curious about the project, you're welcome!
 
@@ -44,27 +47,15 @@ It offers two distinct, interactive views:
 - **Passenger View**: A user-facing interface for planning journeys. Passengers can select their start and end points, receive intelligent route suggestions, and see estimated arrival times.  
 - **Admin View**: A comprehensive dashboard for transit authorities. Administrators can monitor metro traffic in real-time, manage station data, and analyze predictive models for traffic flow and potential congestion.  
 
-[Back to Top](#top)
-
-
-
 ## Key Features
 <a id="features"></a>
 
-
-### Frontend
--Static HTML, CSS, JavaScript (Passenger/Admin dashboards)
--Leaflet.js (Map rendering)
 - **Interactive Route Planning**: A map-based interface for easy route selection.  
 - **Real-time Simulation**: Simulates passenger flow and station activity.  
 - **AI-Powered Predictions**: Utilizes machine learning models for route optimization and traffic forecasting.  
 - **Dual Dashboards**: Separate, feature-rich interfaces for passengers and administrators.  
 - **Voice/Text Input**: Optional voice and text commands for accessibility.  
 - **Scalable Architecture**: A modular codebase designed for expansion and easy maintenance.  
-
-[Back to Top](#top)
-
-
 
 ## Tech Stack
 <a id="tech-stack"></a>
@@ -77,8 +68,6 @@ It offers two distinct, interactive views:
 | Visualization    | Chart.js, Plotly                        |
 | Database         | SQLite / Firebase / MongoDB             |
 
-[Back to Top](#top)
-
 
 
 ## System Architecture
@@ -90,20 +79,8 @@ The components of **WardhaMetroFlow** interact as follows:
 2. The **Backend** processes requests, serves API routes, and contains the core application logic.  
 3. The **Database (SQLite)** stores all metro, station, and passenger data.  
 4. The **ML Model (model.pkl)** is loaded by the backend to provide predictions for route optimization and traffic analysis.  
-
-3. Navigate to frontend and run app:
-
-   ```bash
-   You can open the following files directly in your browser:
-  -frontend/passenger/passenger.html
-  -frontend/admin/admin.html
-   ```
-##Note: npm install are outdated, since no package.json exists in frontend/.
-If you’d like, you can contribute by helping migrate this static frontend to React in the future    
-=======
+   
 ![System Architecture](static/Architecture.png)
-
-[Back to Top](#top)
 
 
 
@@ -132,7 +109,6 @@ cd ../frontend
 npm install
 npm start.
 ```
-###### [Back to Top](#top)
 
 ## Project Structure
 <a id="project-structure"></a>
@@ -174,7 +150,6 @@ WardhaMetroFlow/
 ├── README.md
 └──vercerl.json.
 ```
-###### [Back to Top](#top)
 
 ## Contributing
 <a id="contributing"></a>
@@ -201,7 +176,8 @@ Please refer to **Contributing.md** for more detailed guidelines.
 
 Join the discussion, get real-time updates, and collaborate with other developers on our Discord server.
 
-[**Join our Discord Server**](https://discord.gg/ZzBX3Rsa)
+[![Join our Discord](https://img.shields.io/badge/Join%20Discord-7289DA?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/GGpWdd639J)
+
 ### Contribution Points
 We value all contributions and assign points based on complexity and effort.  
 This helps us track and reward contributor impact.  
@@ -214,7 +190,6 @@ This helps us track and reward contributor impact.
 | Documentation          | 10         | 1                     |
 
 
-###### [Back to Top](#top)
 
 ## Good First Issues
 * Looking for a place to start? Here are some ideas:
@@ -224,7 +199,6 @@ This helps us track and reward contributor impact.
 * Enhance the styling of the Passenger dashboard.
 * Optimize data visualization components on the Admin dashboard.
 
-###### [Back to Top](#top)
 
 ## License
 <a id="license"></a>
@@ -232,7 +206,7 @@ This helps us track and reward contributor impact.
 This project is licensed under the [MIT LICENSE](LICENSE).
 See the **LICENSE file** for details.
 
-###### [Back to Top](#top)
+
 
 
 ## Acknowledgments
@@ -240,5 +214,7 @@ See the **LICENSE file** for details.
 Inspired by India's Smart City Mission.
 Built with love by open-source contributors during GSSoC 2025.
 
+<p align="center">
+  <a href="#top"> Back to Top</a>
+</p>
 
-###### [Back to Top](#top)
