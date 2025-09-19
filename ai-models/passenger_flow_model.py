@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 import joblib
+import os
 
 def create_dummy_data():
     """Generate sample passenger data"""
@@ -52,9 +53,12 @@ def train_and_save_model():
     score = model.score(X_test, y_test)
     print(f"Model trained! Accuracy: {score:.2f}")
     
+    # ensure the folder exists
+    os.makedirs("models", exist_ok=True)
+    
     # Save model
-    joblib.dump(model, 'ai-models/passenger_flow_model.pkl')
-    print("Model saved to 'ai-models/passenger_flow_model.pkl'")
+    joblib.dump(model, 'models/passenger_flow_model.pkl')
+    print("Model saved to 'ai-models/models/passenger_flow_model.pkl'")
 
 if __name__ == "__main__":
     train_and_save_model()

@@ -3,15 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WardhaMetroFlow - Passenger Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <title>WardhaMetroFlow - Route Planner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="./styles/passenger.css" rel="stylesheet"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange-primary: #ea580c;
+            --orange-light: #fb923c;
+            --green-primary: #22c55e;
+            --green-light: #86efac;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --white: #ffffff;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --border-radius: 16px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gray-100);
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        .header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--orange-primary);
+        }
+
+        .logo i {
+            font-size: 1.75rem;
+            background: linear-gradient(45deg, var(--orange-primary), var(--green-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange-primary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-passenger {
+            background: var(--orange-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-passenger:hover {
+            background: var(--orange-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-admin {
+            background: transparent;
+            color: var(--green-primary);
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--green-primary);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-admin:hover {
+            background: var(--green-primary);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-light) 40%, var(--green-light) 80%, var(--green-primary) 100%);
+            padding: 4rem 2rem;
+            margin: 2rem;
+            border-radius: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white" opacity="0.1"><circle cx="20" cy="20" r="2"/><circle cx="80" cy="80" r="2"/><circle cx="40" cy="60" r="1.5"/><circle cx="70" cy="30" r="1.5"/></svg>');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 3rem 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Route Planner Form */
+        .route-planner {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+
+        .route-planner h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--orange-primary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            font-size: 1rem;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--orange-primary);
+        }
+
+        .btn-find-route {
+            width: 100%;
+            background: var(--orange-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-find-route:hover {
+            background: var(--orange-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Map Container */
+        .map-container {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            height: 500px;
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            position: relative;
+        }
+
+        .metro-map {
+            width: 90%;
+            height: 90%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Metro Lines */
+        .metro-line {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .orange-line {
+            width: 4px;
+            height: 60%;
+            background: var(--orange-primary);
+            top: 20%;
+            right: 25%;
+            border-radius: 2px;
+        }
+
+        .blue-line {
+            width: 70%;
+            height: 4px;
+            background: #3b82f6;
+            top: 50%;
+            left: 15%;
+            border-radius: 2px;
+        }
+
+        /* Metro Stations */
+        .metro-station {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 3px solid;
+            border-radius: 50%;
+            z-index: 2;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .metro-station:hover {
+            transform: scale(1.2);
+        }
+
+        .station-orange { border-color: var(--orange-primary); }
+        .station-blue { border-color: #3b82f6; }
+        .station-interchange { 
+            border-color: var(--text-dark);
+            background: var(--text-dark);
+        }
+
+        /* Station Labels */
+        .station-label {
+            position: absolute;
+            font-size: 0.75rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-section {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .route-planner {
+                padding: 1.5rem;
+            }
+
+            .map-container {
+                height: 400px;
+            }
+        }
+
+        /* Animation for route highlighting */
+        @keyframes routeAnimation {
+            0% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        .route-highlight {
+            stroke: var(--green-primary);
+            stroke-width: 6;
+            stroke-dasharray: 10;
+            animation: routeAnimation 2s ease-in-out;
+        }
+    </style>
 </head>
 <body>
+    <!-- Header Navigation -->
     <header class="header">
-        <nav class="nav container">
+        <nav class="nav">
             <div class="logo">
                 <i class="fas fa-subway"></i>
                 WardhaMetroFlow
@@ -20,6 +425,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#routes">Routes</a></li>
                 <li><a href="#stations">Stations</a></li>
+
                 <li><a href="#feedback">Feedback</a></li>
                 <li><a href="AdminLogin.html" id="admin-login-link">Admin</a></li>
                 <li><a href="./about.html">About</a></li>
@@ -28,304 +434,231 @@
         </header>
 
             <!-- Admin Login Modal removed: now direct page navigation -->
+
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#" class="btn-passenger">
+                    <i class="fas fa-user"></i> Passenger
+                </a>
+                <a href="./Admin.html" class="btn-admin">
+                    <i class="fas fa-cog"></i> Admin
+                </a>
+            </div>
+
         </nav>
     </header>
 
-    <main class="main-content container">
+    <!-- Main Container -->
+    <div class="main-container">
         <!-- Hero Section -->
-        <section class="hero-section fade-in">
-            <h1><i class="fas fa-route"></i> Plan Your Metro Journey</h1>
-            <p>Find the fastest route to your destination with AI-powered suggestions and real-time updates</p>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>
+                    <i class="fas fa-route"></i>
+                    Plan Your Journey
+                </h1>
+                <p>Find the fastest route to your destination with AI-powered suggestions</p>
+            </div>
         </section>
 
-        <!-- Route Planner Section -->
-        <section class="route-planner fade-in">
-            <div class="planner-header">
-                <h2><i class="fas fa-search"></i> Route Planner</h2>
-                <p>Select your source and destination to get the best route options</p>
-            </div>
-            <div class="planner-content">
-                <div class="planner-form">
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="content-grid">
+                <!-- Route Planner Form -->
+                <div class="route-planner">
+                    <h2>Route Planner</h2>
+                    
                     <div class="form-group">
-                        <label for="source">From Station</label>
-                        <select id="source" class="form-control">
-                            <option value="">Select source station</option>
-                            <option value="datta-Meghe-Institute">Datta Meghe Institute</option>
+                        <label for="from-station">From</label>
+                        <select id="from-station" class="form-select">
+                            <option value="">Market Square</option>
+                            <option value="wardha-central">Wardha Central</option>
+                            <option value="railway-station">Railway Station</option>
+                            <option value="market-square">Market Square</option>
+                            <option value="civil-hospital">Civil Hospital</option>
+                            <option value="wardha-college">Wardha College</option>
+                            <option value="industrial-area">Industrial Area</option>
+                            <option value="datta-meghe">Datta Meghe Institute</option>
                             <option value="sawangi">Sawangi</option>
                             <option value="master-colony">Master Colony</option>
                             <option value="bajaj-square">Bajaj Square</option>
                             <option value="civil-lines">Civil Lines</option>
-                            <option value="MIDC">MIDC</option>
-                            <option value="mahatma-gandhi-institute">Mahatma Gandhi Institute</option>
-                            <option value="hindi-vishwa-vidyalaya">Hindi Vishwa Vidyalaya</option>
-                            <option value="pratab-nagar">Pratab Nagar</option>
-                            <option value="ram-nagar">Ram Nagar</option>
-                            <option value="wardha-junction">Wardha Junction (Interchange)</option>
-                            <option value="borgaon">Borgaon</option>
-                            <option value="dmart">Dmart</option>
-                            <option value="bajaj-institute-of-technology">Bajaj Institute of Technology</option>
-                            <option value="tukdoji-maharaj-square">Tukdoji Maharaj Square</option>
-                            <option value="dhuniwala-math">Dhuniwala Math</option>
-                            <option value="hanuman-tekdi">Hanuman Tekdi</option>
+                            <option value="midc">MIDC</option>
                         </select>
                     </div>
+
                     <div class="form-group">
-                        <label for="destination">To Station</label>
-                        <select id="destination" class="form-control">
-                           <option value="">Select source station</option>
-                            <option value="datta-Meghe-Institute">Datta Meghe Institute</option>
+                        <label for="to-station">To</label>
+                        <select id="to-station" class="form-select">
+                            <option value="">Civil Hospital</option>
+                            <option value="wardha-central">Wardha Central</option>
+                            <option value="railway-station">Railway Station</option>
+                            <option value="market-square">Market Square</option>
+                            <option value="civil-hospital">Civil Hospital</option>
+                            <option value="wardha-college">Wardha College</option>
+                            <option value="industrial-area">Industrial Area</option>
+                            <option value="datta-meghe">Datta Meghe Institute</option>
                             <option value="sawangi">Sawangi</option>
                             <option value="master-colony">Master Colony</option>
                             <option value="bajaj-square">Bajaj Square</option>
                             <option value="civil-lines">Civil Lines</option>
-                            <option value="MIDC">MIDC</option>
-                            <option value="mahatma-gandhi-institute">Mahatma Gandhi Institute</option>
-                            <option value="hindi-vishwa-vidyalaya">Hindi Vishwa Vidyalaya</option>
-                            <option value="pratab-nagar">Pratab Nagar</option>
-                            <option value="ram-nagar">Ram Nagar</option>
-                            <option value="wardha-junction">Wardha Junction (Interchange)</option>
-                            <option value="borgaon">Borgaon</option>
-                            <option value="dmart">Dmart</option>
-                            <option value="bajaj-institute-of-technology">Bajaj Institute of Technology</option>
-                            <option value="tukdoji-maharaj-square">Tukdoji Maharaj Square</option>
-                            <option value="dhuniwala-math">Dhuniwala Math</option>
-                            <option value="hanuman-tekdi">Hanuman Tekdi</option>
+                            <option value="midc">MIDC</option>
                         </select>
                     </div>
+
                     <div class="form-group">
-                        <label for="departure-time">Departure Time (Optional)</label>
-                        <input type="datetime-local" id="departure-time" class="form-control">
+                        <label for="departure-time">Departure Time</label>
+                        <input type="datetime-local" id="departure-time" class="form-input" value="2025-08-13T12:29">
                     </div>
-                    <button class="btn btn-primary" onclick="findRoute()" id="find-route-btn">
-                        <i class="fas fa-search"></i> Find Route
-                    </button>
-                    <button class="btn btn-voice" onclick="toggleVoiceInput()" id="voice-btn">
-                        <i class="fas fa-microphone"></i> Voice Input
+
+                    <button class="btn-find-route" onclick="findRoute()">
+                        <i class="fas fa-search"></i>
+                        Find Route
                     </button>
                 </div>
-                <div class="map-container" id="route-map">
+
+                <!-- Map Container -->
+                <div class="map-container">
                     <div class="map-placeholder">
-                        <i class="fas fa-map-marked-alt"></i>
-                        <p>Interactive Metro Map</p>
-                        <p style="font-size: 1rem; margin-top: 1rem;">Select stations to view route</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Route Results Section -->
-        <section id="route-results" class="route-results">
-            <div class="results-header">
-                <h2><i class="fas fa-lightbulb"></i> Smart Route Suggestions</h2>
-                <p>AI-powered recommendations for your journey</p>
-            </div>
-            <div class="results-content">
-                <div id="routes-list"></div>
-            </div>
-        </section>
-
-        <!-- Smart Suggestions Section -->
-        <section class="smart-suggestions fade-in">
-            <div class="suggestions-header">
-                <h2><i class="fas fa-brain"></i> Smart Suggestions</h2>
-                <p>AI-powered insights to optimize your journey</p>
-            </div>
-            <div class="suggestions-content">
-                <div class="suggestion-item">
-                    <div class="suggestion-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="suggestion-text">
-                        <div class="suggestion-title">Next Train in 5 minutes</div>
-                        <div class="suggestion-description">Consider waiting for the upcoming train to avoid crowds</div>
-                    </div>
-                </div>
-                <div class="suggestion-item">
-                    <div class="suggestion-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="suggestion-text">
-                        <div class="suggestion-title">Peak Hour Alert</div>
-                        <div class="suggestion-description">Current time shows high passenger density. Consider alternative routes</div>
-                    </div>
-                </div>
-                <div class="suggestion-item">
-                    <div class="suggestion-icon">
-                        <i class="fas fa-route"></i>
-                    </div>
-                    <div class="suggestion-text">
-                        <div class="suggestion-title">Route Optimization</div>
-                        <div class="suggestion-description">Alternative route available with 2 fewer stops and similar travel time</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Live Status Section -->
-        <section class="live-status fade-in">
-            <div class="status-header">
-                <h2><i class="fas fa-signal"></i> Live Metro Status</h2>
-                <p>Real-time updates on metro operations</p>
-            </div>
-            <div class="status-content">
-                <div class="status-grid">
-                    <div class="status-card">
-                        <i class="fas fa-train"></i>
-                        <h3>Trains Running</h3>
-                        <div class="status-value">12</div>
-                        <div class="status-description">All lines operational</div>
-                    </div>
-                    <div class="status-card">
-                        <i class="fas fa-clock"></i>
-                        <h3>Average Wait Time</h3>
-                        <div class="status-value">8 min</div>
-                        <div class="status-description">Within normal range</div>
-                    </div>
-                    <div class="status-card">
-                        <i class="fas fa-users"></i>
-                        <h3>Current Load</h3>
-                        <div class="status-value">65%</div>
-                        <div class="status-description">Moderate passenger density</div>
-                    </div>
-                    <div class="status-card">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>System Status</h3>
-                        <div class="status-value">Normal</div>
-                        <div class="status-description">All systems operational</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Feedback Section -->
-        <section id="feedback" class="feedback-section fade-in">
-            <div class="feedback-header">
-                <h2><i class="fas fa-comments"></i> Share Your Experience</h2>
-                <p>Help us improve WardhaMetroFlow by sharing your feedback, suggestions, or reporting issues</p>
-            </div>
-            <div class="feedback-content">
-                <div class="feedback-form-container">
-                    <form id="feedback-form" class="feedback-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="feedback-type">Feedback Type</label>
-                                <select id="feedback-type" class="form-control" required>
-                                    <option value="">Select feedback type</option>
-                                    <option value="suggestion">Suggestion</option>
-                                    <option value="issue">Report Issue</option>
-                                    <option value="experience">Travel Experience</option>
-                                    <option value="compliment">Compliment</option>
-                                </select>
-                            </div>
+                        <div class="metro-map">
+                            <!-- Orange Line (Vertical) -->
+                            <div class="metro-line orange-line"></div>
                             
-                            <div class="form-group">
-                                <label for="feedback-category">Category</label>
-                                <select id="feedback-category" class="form-control" required>
-                                    <option value="">Select category</option>
-                                    <option value="service">Service Quality</option>
-                                    <option value="cleanliness">Cleanliness</option>
-                                    <option value="safety">Safety & Security</option>
-                                    <option value="punctuality">Punctuality</option>
-                                    <option value="staff">Staff Behavior</option>
-                                    <option value="facilities">Facilities</option>
-                                    <option value="app">Mobile App</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
+                            <!-- Blue Line (Horizontal) -->
+                            <div class="metro-line blue-line"></div>
+                            
+                            <!-- Metro Stations -->
+                            <!-- Orange Line Stations -->
+                            <div class="metro-station station-orange" style="top: 15%; right: 23%;"></div>
+                            <div class="station-label" style="top: 15%; right: 30%;">Datta Meghe</div>
+                            
+                            <div class="metro-station station-orange" style="top: 25%; right: 23%;"></div>
+                            <div class="station-label" style="top: 25%; right: 35%;">Sawangi</div>
+                            
+                            <div class="metro-station station-orange" style="top: 35%; right: 23%;"></div>
+                            <div class="station-label" style="top: 35%; right: 35%;">Master Colony</div>
+                            
+                            <!-- Interchange Station -->
+                            <div class="metro-station station-interchange" style="top: 48%; right: 23%;"></div>
+                            <div class="station-label" style="top: 48%; right: 38%;">Wardha Junction</div>
+                            
+                            <div class="metro-station station-orange" style="top: 60%; right: 23%;"></div>
+                            <div class="station-label" style="top: 60%; right: 35%;">Civil Lines</div>
+                            
+                            <div class="metro-station station-orange" style="top: 70%; right: 23%;"></div>
+                            <div class="station-label" style="top: 70%; right: 30%;">Industrial</div>
+                            
+                            <!-- Blue Line Stations -->
+                            <div class="metro-station station-blue" style="top: 48%; left: 10%;"></div>
+                            <div class="station-label" style="top: 48%; left: 2%;">Market Square</div>
+                            
+                            <div class="metro-station station-blue" style="top: 48%; left: 30%;"></div>
+                            <div class="station-label" style="top: 48%; left: 20%;">Railway Station</div>
+                            
+                            <div class="metro-station station-blue" style="top: 48%; right: 5%;"></div>
+                            <div class="station-label" style="top: 48%; right: -15%;">Civil Hospital</div>
+                            
+                            <!-- Route highlight line (initially hidden) -->
+                            <svg class="route-svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                                <path id="route-path" class="route-highlight" d="" fill="none" style="opacity: 0;"/>
+                            </svg>
                         </div>
-
-                        <div class="form-group">
-                            <label for="feedback-station">Station (Optional)</label>
-                            <select id="feedback-station" class="form-control">
-                                <option value="">Select station (if applicable)</option>
-                                <option value="wardha-central">Wardha Central</option>
-                                <option value="railway-station">Railway Station</option>
-                                <option value="market-square">Market Square</option>
-                                <option value="hospital">Civil Hospital</option>
-                                <option value="college">Wardha College</option>
-                                <option value="industrial">Industrial Area</option>
-                                <option value="multiple">Multiple Stations</option>
-                                <option value="none">Not Applicable</option>
-                            </select>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label for="feedback-description">Description</label>
-                            <textarea id="feedback-description" class="form-control" rows="6" placeholder="Please provide detailed description of your feedback, suggestion, or issue..." required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="feedback-rating">Overall Rating</label>
-                            <div class="rating-container">
-                                <div class="rating-stars">
-                                    <i class="fas fa-star" data-rating="1"></i>
-                                    <i class="fas fa-star" data-rating="2"></i>
-                                    <i class="fas fa-star" data-rating="3"></i>
-                                    <i class="fas fa-star" data-rating="4"></i>
-                                    <i class="fas fa-star" data-rating="5"></i>
-                                </div>
-                                <span class="rating-text">Click to rate</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="feedback-contact">Contact Information (Optional)</label>
-                            <input type="email" id="feedback-contact" class="form-control" placeholder="Your email for follow-up">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="feedback-anonymous">
-                                <span class="checkmark"></span>
-                                Submit anonymously
-                            </label>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane"></i> Submit Feedback
-                            </button>
-                            <button type="button" class="btn btn-secondary" onclick="resetFeedbackForm()">
-                                <i class="fas fa-undo"></i> Reset Form
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                
-                <div class="feedback-info">
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3>Suggestions</h3>
-                        <p>Share your ideas to improve our services, facilities, or user experience</p>
-                    </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <h3>Report Issues</h3>
-                        <p>Help us identify and resolve problems with services, safety, or facilities</p>
-                    </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h3>Share Experience</h3>
-                        <p>Tell us about your journey experience, good or bad, to help others</p>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
     <script src="./scripts/passenger.js"></script>
             <!-- Admin modal JS removed: now direct page navigation -->
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    </div>
+
+    <script>
+        // Station coordinates and route finding
+        const stations = {
+            'market-square': { name: 'Market Square', x: 10, y: 48, line: 'blue' },
+            'railway-station': { name: 'Railway Station', x: 30, y: 48, line: 'blue' },
+            'wardha-junction': { name: 'Wardha Junction', x: 50, y: 48, line: 'interchange' },
+            'civil-hospital': { name: 'Civil Hospital', x: 75, y: 48, line: 'blue' },
+            'datta-meghe': { name: 'Datta Meghe Institute', x: 50, y: 15, line: 'orange' },
+            'sawangi': { name: 'Sawangi', x: 50, y: 25, line: 'orange' },
+            'master-colony': { name: 'Master Colony', x: 50, y: 35, line: 'orange' },
+            'civil-lines': { name: 'Civil Lines', x: 50, y: 60, line: 'orange' },
+            'industrial-area': { name: 'Industrial Area', x: 50, y: 70, line: 'orange' }
+        };
+
+
+        function findRoute() {
+            const fromStation = document.getElementById('from-station').value;
+            const toStation = document.getElementById('to-station').value;
+            
+            if (!fromStation || !toStation) {
+                alert('Please select both source and destination stations');
+                return;
+            }
+            
+            if (fromStation === toStation) {
+                alert('Source and destination cannot be the same');
+                return;
+            }
+            
+            // Highlight the route on the map
+            highlightRoute(fromStation, toStation);
+            
+            // Show route details (you can expand this)
+            console.log(`Finding route from ${stations[fromStation]?.name} to ${stations[toStation]?.name}`);
+        }
+        
+        function highlightRoute(from, to) {
+            const fromCoords = stations[from];
+            const toCoords = stations[to];
+            
+            if (!fromCoords || !toCoords) return;
+            
+            const routePath = document.getElementById('route-path');
+            const mapContainer = document.querySelector('.metro-map');
+            const mapRect = mapContainer.getBoundingClientRect();
+            
+            // Calculate actual pixel coordinates
+            const fromX = (fromCoords.x / 100) * mapContainer.offsetWidth;
+            const fromY = (fromCoords.y / 100) * mapContainer.offsetHeight;
+            const toX = (toCoords.x / 100) * mapContainer.offsetWidth;
+            const toY = (toCoords.y / 100) * mapContainer.offsetHeight;
+            
+            // Create path
+            let pathData;
+            if (fromCoords.line === toCoords.line) {
+                // Direct line if on same route
+                pathData = `M ${fromX} ${fromY} L ${toX} ${toY}`;
+            } else {
+                // Via interchange
+                const interchange = stations['wardha-junction'];
+                const interX = (interchange.x / 100) * mapContainer.offsetWidth;
+                const interY = (interchange.y / 100) * mapContainer.offsetHeight;
+                pathData = `M ${fromX} ${fromY} L ${interX} ${interY} L ${toX} ${toY}`;
+            }
+            
+            routePath.setAttribute('d', pathData);
+            routePath.style.opacity = '1';
+            
+            // Reset after animation
+            setTimeout(() => {
+                routePath.style.opacity = '0';
+            }, 3000);
+        }
+        
+        // Set default values
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('from-station').value = 'market-square';
+            document.getElementById('to-station').value = 'civil-hospital';
+            
+            // Set current date/time
+            const now = new Date();
+            const timestamp = now.toISOString().slice(0, 16);
+            document.getElementById('departure-time').value = timestamp;
+        });
+    </script>
 </body>
 </html>
