@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Wardha MetroFlow</title>
+    <link rel="stylesheet" href="styles/admin-styles.css">
+</head>
+<body class="admin-bg">
+    <div class="admin-form-card enhanced">
+        <h2 class="admin-title">Admin Login</h2>
+        <form id="adminLoginForm" autocomplete="off">
+            <div class="input-group">
+                <input type="text" id="admin-username" name="admin-username" required placeholder="Email or Username">
+            </div>
+            <div class="input-group password-group">
+                <input type="password" id="admin-password" name="admin-password" required placeholder="Password">
+                <span class="toggle-password" onclick="togglePassword('admin-password', this)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="#888" stroke-width="2" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/><circle cx="12" cy="12" r="3" stroke="#888" stroke-width="2"/></svg>
+                </span>
+            </div>
+            <div class="form-links">
+                <a href="ForgotPassword.html" class="forgot-link">Forgot password?</a>
+            </div>
+            <button type="submit" class="admin-login-btn">Login</button>
+            <div class="form-links center-link">
+                <span>Don't have an account? <a href="AdminCreateAccount.html" class="create-account-link">Signup</a></span>
+            </div>
+            <div class="divider"><span>Or</span></div>
+            <button class="google-btn" type="button">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google icon" class="google-icon"> Login with Google
+            </button>
+        </form>
+        <div id="admin-login-error" class="error-message"></div>
+    </div>
+    <script src="scripts/admin-login.js"></script>
+    <script>
+    function togglePassword(inputId, el) {
+        const input = document.getElementById(inputId);
+        if (input.type === 'password') {
+            input.type = 'text';
+            el.classList.add('show');
+        } else {
+            input.type = 'password';
+            el.classList.remove('show');
+        }
+    }
+    </script>
+</body>
+</html>
