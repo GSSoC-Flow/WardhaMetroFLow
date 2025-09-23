@@ -425,6 +425,16 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#routes">Routes</a></li>
                 <li><a href="#stations">Stations</a></li>
+
+                <li><a href="#feedback">Feedback</a></li>
+                <li><a href="AdminLogin.html" id="admin-login-link">Admin</a></li>
+                <li><a href="./about.html">About</a></li>
+            </ul>
+                </nav>
+        </header>
+
+            <!-- Admin Login Modal removed: now direct page navigation -->
+
                 <li><a href="#about">About</a></li>
             </ul>
             <div class="nav-buttons">
@@ -435,6 +445,7 @@
                     <i class="fas fa-cog"></i> Admin
                 </a>
             </div>
+
         </nav>
     </header>
 
@@ -557,6 +568,11 @@
                 </div>
             </div>
         </section>
+
+    </main>
+    <script src="./scripts/passenger.js"></script>
+            <!-- Admin modal JS removed: now direct page navigation -->
+
     </div>
 
     <script>
@@ -572,6 +588,7 @@
             'civil-lines': { name: 'Civil Lines', x: 50, y: 60, line: 'orange' },
             'industrial-area': { name: 'Industrial Area', x: 50, y: 70, line: 'orange' }
         };
+
 
         function findRoute() {
             const fromStation = document.getElementById('from-station').value;

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Admin Account - Wardha MetroFlow</title>
+    <link rel="stylesheet" href="styles/admin-styles.css">
+</head>
+<body class="admin-bg">
+    <div class="admin-form-container">
+        <h2>Create Admin Account</h2>
+        <form id="adminCreateForm" autocomplete="off">
+            <label for="admin-fullname">Full Name</label>
+            <input type="text" id="admin-fullname" name="admin-fullname" required>
+
+            <label for="admin-email">Email</label>
+            <input type="email" id="admin-email" name="admin-email" required>
+
+            <label for="admin-password">Password</label>
+            <input type="password" id="admin-password" name="admin-password" required>
+
+            <label for="admin-confirm-password">Confirm Password</label>
+            <input type="password" id="admin-confirm-password" name="admin-confirm-password" required>
+
+            <button type="submit">Create Account</button>
+        </form>
+        <div class="divider"><span>Or</span></div>
+        <button class="google-btn" type="button">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google icon" class="google-icon"> Sign up with Google
+        </button>
+        <div class="admin-links">
+            <a href="AdminLogin.html" class="login-link">Already have an account? Login</a>
+        </div>
+        <div id="admin-create-error" class="error-message"></div>
+    </div>
+    <script src="scripts/admin-create.js"></script>
+</body>
+</html>
