@@ -411,6 +411,7 @@
             stroke-dasharray: 10;
             animation: routeAnimation 2s ease-in-out;
         }
+
     </style>
 </head>
 <body>
@@ -422,10 +423,10 @@
                 WardhaMetroFlow
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="#routes">Routes</a></li>
-                <li><a href="#stations">Stations</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="Admin.html#stations">Stations</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
             <div class="nav-buttons">
                 <a href="#" class="btn-passenger">
@@ -455,7 +456,7 @@
         <section class="content-section">
             <div class="content-grid">
                 <!-- Route Planner Form -->
-                <div class="route-planner">
+                <div class="route-planner section-content" id="routes">
                     <h2>Route Planner</h2>
                     
                     <div class="form-group">
@@ -508,7 +509,7 @@
                 </div>
 
                 <!-- Map Container -->
-                <div class="map-container">
+                <div class="map-container section-content">
                     <div class="map-placeholder">
                         <div class="metro-map">
                             <!-- Orange Line (Vertical) -->
