@@ -1,0 +1,16 @@
+{
+  "name": "wardhametroflow-frontend",
+  "version": "1.0.0",
+  "description": "The frontend for the WardhaMetroFlow project, including passenger and admin views.",
+  "main": "landing/landing.html",
+  "scripts": {
+    "start": "echo \"Open your HTML files with a live server extension.\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GSSoC-Flow Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "chart.js": "^4.4.1",
+    "leaflet": "^1.9.4"
+  }
+}

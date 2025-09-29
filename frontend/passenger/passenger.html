@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardha Metro Flow - Urban Transportation Solution</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    
+    <link rel="stylesheet" href="../components/navbar.css">
+    <link rel="stylesheet" href="passenger.css">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-content container">
+        <section class="hero-section fade-in">
+            <h1><i class="fas fa-route"></i> Plan Your Metro Journey</h1>
+            <p>Find the fastest route to your destination with AI-powered suggestions and real-time updates</p>
+        </section>
+
+        <section class="metro-section route-planner fade-in">
+            <div class="section-header">
+                <h2><i class="fas fa-search"></i> Route Planner</h2>
+            </div>
+            <div class="planner-content">
+                <div class="planner-form">
+                    <div class="form-group">
+                        <label for="source">From Station</label>
+                        <select id="source" class="form-control">
+                            <option value="">Select source station</option>
+                            <option value="wardha-central">Wardha Central</option>
+                            <option value="railway-station">Railway Station</option>
+                            <option value="market-square">Market Square</option>
+                            <option value="hospital">Civil Hospital</option>
+                            <option value="college">Wardha College</option>
+                            <option value="industrial">Industrial Area</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">To Station</label>
+                        <select id="destination" class="form-control">
+                            <option value="">Select destination station</option>
+                            <option value="wardha-central">Wardha Central</option>
+                            <option value="railway-station">Railway Station</option>
+                            <option value="market-square">Market Square</option>
+                            <option value="hospital">Civil Hospital</option>
+                            <option value="college">Wardha College</option>
+                            <option value="industrial">Industrial Area</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="departure-time">Departure Time (Optional)</label>
+                        <input type="datetime-local" id="departure-time" class="form-control">
+                    </div>
+                    <button class="btn btn-primary" onclick="findRoute()" id="find-route-btn">
+                        <i class="fas fa-search"></i> Find Route
+                    </button>
+                    <button class="btn btn-secondary" onclick="toggleVoiceInput()" id="voice-btn">
+                        <i class="fas fa-microphone"></i> Voice Input
+                    </button>
+                </div>
+                <div class="map-container" id="route-map">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Interactive Metro Map</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="route-results" class="metro-section">
+            <div class="section-header">
+                <h2><i class="fas fa-lightbulb"></i> Smart Route Suggestions</h2>
+            </div>
+            <div class="section-content">
+                <div id="routes-list"></div>
+            </div>
+        </section>
+
+        <section class="metro-section smart-suggestions fade-in">
+            <div class="section-header">
+                <h2><i class="fas fa-brain"></i> Smart Suggestions</h2>
+            </div>
+            <div class="section-content">
+                <div class="suggestion-item">
+                    <div class="suggestion-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="suggestion-text">
+                        <div class="suggestion-title">Next Train in 5 minutes</div>
+                    </div>
+                </div>
+                <div class="suggestion-item">
+                    <div class="suggestion-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="suggestion-text">
+                        <div class="suggestion-title">Peak Hour Alert</div>
+                    </div>
+                </div>
+                <div class="suggestion-item">
+                    <div class="suggestion-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="suggestion-text">
+                        <div class="suggestion-title">Route Optimization</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="metro-section live-status fade-in">
+            <div class="section-header">
+                <h2><i class="fas fa-signal"></i> Live Metro Status</h2>
+            </div>
+            <div class="status-grid">
+                <div class="status-card">
+                    <i class="fas fa-train"></i>
+                    <h3>Trains Running</h3>
+                    <div class="status-value">12</div>
+                </div>
+                <div class="status-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Average Wait Time</h3>
+                    <div class="status-value">8 min</div>
+                </div>
+                <div class="status-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Current Load</h3>
+                    <div class="status-value">65%</div>
+                </div>
+                <div class="status-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>System Status</h3>
+                    <div class="status-value">Normal</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div class="spacer"></div>
+    <div id="footer-placeholder"></div>
+
+    <script src="../scripts/main.js"></script>
+    <script src="passenger.js"></script>
+</body>
+</html>
