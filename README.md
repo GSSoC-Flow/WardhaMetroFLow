@@ -1,5 +1,5 @@
 
-<div align="center">
+<div >
   
 #  WardhaMetroFlow
 An AI-powered metro simulation designed for the city of Wardha, envisioning a smarter, data-driven public transit system.
