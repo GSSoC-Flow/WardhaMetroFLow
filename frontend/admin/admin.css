@@ -1,0 +1,127 @@
+/* Root colors */
+:root {
+  --primary-orange: #ea580c;
+  --primary-orange-dark: #c2410c;
+  --text-dark: #1c1917;
+  --text-muted: #666;
+  --background-white: #fff;
+  --border-color: #e0e0e0;
+  --border-radius: 8px;
+  --font-family: 'Inter', sans-serif;
+}
+
+/* Reset & page background */
+body {
+  margin: 0;
+  padding: 3rem 0 4rem; /* top padding for fixed navbar & bottom for footer */
+  font-family: var(--font-family);
+  background-color: var(--background-white);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.main-content {
+  margin-top: 5.5rem; /* Adds space below the navbar */
+  /* existing styles */
+}
+
+
+/* Main container with max-width for form */
+.main-content {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem 2.5rem;
+  box-sizing: border-box;
+}
+
+/* Login section container styling */
+.login-section {
+  background-color: var(--background-white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  padding: 2rem;
+  text-align: center;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Title: solid orange text with icon */
+.admin-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Form and controls */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1.8px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-orange);
+  outline: none;
+}
+
+/* Error messages */
+.error-message {
+  color: #dc2626;
+  font-size: 0.875rem;
+  display: none;
+  margin-top: -0.7rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Primary button with solid orange background */
+.btn-primary {
+  background-color: var(--primary-orange);
+  border: none;
+  border-radius: var(--border-radius);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-orange-dark);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
