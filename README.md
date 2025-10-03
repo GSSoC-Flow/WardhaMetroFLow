@@ -6,7 +6,14 @@ An AI-powered metro simulation designed for the city of Wardha, envisioning a sm
 </div>
 
 ## Featured Website Image
-<img width="1880" height="1192" alt="WardhaMetroFlow Dashboard" src="https://github.com/user-attachments/assets/687c003b-e22b-4899-82f2-97927d71ced4" />
+<img width="1270" height="648" alt="image" src="https://github.com/user-attachments/assets/07d3c974-c09c-4e96-8be0-8dd6639913aa" />
+
+<img width="1241" height="533" alt="image" src="https://github.com/user-attachments/assets/8dde2f40-ef84-4e00-a3a3-7e306946654c" />
+
+<img width="1040" height="535" alt="image" src="https://github.com/user-attachments/assets/c45f96d5-2ea3-4f0f-946e-90c733d9250a" />
+
+
+
 
 <span id="top"></span>
 
