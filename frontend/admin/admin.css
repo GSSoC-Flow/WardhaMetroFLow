@@ -1,47 +1,28 @@
-/* Root colors */
-:root {
-  --primary-orange: #ea580c;
-  --primary-orange-dark: #c2410c;
-  --text-dark: #1c1917;
-  --text-muted: #666;
-  --background-white: #fff;
-  --border-color: #e0e0e0;
-  --border-radius: 8px;
-  --font-family: 'Inter', sans-serif;
-}
+/* ==========================================================================
+   1. Global Variables & Base Styles
+   ========================================================================== */
 
-/* Reset & page background */
-body {
-  margin: 0;
-  padding: 3rem 0 4rem; /* top padding for fixed navbar & bottom for footer */
-  font-family: var(--font-family);
-  background-color: var(--background-white);
-  color: var(--text-dark);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-}
+/* Apply this style only to the main
 
+
+/* ==========================================================================
+   2. Fixed Header & Footer Positioning
+   ========================================================================== */
+
+/* ==========================================================================
+   3. Admin Page Specific Styles
+   ========================================================================== */
 .main-content {
-  margin-top: 5.5rem; /* Adds space below the navbar */
-  /* existing styles */
-}
-
-
-/* Main container with max-width for form */
-.main-content {
-  width: 100%;
-  max-width: 400px;
-  padding: 2rem 2.5rem;
-  box-sizing: border-box;
+  max-width: 400px; /* Limit width for the login form */
+  padding: 2rem 0;
 }
 
 /* Login section container styling */
 .login-section {
-  background-color: var(--background-white);
-  border-radius: var(--border-radius);
+  background-color: var(--background-color-light);
+  border-radius: var(--border-radius-main);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  padding: 2rem;
+  padding: 2.5rem;
   text-align: center;
   animation: fadeIn 0.6s ease-out;
 }
@@ -51,7 +32,7 @@ body {
   font-weight: 700;
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: var(--primary-orange);
+  color: var(--primary-color);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -76,13 +57,13 @@ body {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   border: 1.8px solid var(--border-color);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-main);
   box-sizing: border-box;
   transition: border-color 0.3s ease;
 }
 
 .form-group input:focus {
-  border-color: var(--primary-orange);
+  border-color: var(--primary-color);
   outline: none;
 }
 
@@ -97,10 +78,10 @@ body {
 
 /* Primary button with solid orange background */
 .btn-primary {
-  background-color: var(--primary-orange);
+  background-color: var(--primary-color);
   border: none;
-  border-radius: var(--border-radius);
-  color: #fff;
+  border-radius: var(--border-radius-main);
+  color: var(--text-color-light);
   font-weight: 600;
   font-size: 1rem;
   padding: 0.8rem 1rem;
@@ -110,7 +91,7 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-orange-dark);
+  background-color: var(--primary-color-dark);
 }
 
 /* Fade-in animation */
@@ -119,7 +100,6 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);

@@ -6,22 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wardha Metro Flow - Admin Login</title>
 
-  <!-- Fonts and Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Passenger navbar styles -->
+  
+  <link rel="stylesheet" href="../components/global.css">
   <link rel="stylesheet" href="../components/navbar.css" />
-  <!-- Admin page styles -->
   <link rel="stylesheet" href="admin.css" />
 </head>
 
 <body>
-  <!-- Navbar placeholder with full width and no container -->
-  <div id="navbar-placeholder" style="width: 100%; position: fixed; top: 0; left: 0; z-index: 1000;"></div>
-  
-  <div class="spacer"></div>
-  <div class="spacer"></div>
+  <div id="navbar-placeholder"></div>
   
   <main class="main-content container">
     <section class="login-section fade-in">
@@ -42,45 +36,19 @@
     </section>
   </main>
 
-  <!-- Footer placeholder with full width and fixed bottom -->
-  <div id="footer-placeholder" style="width: 100%; position: fixed; bottom: 0; left: 0; z-index: 1000;"></div>
+  <div id="footer-placeholder"></div>
 
-  <!-- Scripts -->
   <script src="../scripts/main.js"></script>
   <script src="admin.js"></script>
-
   <script>
-    // Load navbar and footer from external components without container restrictions
+    // Scripts to load navbar and footer remain the same
     fetch('../components/navbar.html')
       .then(res => res.text())
-      .then(html => {
-        // Strip container div to avoid width limits
-        let div = document.createElement('div');
-        div.innerHTML = html;
-        let nav = div.querySelector('nav') || div.firstChild;
-        // Apply full width styling if needed
-        nav.style.width = '100%';
-        nav.style.margin = '0';
-        nav.style.padding = '0';
-        document.getElementById('navbar-placeholder').appendChild(nav);
-      });
+      .then(html => document.getElementById('navbar-placeholder').innerHTML = html);
 
     fetch('../components/footer.html')
       .then(res => res.text())
-      .then(html => {
-        // Similar stripping to ensure full width footer
-        let div = document.createElement('div');
-        div.innerHTML = html;
-        // Adjust footer styles as necessary here
-        let footer = div.querySelector('footer') || div.firstChild;
-        footer.style.width = '100%';
-        footer.style.margin = '0';
-        footer.style.padding = '1rem 1.5rem';
-        footer.style.backgroundColor = '#1c1917';
-        footer.style.color = '#fff';
-        footer.style.textAlign = 'center';
-        document.getElementById('footer-placeholder').appendChild(footer);
-      });
+      .then(html => document.getElementById('footer-placeholder').innerHTML = html);
   </script>
 </body>
 
