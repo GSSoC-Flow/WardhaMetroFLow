@@ -1,0 +1,32 @@
+/* ==========================================================================
+   1. Global Variables & Base Styles
+   ========================================================================== */
+:root {
+    --primary-color: #ea580c;
+    --primary-color-dark: #c2410c;
+    --text-color-light: #fff;
+    --text-color-dark: #333;
+    --text-color-muted: #666;
+    --border-color: #e0e0e0;
+    --background-color-light: #fff;
+    --border-radius-main: 8px;
+    --border-radius-small: 6px;
+    --background-color-soft: #f9fafb;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color-dark);
+    background-color: var(--background-color-soft);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.spacer {
+    height: 3rem;
+}
