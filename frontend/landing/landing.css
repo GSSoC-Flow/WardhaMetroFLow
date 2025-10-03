@@ -2,26 +2,7 @@
    1. Global Variables & Base Styles
    ========================================================================== */
 
-:root {
-    --primary-color: #ea580c; /* Brighter orange */
-    --primary-color-dark: #c2410c; /* Darker orange for hover */
-    --text-color-light: #fff;
-    --text-color-dark: #333;
-    --text-color-muted: #666;
-    --border-color: #e0e0e0;
-    --background-color-light: #fff;
-    --border-radius-main: 8px;
-    --border-radius-small: 6px a;
-}
-
-body {
-    /* Helps prevent horizontal scrollbars caused by 100vw elements */
-    overflow-x: hidden;
-}
-
-.spacer {
-    height: 3rem;
-}
+/* moved this global part to ../components/global.css*/
 
 
 /* ==========================================================================

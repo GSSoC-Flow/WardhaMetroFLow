@@ -1,38 +1,6 @@
 /* ==========================================================================
-   1. Global Variables & Base Styles (Synced with landing.css)
+   1. Global & Base Styles
    ========================================================================== */
-
-:root {
-    --primary-color: #ea580c;
-    --primary-color-dark: #c2410c;
-    --text-color-light: #fff;
-    --text-color-dark: #333;
-    --text-color-muted: #666;
-    --border-color: #e0e0e0;
-    --background-color-light: #fff;
-    --border-radius-main: 8px;
-    --border-radius-small: 6px;
-    --background-color-soft: #f9fafb; /* Added for consistency */
-}
-
-/* Base body styles to match landing page (minimal) */
-body {
-    font-family: 'Inter', sans-serif;
-    color: var(--text-color-dark);
-    background-color: var(--background-color-soft);
-    overflow-x: hidden;
-}
-
-/* A container for consistent centering and spacing */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.spacer {
-    height: 3rem;
-}
 
 .main-content {
     padding: 2rem 0;
@@ -57,7 +25,7 @@ body {
     font-size: 2rem;
 }
 
-/* Section Header Style (matches landing.css) */
+/* Section Header Style */
 .section-header {
     margin: 0 0 1.5rem 0;
     padding-bottom: 0.75rem;
@@ -82,7 +50,7 @@ body {
     align-items: flex-start;
 }
 
-/* Universal Card Style (like .section in landing.css) */
+/* Universal Card Style */
 .planner-form, .map-container, .suggestion-item, .status-card, .route-card {
     background-color: var(--background-color-light);
     padding: 1.5rem;
