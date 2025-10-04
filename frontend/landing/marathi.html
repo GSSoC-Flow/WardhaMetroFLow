@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>वर्धा मेट्रो फ्लो - शहरी परिवहन समाधान</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../components/global.css">
+<link rel="stylesheet" href="../components/navbar.css">
+<link rel="stylesheet" href="landing.css">
+</head>
+<body>
+<div id="navbar-placeholder"></div>
+
+<main class="main-content">
+    <!-- फुल-स्क्रीन स्लाइडशो विभाग -->
+    <section class="slideshow-section">
+        <div class="slideshow-container">
+            <div class="slides-wrapper">
+                <div class="slide">
+                    <img src="../assets/metro1.jpg" alt="शहरी गतिशीलतेचे भविष्य">
+                </div>
+                <div class="slide">
+                    <img src="../assets/metro2.jpg" alt="समुदायांना जोडणारी सेवा">
+                </div>
+                <div class="slide">
+                    <img src="../assets/metro3.jpg" alt="बदलाची सफर करा">
+                </div>
+            </div>
+
+            <button class="slide-arrow prev-btn" aria-label="मागील स्लाईड">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slide-arrow next-btn" aria-label="पुढील स्लाईड">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div class="slide-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+
+            <div class="slide-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="spacer"></div>
+        <div class="news-map-container">
+            <div class="news-column">
+                <div class="section-header">
+                    <h2>बातम्या आणि कार्यक्रम</h2>
+                </div>
+                <div class="news-list">
+                    <article class="news-item">
+                        <p class="news-item-title">नवीन ग्रीन लाईन विस्ताराचे उद्घाटन</p>
+                        <p class="news-item-date"><i class="far fa-calendar-alt"></i> २८ सप्टेंबर २०२५</p>
+                    </article>
+                    <article class="news-item">
+                        <p class="news-item-title">वर्धा मेट्रोकडून मोबाईल अॅप सुरू</p>
+                        <p class="news-item-date"><i class="far fa-calendar-alt"></i> २५ सप्टेंबर २०२५</p>
+                    </article>
+                    <article class="news-item">
+                        <p class="news-item-title">पाटवर्धन हायस्कूलची जमीन वर्धा मेट्रो विस्तारासाठी मोकळी केली</p>
+                        <p class="news-item-date"><i class="far fa-calendar-alt"></i> १९ सप्टेंबर २०२५</p>
+                    </article>
+                    <article class="news-item">
+                        <p class="news-item-title">सुरक्षा जागरूकता आठवड्याची सांगता</p>
+                        <p class="news-item-date"><i class="far fa-calendar-alt"></i> २० सप्टेंबर २०२५</p>
+                    </article>
+                </div>
+                <div class="load-more-container">
+                    <button class="btn-load-more">अधिक पहा</button>
+                </div>
+            </div>
+
+            <div class="map-column">
+                <div class="map-header">
+                    <h3>वर्धा मेट्रो मार्ग नकाशा</h3>
+                    <a href="#" class="view-details-link">तपशील पहा</a>
+                </div>
+                <div class="map-placeholder">
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1c4r4UD15ZKHhCvG5O3ZN_JOQdhHPspM&ll=20.749678247661688%2C78.5883217323128&z=13" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="container">
+        <div class="three-column-container">
+
+            <div class="section left-column">
+                <div class="nav-links">
+                    <a href="#">वर्धा मेट्रो मित्र<span>&gt;</span></a>
+                    <a href="#">वर्धा मेट्रो फॅन क्लब<span>&gt;</span></a>
+                    <a href="#">इतर मेट्रो प्रकल्प<span>+</span></a>
+                </div>
+                <div class="idea-form">
+                    <h2>आपल्या कल्पना स्वागतार्ह आहेत!</h2>
+                    <form>
+                        <input type="text" name="name" placeholder="नाव">
+                        <input type="tel" name="mobile" placeholder="मोबाईल क्रमांक">
+                        <input type="email" name="email" placeholder="ईमेल">
+                        <select name="category">
+                            <option value="" disabled selected>निवडा</option>
+                            <option value="suggestion">सूचना</option>
+                            <option value="complaint">तक्रार</option>
+                            <option value="feedback">प्रतिक्रिया</option>
+                        </select>
+                        <textarea name="message" placeholder="संदेश"></textarea>
+                        <button type="submit" class="btn-submit">सबमिट करा</button>
+                    </form>
+                    <p class="suggestions-count">सुचना संख्या: 23</p>
+                </div>
+            </div>
+
+            <div class="section middle-column">
+                <h2>हे कुठे मिळेल?</h2>
+                <div class="places-grid">
+                    <div class="place-item">
+                        <img src="https://www.metrorailNagpur.com/images/icon/museum.svg" alt="संग्रहालय"> 
+                    </div>
+                    <div class="place-item">
+                        <img src="https://www.metrorailNagpur.com/images/icon/food.svg" alt="अन्नालय">
+                    </div>
+                    <div class="place-item">
+                        <img src="https://www.metrorailNagpur.com/images/icon/park.svg" alt="उद्यान">
+                    </div>
+                    <div class="place-item">
+                        <img src="https://www.metrorailNagpur.com/images/icon/shrine.svg" alt="देवस्थान">
+                    </div>
+                    <div class="place-item">
+                        <img src="https://www.metrorailNagpur.com/images/icon/offices.svg" alt="कार्यालये">
+                    </div>
+                    <div class="place-item">
+                        <img src="https://www.metrorailNagpur.com/images/icon/hospital.svg" alt="रुग्णालये">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section right-column">
+                <h2>मेट्रो शिष्टाचार</h2>
+                <p class="etiquette-intro">जीवनातील सर्व चांगल्या गोष्टी एक उत्तम शिस्तीतून येतात... <a href="#">अधिक वाचा</a></p>
+                <div class="etiquette-grid">
+                    <div class="etiquette-item">
+                        <img src="https://api.iconify.design/icon-park-outline:sleep.svg?color=%23777&rotate=315deg" alt="झोपण्याचा चिन्ह">
+                        <p>झोपू नका किंवा एकापेक्षा जास्त सीट व्यापू नका</p>
+                    </div>
+                    <div class="etiquette-item">
+                        <img src="https://api.iconify.design/mdi:human-cane.svg?color=%23777" alt="गरजू व्यक्तीचे चिन्ह">
+                        <p>वृद्ध व गरजू व्यक्तींना आपली जागा द्या</p>
+                    </div>
+                    <div class="etiquette-item">
+                        <img src="https://api.iconify.design/mdi:human-queue.svg?color=%23777" alt="रांगेचे चिन्ह">
+                        <p>चढण्यापूर्वी प्रवाशांना उतरू द्या आणि रांगेत उभे रहा</p>
+                    </div>
+                    <div class="etiquette-item">
+                        <img src="https://api.iconify.design/mdi:headphones.svg?color=%23777" alt="हेडफोन्सचे चिन्ह">
+                        <p>संगीत किंवा फोन कॉलसाठी हेडफोन्स वापरा</p>
+                    </div>
+                    <div class="etiquette-item">
+                        <img src="https://api.iconify.design/mdi:camera-off.svg?color=%23777" alt="कॅमेरा बंद चिन्ह">
+                        <p>छायाचित्रण आणि व्हिडीओग्राफी निषिद्ध आहे</p>
+                    </div>
+                    <div class="etiquette-item">
+                        <img src="https://api.iconify.design/mdi:hand-back-left-off.svg?color=%23777" alt="दारावर हात ठेवू नका">
+                        <p>दारांना किंवा खिडक्यांना टेकू नका</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="spacer"></div>
+<div id="footer-placeholder"></div>
+
+<div class="modal-overlay" id="loginModal"></div>
+<div class="modal-overlay" id="signupModal"></div>
+
+<script src="../scripts/main.js"></script>
+<script src="marathi.js"></script>
+</body>
+</html>
