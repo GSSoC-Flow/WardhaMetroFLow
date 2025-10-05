@@ -4,6 +4,8 @@
 :root {
     --primary-color: #ea580c;
     --primary-color-dark: #c2410c;
+    --success-color: #16a34a; /* NEW */
+    --warning-color: #f59e0b; /* NEW */
     --text-color-light: #fff;
     --text-color-dark: #333;
     --text-color-muted: #666;
