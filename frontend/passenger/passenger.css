@@ -198,15 +198,17 @@
     font-weight: 500;
 }
 
-.route-details {
+/* CHANGED: This is now the main flex container for the single line */
+.route-body {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on small screens */
     gap: 1.5rem;
-    padding: 1rem 0;
+    padding-top: 1rem;
     border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 1rem;
 }
+
+/* REMOVED: The .route-details class is no longer needed */
 
 .detail-item {
     display: flex;
@@ -220,10 +222,11 @@
     font-weight: 500;
 }
 
+/* CHANGED: Added margin-left: auto to push buttons to the right */
 .route-actions {
     display: flex;
-    justify-content: flex-end;
     gap: 1rem;
+    margin-left: auto; /* This is the magic part */
 }
 
 .route-actions .btn {
@@ -236,7 +239,6 @@
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
-    /* NEW: Added transition for hover effects */
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .suggestion-item:last-child {
@@ -255,7 +257,6 @@
     color: #16a34a;
 }
 
-/* NEW: Lift up and green border effect on hover */
 .suggestion-item:hover {
     transform: translateY(-5px);
     border-color: var(--success-color);
@@ -269,7 +270,6 @@
 }
 .status-card {
     text-align: center;
-    /* NEW: Added transition for hover effects */
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .status-card i {
@@ -291,7 +291,6 @@
     color: #16a34a;
 }
 
-/* NEW: Lift up and green border effect on hover */
 .status-card:hover {
     transform: translateY(-5px);
     border-color: var(--success-color);
