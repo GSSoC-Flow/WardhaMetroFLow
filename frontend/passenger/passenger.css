@@ -2,8 +2,9 @@
    1. Global & Base Styles
    ========================================================================== */
 
+/* Main Content Sections */
 .main-content {
-    padding: 2rem 0;
+    padding: 3rem 0;
 }
 
 /* ==========================================================================
@@ -12,18 +13,56 @@
 
 /* Hero Section Style */
 .hero-section {
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
-    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #fb923c, var(--primary-color));
+    color: white;
+    padding: 1.5rem 1rem;
     text-align: center;
-    border-radius: var(--border-radius-main);
-    margin-bottom: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-radius: 25px;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" fill="rgba(255,255,255,0.1)"><circle cx="10" cy="10" r="1"/><circle cx="30" cy="10" r="1"/><circle cx="50" cy="10" r="1"/><circle cx="70" cy="10" r="1"/><circle cx="90" cy="10" r="1"/></svg>');
+    animation: float 20s linear infinite;
 }
 
 .hero-section h1 {
-    font-weight: 600;
-    font-size: 2rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.hero-section p {
+    position: relative;
+    z-index: 1;
+    opacity: 0.95;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Section Box Style */
+.metro-section {
+    background-color: var(--background-color-light, #fff);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: var(--border-radius-main, 12px);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
 
 /* Section Header Style */
 .section-header {
@@ -159,15 +198,17 @@
     font-weight: 500;
 }
 
-.route-details {
+/* CHANGED: This is now the main flex container for the single line */
+.route-body {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on small screens */
     gap: 1.5rem;
-    padding: 1rem 0;
+    padding-top: 1rem;
     border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 1rem;
 }
+
+/* REMOVED: The .route-details class is no longer needed */
 
 .detail-item {
     display: flex;
@@ -181,10 +222,11 @@
     font-weight: 500;
 }
 
+/* CHANGED: Added margin-left: auto to push buttons to the right */
 .route-actions {
     display: flex;
-    justify-content: flex-end;
     gap: 1rem;
+    margin-left: auto; /* This is the magic part */
 }
 
 .route-actions .btn {
@@ -197,6 +239,7 @@
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .suggestion-item:last-child {
     margin-bottom: 0;
@@ -204,9 +247,20 @@
 .suggestion-icon {
     font-size: 1.5rem;
     color: var(--primary-color);
+    transition: color 0.3s ease;
 }
 .suggestion-title {
     font-weight: 500;
+}
+
+.suggestion-item:hover .suggestion-icon {
+    color: #16a34a;
+}
+
+.suggestion-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--success-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .status-grid {
@@ -216,10 +270,12 @@
 }
 .status-card {
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .status-card i {
     font-size: 2rem;
     color: var(--primary-color);
+    transition: color 0.3s ease;
 }
 .status-card h3 {
     font-size: 1rem;
@@ -229,6 +285,16 @@
 .status-value {
     font-size: 1.5rem;
     font-weight: 600;
+}
+
+.status-card:hover i {
+    color: #16a34a;
+}
+
+.status-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--success-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* ==========================================================================
@@ -247,4 +313,10 @@
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Keyframes for the hero section background */
+@keyframes float {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(100px); }
 }
