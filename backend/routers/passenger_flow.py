@@ -6,6 +6,8 @@ import os
 
 router = APIRouter()
 
+
+
 # Load the ML model
 try:
     model_path = os.path.join(os.path.dirname(__file__), "../../ai-models/passenger_flow_model.pkl")
@@ -65,3 +67,5 @@ def load_model():
         print("Warning: Passenger flow model not found")
 
 load_model()
+
+

@@ -27,109 +27,129 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
+# stations = {
+#   'datta-Meghe-Institute': {
+#     "name": 'Datta Meghe Institute',
+#     "coordinates": [20.7111655, 78.574074],
+#     "connections": ['sawangi'],
+#     "type": 'regular'
+#   },
+#   'sawangi': {
+#     "name": 'Sawangi',
+#     "coordinates": [20.7214195, 78.5768308],
+#     "connections": ['datta-Meghe-Institute', 'master-colony'],
+#     "type": 'regular'
+#   },
+#   'master-colony': {
+#     "name": 'Master Colony',
+#     "coordinates": [20.7271472, 78.5850694],
+#     "connections": ['sawangi', 'wardha-junction'],
+#     type: 'regular'
+#   },
+#   'bajaj-square': {
+#     "name": 'Bajaj Square',
+#     "coordinates": [20.7356644, 78.5985736],
+#     "connections": ['wardha-junction', 'civil-lines'],
+#     type: 'regular'
+#   },
+#   'civil-lines': {
+#     "name": 'Civil Lines',
+#     "coordinates": [20.7444112, 78.6092445],
+#     "connections": ['bajaj-square', 'midc', 'dhuniwala-math'],
+#     "type": 'regular'
+#   },
+#   'MIDC': {
+#     "name": 'MIDC',
+#     "coordinates": [20.7407753, 78.6268908],
+#     "connections": ['civil-lines', 'mahatma-gandhi-institute'],
+#     "type": 'regular'
+#   },
+#   'mahatma-gandhi-institute': {
+#     "name": 'Mahatma Gandhi Institute',
+#     "coordinates": [20.7395282, 78.6521638],
+#     "connections": ['MIDC'],
+#     "type": 'regular'
+#   },
+#   'hindi-vishwa-vidyalaya': {
+#     "name": 'Hindi Vishwa Vidyalaya',
+#     "coordinates": [20.7644706, 78.5820438],
+#     "connections": ['pratab-nagar'],
+#     type: 'regular'
+#   },
+#   'pratab-nagar': {
+#     "name": 'Pratab Nagar',
+#     "coordinates": [20.7551015, 78.5782331],
+#     "connections": ['ram-nagar', 'hindi-vishwa-vidyalaya'],
+#     "type": 'regular'
+#   },
+#   'ram-nagar': {
+#     "name": 'Ram Nagar',
+#     "coordinates": [20.7404718, 78.5868584],
+#     "connections": ['pratab-nagar', 'wardha-junction'],
+#     "type": 'regular'
+#   },
+#   'wardha-junction': {
+#     "name": 'Wardha Junction',
+#     "coordinates": [20.7310431, 78.5923619],
+#     "connections": ['master-colony', 'bajaj-square', 'ram-nagar', 'borgaon'],
+#     "type": 'regular'
+#   },
+#   'borgaon': {
+#     "name": 'Borgaon',
+#     "coordinates": [20.7240709, 78.6020207],
+#     "connections": ['wardha-junction', 'dmart'],
+#     "type": 'regular'
+#   },
+#   'dmart': {
+#     "name": 'Dmart',
+#     "coordinates": [20.7147015, 78.605335],
+#     "connections": ['borgaon'],
+#     "type": 'regular'
+#   },
+#   'bajaj-institute-of-technology': {
+#     "name": 'Bajaj Institute of Technology',
+#     "coordinates": [20.7823326, 78.5915407],
+#     "connections": ['hanuman-tekdi'],
+#     "type": 'regular'
+#   },
+#   'tukdoji-maharaj-square': {
+#     "name": 'Tukdoji Maharaj Square',
+#     "coordinates": [20.7569655, 78.6009944],
+#     "connections": ['dhuniwala-math', 'hanuman-tekdi'],
+#     "type": 'regular'
+#   },
+#   'dhuniwala-math': {
+#     "name": 'Dhuniwala Math',
+#     "coordinates": [20.7530008, 78.6129591],
+#     "connections": ['tukdoji-maharaj-square', 'civil-lines'],
+#     "type": 'regular'
+#   },
+#   'hanuman-tekdi': {
+#     "name": 'Hanuman Tekdi',
+#     "coordinates": [20.768315, 78.5982003],
+#     "connections": ['tukdoji-maharaj-square', 'bajaj-institute-of-technology'],
+#     "type": 'regular'
+#   }
+# }
+
 stations = {
-  'datta-Meghe-Institute': {
-    "name": 'Datta Meghe Institute',
-    "coordinates": [20.7111655, 78.574074],
-    "connections": ['sawangi'],
-    "type": 'regular'
-  },
-  'sawangi': {
-    "name": 'Sawangi',
-    "coordinates": [20.7214195, 78.5768308],
-    "connections": ['datta-Meghe-Institute', 'master-colony'],
-    "type": 'regular'
-  },
-  'master-colony': {
-    "name": 'Master Colony',
-    "coordinates": [20.7271472, 78.5850694],
-    "connections": ['sawangi', 'wardha-junction'],
-    type: 'regular'
-  },
-  'bajaj-square': {
-    "name": 'Bajaj Square',
-    "coordinates": [20.7356644, 78.5985736],
-    "connections": ['wardha-junction', 'civil-lines'],
-    type: 'regular'
-  },
-  'civil-lines': {
-    "name": 'Civil Lines',
-    "coordinates": [20.7444112, 78.6092445],
-    "connections": ['bajaj-square', 'midc', 'dhuniwala-math'],
-    "type": 'regular'
-  },
-  'MIDC': {
-    "name": 'MIDC',
-    "coordinates": [20.7407753, 78.6268908],
-    "connections": ['civil-lines', 'mahatma-gandhi-institute'],
-    "type": 'regular'
-  },
-  'mahatma-gandhi-institute': {
-    "name": 'Mahatma Gandhi Institute',
-    "coordinates": [20.7395282, 78.6521638],
-    "connections": ['MIDC'],
-    "type": 'regular'
-  },
-  'hindi-vishwa-vidyalaya': {
-    "name": 'Hindi Vishwa Vidyalaya',
-    "coordinates": [20.7644706, 78.5820438],
-    "connections": ['pratab-nagar'],
-    type: 'regular'
-  },
-  'pratab-nagar': {
-    "name": 'Pratab Nagar',
-    "coordinates": [20.7551015, 78.5782331],
-    "connections": ['ram-nagar', 'hindi-vishwa-vidyalaya'],
-    "type": 'regular'
-  },
-  'ram-nagar': {
-    "name": 'Ram Nagar',
-    "coordinates": [20.7404718, 78.5868584],
-    "connections": ['pratab-nagar', 'wardha-junction'],
-    "type": 'regular'
-  },
-  'wardha-junction': {
-    "name": 'Wardha Junction',
-    "coordinates": [20.7310431, 78.5923619],
-    "connections": ['master-colony', 'bajaj-square', 'ram-nagar', 'borgaon'],
-    "type": 'regular'
-  },
-  'borgaon': {
-    "name": 'Borgaon',
-    "coordinates": [20.7240709, 78.6020207],
-    "connections": ['wardha-junction', 'dmart'],
-    "type": 'regular'
-  },
-  'dmart': {
-    "name": 'Dmart',
-    "coordinates": [20.7147015, 78.605335],
-    "connections": ['borgaon'],
-    "type": 'regular'
-  },
-  'bajaj-institute-of-technology': {
-    "name": 'Bajaj Institute of Technology',
-    "coordinates": [20.7823326, 78.5915407],
-    "connections": ['hanuman-tekdi'],
-    "type": 'regular'
-  },
-  'tukdoji-maharaj-square': {
-    "name": 'Tukdoji Maharaj Square',
-    "coordinates": [20.7569655, 78.6009944],
-    "connections": ['dhuniwala-math', 'hanuman-tekdi'],
-    "type": 'regular'
-  },
-  'dhuniwala-math': {
-    "name": 'Dhuniwala Math',
-    "coordinates": [20.7530008, 78.6129591],
-    "connections": ['tukdoji-maharaj-square', 'civil-lines'],
-    "type": 'regular'
-  },
-  'hanuman-tekdi': {
-    "name": 'Hanuman Tekdi',
-    "coordinates": [20.768315, 78.5982003],
-    "connections": ['tukdoji-maharaj-square', 'bajaj-institute-of-technology'],
-    "type": 'regular'
-  }
+    'datta-meghe-institute': {'name': 'Datta Meghe Institute', 'coordinates': [20.7111655, 78.574074], 'connections': ['sawangi']},
+    'sawangi': {'name': 'Sawangi', 'coordinates': [20.7214195, 78.5768308], 'connections': ['datta-meghe-institute','master-colony']},
+    'master-colony': {'name': 'Master Colony', 'coordinates': [20.7271472,78.5850694], 'connections': ['sawangi','wardha-junction']},
+    'bajaj-square': {'name': 'Bajaj Square', 'coordinates': [20.7356644,78.5985736], 'connections': ['wardha-junction','civil-lines']},
+    'civil-lines': {'name': 'Civil Lines', 'coordinates': [20.7444112,78.6092445], 'connections': ['bajaj-square','midc','dhuniwala-math']},
+    'midc': {'name': 'MIDC', 'coordinates': [20.7407753,78.6268908], 'connections': ['civil-lines','mahatma-gandhi-institute']},
+    'mahatma-gandhi-institute': {'name':'Mahatma Gandhi Institute', 'coordinates':[20.7395282,78.6521638], 'connections':['midc']},
+    'hindi-vishwa-vidyalaya': {'name':'Hindi Vishwa Vidyalaya', 'coordinates':[20.7644706,78.5820438], 'connections':['pratab-nagar']},
+    'pratab-nagar': {'name':'Pratab Nagar', 'coordinates':[20.7551015,78.5782331], 'connections':['ram-nagar','hindi-vishwa-vidyalaya']},
+    'ram-nagar': {'name':'Ram Nagar', 'coordinates':[20.7404718,78.5868584],'connections':['pratab-nagar','wardha-junction']},
+    'wardha-junction': {'name':'Wardha Junction', 'coordinates':[20.7310431,78.5923619], 'connections':['master-colony','bajaj-square','ram-nagar','borgaon']},
+    'borgaon': {'name':'Borgaon', 'coordinates':[20.7240709,78.6020207], 'connections':['wardha-junction','dmart']},
+    'dmart': {'name':'Dmart', 'coordinates':[20.7147015,78.605335],'connections':['borgaon']},
+    'bajaj-institute-of-technology': {'name':'Bajaj Institute of Technology','coordinates':[20.7823326,78.5915407],'connections':['hanuman-tekdi']},
+    'tukdoji-maharaj-square': {'name':'Tukdoji Maharaj Square','coordinates':[20.7569655,78.6009944],'connections':['dhuniwala-math','hanuman-tekdi']},
+    'dhuniwala-math': {'name':'Dhuniwala Math','coordinates':[20.7530008,78.6129591],'connections':['tukdoji-maharaj-square','civil-lines']},
+    'hanuman-tekdi': {'name':'Hanuman Tekdi','coordinates':[20.768315,78.5982003],'connections':['tukdoji-maharaj-square','bajaj-institute-of-technology']}
 }
 
 @app.route('/predict_flow', methods=['POST'])
@@ -179,6 +199,42 @@ def get_all_stations():
 def home():
     return "WardhaMetroFlow API is running!"
 
+
+def find_shortest_path(start, end):
+    from collections import deque
+    queue = deque([[start]])
+    visited = set()
+
+    while queue:
+        path = queue.popleft()
+        node = path[-1]
+        if node == end:
+            return path
+        elif node not in visited:
+            for neighbor in stations[node]['connections']:
+                new_path = list(path)
+                new_path.append(neighbor)
+                queue.append(new_path)
+            visited.add(node)
+    return []
+
+@app.route('/api/route', methods=['POST'])
+def get_route():
+    data = request.json
+    # start = data.get('from')
+    # end = data.get('to')
+    start = request.json.get("from", "").lower()
+    end = request.json.get("to", "").lower()
+    if start not in stations or end not in stations:
+        return jsonify({'error': 'Invalid station selected'}), 400
+
+    path = find_shortest_path(start, end)
+    coords = [stations[s]['coordinates'] for s in path]
+    return jsonify({'route': path, 'coordinates': coords})
+
+@app.route('/api/stations', methods=['GET'])
+def get_stations():
+    return jsonify({k:{'name':v['name']} for k,v in stations.items()})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

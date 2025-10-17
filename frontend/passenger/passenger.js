@@ -1,4 +1,5 @@
 // Metro station data with coordinates and connections
+const BACKEND_URL = "http://127.0.0.1:5000";
 const metroStations = {
     'wardha-central': { name: 'Wardha Central', coordinates: [20.7453, 78.6022], connections: ['railway-station', 'market-square'], type: 'terminal' },
     'railway-station': { name: 'Railway Station', coordinates: [20.7489, 78.6028], connections: ['wardha-central', 'hospital'], type: 'interchange' },
@@ -142,4 +143,59 @@ function simulateVoiceInput() {
     toggleVoiceInput(); // Turn off the listening animation
     alert('Voice input detected: "From Wardha Central to Industrial Area"');
     findRoute();
+}
+
+async function findRoute() {
+    const from = document.getElementById("source").value;
+    const to = document.getElementById("destination").value;
+
+    if (!from || !to) {
+        alert("Please select both source and destination stations.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`${BACKEND_URL}/api/route`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ from, to })
+        });
+        const data = await response.json();
+
+    
+        const routeTrace = {
+            type: "scattermapbox",
+            lat: data.coordinates.map(c => c[0]),
+            lon: data.coordinates.map(c => c[1]),
+            mode: "lines+markers",
+            line: { color: "red", width: 4 },
+            marker: { size: 10, color: "red" },
+            text: data.route,
+            hoverinfo: "text"
+        };
+
+       
+        const allStationsTrace = {
+            type: "scattermapbox",
+            lat: Object.values(data.stations || {}).map(s => s.coordinates[0]),
+            lon: Object.values(data.stations || {}).map(s => s.coordinates[1]),
+            mode: "markers",
+            marker: { size: 8, color: "blue" },
+            text: Object.values(data.stations || {}).map(s => s.name),
+            hoverinfo: "text"
+        };
+
+        Plotly.newPlot("route-map", [allStationsTrace, routeTrace], {
+            mapbox: {
+                style: "open-street-map",
+                center: { lat: 20.73, lon: 78.59 }, // Center on Wardha
+                zoom: 13
+            },
+            margin: { t: 0, b: 0, l: 0, r: 0 }
+        });
+
+    } catch (err) {
+        console.error("Error fetching route:", err);
+        alert("Failed to load route. Check console.");
+    }
 }
