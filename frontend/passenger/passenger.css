@@ -1,0 +1,321 @@
+/* ==========================================================================
+   1. Global & Base Styles
+   ========================================================================== */
+
+/* Main Content Sections */
+.main-content {
+    padding: 3rem 0;
+}
+
+/* ==========================================================================
+   2. Page-Specific Sections
+   ========================================================================== */
+
+/* Hero Section Style */
+.hero-section {
+    background: linear-gradient(135deg, #fb923c, var(--primary-color));
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-radius: 25px;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" fill="rgba(255,255,255,0.1)"><circle cx="10" cy="10" r="1"/><circle cx="30" cy="10" r="1"/><circle cx="50" cy="10" r="1"/><circle cx="70" cy="10" r="1"/><circle cx="90" cy="10" r="1"/></svg>');
+    animation: float 20s linear infinite;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section p {
+    position: relative;
+    z-index: 1;
+    opacity: 0.95;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Section Box Style */
+.metro-section {
+    background-color: var(--background-color-light, #fff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: var(--border-radius-main, 12px);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+/* Section Header Style */
+.section-header {
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--text-color-dark);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   3. Route Planner
+   ========================================================================== */
+
+.planner-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+/* Universal Card Style */
+.planner-form, .map-container, .suggestion-item, .status-card, .route-card {
+    background-color: var(--background-color-light);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-main);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-small);
+    font-size: 1rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border: none;
+}
+.btn-primary:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.map-container {
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.map-placeholder i {
+    font-size: 3rem;
+    color: #ccc;
+}
+.map-placeholder p {
+    color: var(--text-color-muted);
+}
+
+/* ==========================================================================
+   4. Results & Information Cards
+   ========================================================================== */
+
+#route-results {
+    display: none; /* Hidden by default */
+}
+
+.route-card {
+    margin-bottom: 1rem;
+}
+
+.route-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.route-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.route-badge {
+    background: #16a34a;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.route-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color-muted);
+}
+.detail-item .detail-value {
+    color: var(--text-color-dark);
+    font-weight: 500;
+}
+
+.route-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.route-actions .btn {
+    width: auto;
+}
+
+/* Suggestions & Status */
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    /* NEW: Added transition for hover effects */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.suggestion-item:last-child {
+    margin-bottom: 0;
+}
+.suggestion-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+.suggestion-title {
+    font-weight: 500;
+}
+
+.suggestion-item:hover .suggestion-icon {
+    color: #16a34a;
+}
+
+/* NEW: Lift up and green border effect on hover */
+.suggestion-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--success-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+.status-card {
+    text-align: center;
+    /* NEW: Added transition for hover effects */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.status-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+.status-card h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0.5rem 0;
+}
+.status-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.status-card:hover i {
+    color: #16a34a;
+}
+
+/* NEW: Lift up and green border effect on hover */
+.status-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--success-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   5. Responsive & Utility
+   ========================================================================== */
+
+@media (max-width: 800px) {
+    .planner-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Keyframes for the hero section background */
+@keyframes float {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(100px); }
+}

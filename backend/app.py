@@ -16,7 +16,7 @@ DB_PATH = os.path.join(BASE_DIR, 'database', 'wardha.db')
 service = metro_service.MetroService()
 
 # Corrected model path - added ../
-model_path = os.path.join(os.path.dirname(__file__), '../ai-models/passenger_flow_model.pkl')
+model_path = os.path.join(os.path.dirname(__file__), '../ai-models/models/passenger_flow_model.pkl')
 model = joblib.load(model_path)
 
 os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)

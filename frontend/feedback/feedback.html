@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback - Wardha Metro Flow</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../components/global.css">
+<link rel="stylesheet" href="../components/navbar.css">
+<link rel="stylesheet" href="feedback.css">
+
+</head>
+<body>
+<div id="navbar-placeholder"></div><br><br>
+<main class="main-content">
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Feedback & Suggestions</h1>
+            <p>Your opinion helps us improve Wardha Metro services</p>
+        </div>
+    </section>
+
+    <!-- Feedback Form Section -->
+    <div class="container">
+        <div class="feedback-container">
+            <!-- Left Column - Feedback Form -->
+            <div class="feedback-form-column">
+                <div class="feedback-form-container">
+                    <h2>Share Your Feedback</h2>
+                    <p class="form-description">We value your input. Please share your suggestions, concerns, or compliments about Wardha Metro services.</p>
+                    
+                    <form id="feedbackForm" class="feedback-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number</label>
+                                <input type="tel" id="mobile" name="mobile">
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Feedback Category *</label>
+                                <select id="category" name="category" required>
+                                    <option value="" disabled selected>Select Category</option>
+                                    <option value="suggestion">Suggestion</option>
+                                    <option value="complaint">Complaint</option>
+                                    <option value="compliment">Compliment</option>
+                                    <option value="general">General Feedback</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Feedback *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        
+                        <div class="form-group rating-group">
+                            <label>Overall Satisfaction</label>
+                            <div class="rating-stars">
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1"><i class="fas fa-star"></i></label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="contact-permission" name="contact-permission">
+                            <label for="contact-permission">I give permission to be contacted for follow-up regarding my feedback</label>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit-feedback">Submit Feedback</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Right Column - Additional Information -->
+            <div class="feedback-info-column">
+                <div class="info-card">
+                    <h3>Why Your Feedback Matters</h3>
+                    <p>Your feedback helps us:</p>
+                    <ul>
+                        <li>Improve passenger experience</li>
+                        <li>Identify and resolve issues quickly</li>
+                        <li>Plan future enhancements</li>
+                        <li>Maintain high service standards</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Response Time</h3>
+                    <p>We aim to respond to all feedback within 3-5 business days. For urgent matters, please contact our customer service directly.</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> Customer Service: 1800-123-4567</p>
+                        <p><i class="fas fa-envelope"></i> Email: feedback@wardhametro.com</p>
+                    </div>
+                </div>
+                
+                <div class="info-card stats-card">
+                    <h3>Feedback Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">1,247</span>
+                            <span class="stat-label">Suggestions Received</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">94%</span>
+                            <span class="stat-label">Issues Resolved</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">48h</span>
+                            <span class="stat-label">Avg. Response Time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent Improvements Section -->
+    <div class="container">
+        <div class="improvements-section">
+            <h2>Recent Improvements Based on Your Feedback</h2>
+            <div class="improvements-grid">
+                <div class="improvement-item">
+                    <div class="improvement-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App Launch</h3>
+                    <p>Launched a dedicated mobile app for ticket booking and real-time updates based on passenger requests.</p>
+                </div>
+                <div class="improvement-item">
+                    <div class="improvement-icon">
+                        <i class="fas fa-wheelchair"></i>
+                    </div>
+                    <h3>Enhanced Accessibility</h3>
+                    <p>Improved accessibility features at 5 stations following feedback from differently-abled passengers.</p>
+                </div>
+                <div class="improvement-item">
+                    <div class="improvement-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Extended Hours</h3>
+                    <p>Extended operating hours on weekends due to popular demand from commuters.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="spacer"></div>
+
+<div id="footer-placeholder"></div>
+
+<div class="modal-overlay" id="loginModal"></div>
+<div class="modal-overlay" id="signupModal"></div>
+
+<!-- Success Modal -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Thank You!</h2>
+            <button class="close-modal" id="closeSuccessModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <p>Your feedback has been successfully submitted. We appreciate your input and will review it carefully.</p>
+            <p>Reference ID: <span id="referenceId">WM-2023-001234</span></p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-primary" id="modalCloseBtn">Close</button>
+        </div>
+    </div>
+</div>
+
+<script src="../scripts/main.js"></script>
+<script src="feedback.js"></script>
+</body>
+</html>

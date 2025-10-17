@@ -1,12 +1,12 @@
 **DocEase Code of Conduct | GSSoC’25**
 
----
+
 
 ***Our Commitment***
 
 DocEase is dedicated to maintaining an open, respectful, and collaborative environment for all contributors, regardless of their experience level. We strive to foster a community where knowledge-sharing, constructive feedback, and ethical contributions are prioritized.
 
----
+
 
 ***Scope***
 
@@ -16,7 +16,7 @@ This Code of Conduct applies to all DocEase-related spaces, including:
 - Social media and public forums linked to the project.
 - Virtual or in-person events involving DocEase.
 
----
+
 
 ***Community Values***
 
@@ -27,7 +27,7 @@ We uphold the following principles:
 - Proper attribution and ethical use of content.
 - Collaboration with transparency and accountability.
 
----
+
 
 ***Unacceptable Behavior***
 
@@ -38,7 +38,7 @@ The following will not be tolerated:
 - Disruptive or disrespectful conduct in discussions.
 - Off-topic or self-promotional content without relevance.
 
----
+
 
 ***Reporting Violations***
 
@@ -47,7 +47,7 @@ If you encounter or witness any violations, please report them to:
 - GSSoC Organizers (through official channels).
 - All reports will be handled confidentially and addressed promptly.
 
----
+
 
 ***Enforcement***
 
@@ -56,7 +56,7 @@ Violations may result in:
 - Temporary suspension from project participation.
 - Permanent removal from the community in severe cases.
 
----
+
 
 ***Contributor Responsibilities***
 

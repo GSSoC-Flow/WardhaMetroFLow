@@ -1,0 +1,460 @@
+/* ==========================================================================
+   1. Global Variables & Base Styles
+   ========================================================================== */
+
+/* moved this global part to ../components/global.css*/
+
+
+/* ==========================================================================
+   2. Desktop-Optimized Slideshow
+   ========================================================================== */
+
+.slideshow-section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Use min-height for robustness, avoids redundancy */
+    min-height: 90vh; 
+}
+
+.slides-wrapper {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100vh; /* Changed to 100vh for full viewport image */
+    object-fit: cover;
+    display: block;
+}
+
+/* Caption Styling */
+.slide .caption {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    background: transparent;
+    color: var(--text-color-light);
+    padding: 2rem 3rem 3rem;
+    font-size: clamp(1.5rem, 4vw, 2.8rem);
+    font-weight: 600;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+    line-height: 1.2;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slideshow Controls: Arrows */
+.slide-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 0.8rem;
+    color: var(--text-color-light);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    border: none;
+    border-radius: var(--border-radius-small);
+    width: 44px; /* Slightly larger for easier clicking */
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem; /* Slightly larger icon */
+    transition: all 0.2s ease;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%) scale(0.8);
+}
+
+/* ACCESSIBILITY & UX IMPROVEMENT: Show arrows on hover OR when a child is focused */
+.slideshow-container:hover .slide-arrow,
+.slideshow-container:focus-within .slide-arrow {
+    opacity: 0.8;
+    pointer-events: all;
+    transform: translateY(-50%) scale(1);
+}
+
+.slide-arrow:hover {
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 1 !important;
+}
+
+.slide-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.prev-btn {
+    left: 1rem;
+}
+
+.next-btn {
+    right: 1rem;
+}
+
+/* Slideshow Controls: Dots */
+.slide-dots {
+    text-align: center;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    gap: 12px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px; /* Slightly larger for easier clicking */
+    width: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.dot.active {
+    background-color: var(--text-color-light);
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Accessibility: Keyboard Focus Styles */
+.slide-arrow:focus-visible,
+.dot:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
+    opacity: 1 !important;
+}
+
+
+/* ==========================================================================
+   3. News & Map Section
+   ========================================================================== */
+
+.news-map-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.news-column,
+.map-column {
+    min-width: 300px; /* Adjusted for better flex behavior */
+}
+
+.news-column {
+    flex: 1; /* Takes up 1 part of the available space */
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-main);
+    background-color: var(--background-color-light);
+}
+
+.map-column {
+    flex: 2; /* Takes up 2 parts of the available space */
+}
+
+.section-header {
+    margin: 0 0 1.5rem 0; /* Standardized margin */
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--text-color-dark);
+}
+
+.news-list .news-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.news-list .news-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.news-item-title {
+    font-weight: 500;
+    color: #444;
+    margin: 0 0 0.5rem 0;
+}
+
+.news-item-date {
+    font-size: 0.875rem;
+    color: var(--text-color-muted);
+    margin: 0;
+}
+
+.load-more-container {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.btn-load-more {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-load-more:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.map-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--text-color-dark);
+}
+
+.view-details-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.view-details-link:hover {
+    color: var(--primary-color-dark);
+    text-decoration: underline;
+}
+
+.map-placeholder iframe {
+    width: 100%;
+    height: 450px;
+    border: none; /* Often looks cleaner without a double border */
+    border-radius: var(--border-radius-main);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Adds a subtle depth */
+}
+
+
+/* ==========================================================================
+   4. Responsive Design
+   ========================================================================== */
+
+/* Stack news/map columns on medium screens */
+@media (max-width: 800px) {
+    .news-map-container {
+        flex-direction: column;
+    }
+}
+
+/* Adjust slideshow caption padding for larger screens */
+@media (min-width: 1024px) {
+    .slide .caption {
+        padding: 3rem 4rem 4rem;
+    }
+}
+/* ==========================================================================
+   5. Three Column Info Section (Updated)
+   ========================================================================== */
+
+.three-column-container {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch;
+    padding-top: 1rem;
+}
+
+.section {
+    flex: 1;
+    min-width: 0;
+    background-color: var(--background-color-light, #fff);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: var(--border-radius-main, 8px);
+    /* CHANGE: The box-shadow has been removed. */
+    display: flex;
+    flex-direction: column;
+}
+
+.idea-form, .places-grid, .etiquette-grid {
+    flex-grow: 1;
+}
+
+.section h2 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* --- Left Column Styles --- */
+.left-column .nav-links a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    /* CHANGE: Styles moved from ":last-child" to here to apply to ALL buttons */
+    background-color: transparent;
+    border: 1px solid var(--primary-color, #ea580c);
+    color: var(--primary-color, #ea580c);
+    /* --- End of Change --- */
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius-small, 6px);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+/* CHANGE: The hover effect now fills the outline button with color */
+.left-column .nav-links a:hover {
+    background-color: var(--primary-color, #ea580c);
+    color: var(--text-color-light, white);
+}
+
+/* CHANGE: The old ":last-child" rule that styled only the third 
+   button has been removed completely. 
+*/
+
+.idea-form { margin-top: 2rem; }
+
+.idea-form input,
+.idea-form select,
+.idea-form textarea {
+    width: 100%;
+    padding: 0.65rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    background-color: #fff;
+}
+
+.idea-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #f0f0f0;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-13z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.8rem top 50%;
+    background-size: 0.65em auto;
+}
+
+.idea-form .btn-submit {
+    background-color: var(--primary-color, #ea580c);
+    color: var(--text-color-light, white);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: var(--border-radius-small, 6px);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 0.9rem;
+}
+.idea-form .btn-submit:hover {
+    background-color: var(--primary-color-dark, #c2410c);
+}
+
+.suggestions-count {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-color-muted, #666);
+    font-size: 0.8rem;
+}
+
+
+* --- Middle Column Styles --- */
+.place-item {
+    border: 1px solid var(--border-color, #e0e0e0);
+    padding: 0; 
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.place-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-color: #ccc;
+}
+.place-item img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+    display: block;
+}
+.places-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+
+
+/* --- Right Column Styles --- */
+.etiquette-intro {
+    font-size: 0.85rem;
+    color: var(--text-color-muted, #666);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+.etiquette-intro a { color: var(--primary-color, #ea580c); text-decoration: none; font-weight: 500; }
+.etiquette-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+.etiquette-item {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color, #e0e0e0);
+}
+.etiquette-grid .etiquette-item:nth-child(odd) { border-right: 1px solid var(--border-color, #e0e0e0); }
+.etiquette-grid .etiquette-item:nth-child(1),
+.etiquette-grid .etiquette-item:nth-child(2) { border-top: none; }
+.etiquette-item img { height: 40px; margin-bottom: 0.75rem; }
+.etiquette-item p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* --- Responsive Stacking for Three Columns --- */
+@media (max-width: 992px) {
+    .three-column-container {
+        flex-direction: column;
+    }
+}

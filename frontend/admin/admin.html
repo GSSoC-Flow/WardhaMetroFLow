@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wardha Metro Flow - Admin Login</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="../components/global.css">
+  <link rel="stylesheet" href="../components/navbar.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+
+<body>
+  <div id="navbar-placeholder"></div>
+  
+  <main class="main-content container">
+    <section class="login-section fade-in">
+      <h1 class="admin-title"><i class="fas fa-user-lock"></i> Admin Login</h1>
+      <form id="loginForm" class="login-form" autocomplete="off">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input id="username" type="text" placeholder="Enter username" autocorrect="off" autocapitalize="none" />
+          <div class="error-message" id="usernameError">Please enter username</div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Enter password" />
+          <div class="error-message" id="passwordError">Please enter password</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../scripts/main.js"></script>
+  <script src="admin.js"></script>
+  <script>
+    // Scripts to load navbar and footer remain the same
+    fetch('../components/navbar.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('navbar-placeholder').innerHTML = html);
+
+    fetch('../components/footer.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('footer-placeholder').innerHTML = html);
+  </script>
+</body>
+
+</html>

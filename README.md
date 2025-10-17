@@ -1,125 +1,126 @@
-# WardhaMetroFlow 
 
-An AI-powered metro simulation for the city of Wardha. It offers two views: Passenger View to plan routes and get smart suggestions, and Admin View to monitor traffic, manage stations, and analyze predictions (helping visualize a smarter transit future).
+<div >
+  
+#  WardhaMetroFlow
+An AI-powered metro simulation designed for the city of Wardha, envisioning a smarter, data-driven public transit system.
+</div>
 
-It offers two interactive views:
+## Featured Website Image
+<img width="1270" height="648" alt="image" src="https://github.com/user-attachments/assets/07d3c974-c09c-4e96-8be0-8dd6639913aa" />
 
-- **Passenger View**: Plan metro routes, get real-time smart suggestions, and estimate arrival times.
-- **Admin View**: Monitor metro traffic, manage stations, and analyze trends using predictive AI models.
+<img width="1241" height="533" alt="image" src="https://github.com/user-attachments/assets/8dde2f40-ef84-4e00-a3a3-7e306946654c" />
 
-This project envisions smarter, AI-driven public transit systems for emerging smart cities like Wardha.
+<img width="1040" height="535" alt="image" src="https://github.com/user-attachments/assets/c45f96d5-2ea3-4f0f-946e-90c733d9250a" />
 
-# Featured Website Image
-<img width="1880" height="1192" alt="image" src="https://github.com/user-attachments/assets/687c003b-e22b-4899-82f2-97927d71ced4" />
 
-# Featured Map Structure
+
+
+<span id="top"></span>
+
+
+## Featured Map Structure
 
 <img width="635" height="573" alt="image" src="https://github.com/user-attachments/assets/62e5754c-a74a-4926-a3f6-af0b012091fa" />
 
 [Map Link](https://www.google.com/maps/d/u/3/edit?mid=1c4r4UD15ZKHhCvG5O3ZN_JOQdhHPspM&usp=sharing)
 
-# Join Our Community
 
-Be part of the discussion, get real-time updates, and collaborate with other contributors on **WardhaMetroFlow**.
+## Join Our Community
 
-[**Join our Discord Server**](https://discord.gg/ZzBX3Rsa)  
+Join the discussion, get real-time updates, and collaborate with other developers on our Discord server.
+
+[![Join our Discord](https://img.shields.io/badge/Join%20Discord-7289DA?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/GGpWdd639J)
 
 Whether you're contributing code, suggesting features, or just curious about the project, you're welcome!
 
-<span id="top"></span>
-##  Table of Contents
-- [About the Project](#about-the-project)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Views](#views)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [Good First Issues](#good-first-issues)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
-- [Back to Top](#top)
+## Table of Contents
+- [About the Project](#about-the-project)  
+- [Key Features](#features)  
+- [Tech Stack](#tech-stack)  
+- [System Architecture](#system-architecture)  
+- [Getting Started](#getting-started)  
+- [Project Structure](#project-structure)  
+- [Contributing](#contributing)  
+- [License](#license)  
+- [Acknowledgments](#acknowledgments)  
 
 
-## Features 
-- Interactive metro route planner
-- Real-time passenger & station simulation
-- AI-based route optimization & predictions
-- Passenger & Admin dashboards
-- Voice/text input (optional)
-- Modular and scalable codebase
 
-[Back to Top](#top)
+## About the Project
+<a id="about-the-project"></a>
 
+**WardhaMetroFlow** is a proof-of-concept simulation platform that demonstrates how AI can enhance urban mobility in emerging smart cities. Inspired by *India's Smart City Mission*, this project provides a tool for both passengers and administrators to interact with a virtual metro system.
 
-## Tech Stack 
+It offers two distinct, interactive views:
 
-### Frontend
-- HTML / CSS / JavaScript
-- Leaflet.js (Map rendering)
+- **Passenger View**: A user-facing interface for planning journeys. Passengers can select their start and end points, receive intelligent route suggestions, and see estimated arrival times.  
+- **Admin View**: A comprehensive dashboard for transit authorities. Administrators can monitor metro traffic in real-time, manage station data, and analyze predictive models for traffic flow and potential congestion.  
 
-### Backend
-- Python (Flask / FastAPI)
+## Key Features
+<a id="features"></a>
 
-### AI / ML
-- scikit-learn
-- pandas
-- NumPy
+- **Interactive Route Planning**: A map-based interface for easy route selection.  
+- **Real-time Simulation**: Simulates passenger flow and station activity.  
+- **AI-Powered Predictions**: Utilizes machine learning models for route optimization and traffic forecasting.  
+- **Dual Dashboards**: Separate, feature-rich interfaces for passengers and administrators.  
+- **Voice/Text Input**: Optional voice and text commands for accessibility.  
+- **Scalable Architecture**: A modular codebase designed for expansion and easy maintenance.  
 
-### Visualization
-- Chart.js
-- Plotly
+## Tech Stack
+<a id="tech-stack"></a>
 
-### Database
-- SQLite / Firebase / MongoDB
-
-[Back to Top](#top)
+| **Category**    | **Technology**                          |
+|------------------|------------------------------------------|
+| Frontend         | React.js, Leaflet.js, HTML/CSS, JavaScript |
+| Backend          | Python (Flask / FastAPI)                |
+| AI / ML          | scikit-learn, pandas, NumPy             |
+| Visualization    | Chart.js, Plotly                        |
+| Database         | SQLite / Firebase / MongoDB             |
 
 
-## Getting Started 
 
->  Setup instructions are coming soon. Contributors are welcome to help improve this section._
+## System Architecture
+<a id="system-architecture"></a>
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/GSSoC-Flow/WardhaMetroFlow.git
-   ```
+The components of **WardhaMetroFlow** interact as follows:
 
-2. Navigate to backend and install dependencies:
-
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   ```
-
-3. Navigate to frontend and run React app:
-
-   ```bash
-   cd ../frontend
-   npm install
-   npm start
-   ```
-
-###### [Back to Top](#top)
+1. The **Frontend (React)** communicates with the **Backend (Flask/FastAPI)**.  
+2. The **Backend** processes requests, serves API routes, and contains the core application logic.  
+3. The **Database (SQLite)** stores all metro, station, and passenger data.  
+4. The **ML Model (model.pkl)** is loaded by the backend to provide predictions for route optimization and traffic analysis.  
+   
+![System Architecture](static/Architecture.png)
 
 
-## Views 
-### Passenger View
-* Select source & destination
-* Smart route suggestions
-* Arrival time estimates
-* Supports voice/text input (optional)
 
-### Admin View
-* Add/manage stations & routes
-* Live traffic monitoring
-* Analyze predicted congestion
-* Receive AI-driven optimization alerts
+## Getting Started
+<a id="getting-started"></a>
 
-###### [Back to Top](#top)
+> **Note**: Setup instructions are a work in progress. Contributions to improve this section are welcome.
 
+To get a local copy up and running, follow these steps:
+
+### Clone the Repository
+```bash
+git clone https://github.com/GSSoC-Flow/WardhaMetroFlow.git
+cd WardhaMetroFlow
+```
+### Set Up the Backend
+```bash
+cd backend
+pip install -r requirements.txt
+# Run the backend server (example command)
+# python app.py
+```
+### Set Up the frontend
+```bash
+cd ../frontend
+npm install
+npm start.
+```
 
 ## Project Structure
+<a id="project-structure"></a>
 ```
 WardhaMetroFlow/
 │
@@ -139,96 +140,85 @@ WardhaMetroFlow/
 ├── database/              # SQLite database
 │   └── wardha.db
 │
-frontend/         # frontend (Passenger/Admin UI)
-│
-├── passenger/
-│   └── passenger.html
-│
-└── admin/
-    └── admin.html
+├── frontend/         # frontend (Passenger/Admin UI)
+│   │
+│   ├── passenger/
+│   │   └── passenger.html
+│   │
+│   └── admin/
+│       └── admin.html
 │
 ├── static/                # Static assets
 │   └── Architecture.png
 │
+├── .gitignore
 ├── CODE_OF_CONDUCT.md
 ├── Contributing.md
 ├── Contributors.md
 ├── LICENSE
-└── README.md
-
+├── README.md
+└──vercerl.json.
 ```
-###  System Architecture
 
-Here's a overview of how the different components of WardhaMetroFlow interact:
+## Contributing
+<a id="contributing"></a>
 
-![System Architecture](static/Architecture.png)
+We welcome all contributors—whether you're interested in frontend, backend, machine learning, or documentation!
 
-- **Frontend** (React) communicates with the **Flask backend**
-- **Backend** serves API routes and logic
-- **Database** (SQLite) stores metro and passenger data
-- **ML Model** (`model.pkl`) is used by the backend to make route or traffic predictions
-
->  The diagram is located at `static/Architecture.png`. You can update it anytime using Visily, draw.io or Figma.
-
-###### [Back to Top](#top)
-
-## Contributing 
-We welcome all contributors — whether you're into frontend, backend, ML, or data!
-
-Steps:
-1. Fork the repository
-2. Clone your fork
-
-```bash
-git clone https://github.com/<your-username>/WardhaMetroFlow.git
+### Contribution Steps
+1. **Fork** the repository.  
+2. **Create a new feature branch**:  
+   ```bash
+   git checkout -b feature/YourFeatureName
+3. **Commit your changes:**
+  ```bash
+  git commit -m "Add: YourFeatureName"
 ```
-3. Create a branch:
-
-```bash
-git checkout -b feature-name
+4. **Push to the branch:**
+  ```bash
+  git push origin feature/YourFeatureName
 ```
-4. Make your changes
-- Follow best practices for clean and readable code
-- Add comments where necessary
-- Keep commits small and meaningful
-
-5. Commit your changes:
-
-```bash
-git commit -m "Add: meaningful message for your change"
-```
-6. Push to your fork
-```bash
-git push origin feature-name
-```
-7. Create a Pull Request (PR)
-- Go to the main repo
-- Open a PR with a clear title and description
-8. Refer to [Contributing.md](Contributing.md) for more.
-
-###### [Back to Top](#top)
+5. **Open a Pull Request.**
+Please refer to **Contributing.md** for more detailed guidelines.
 
 
-## Good First Issues 
-* Add a new station to the map
-* Create a sample route JSON
-* Improve route prediction accuracy
-* Style Passenger dashboard
-* Optimize Admin data visualization
+### Contribution Points
+We value all contributions and assign points based on complexity and effort.  
+This helps us track and reward contributor impact.  
 
-###### [Back to Top](#top)
+| **Area**              | **Points** | **Difficulty Level** |
+|------------------------|------------|-----------------------|
+| Backend Development    | 30         | 3                     |
+| Map / Leaflet.js       | 30         | 3                     |
+| Frontend Development   | 15         | 2                     |
+| Documentation          | 10         | 1                     |
 
-## License 
+
+
+## Good First Issues
+* Looking for a place to start? Here are some ideas:
+* Add a new station to the map data.
+* Create a sample JSON file for a new metro route.
+* Improve the accuracy of the route prediction model.
+* Enhance the styling of the Passenger dashboard.
+* Optimize data visualization components on the Admin dashboard.
+
+
+## License
+<a id="license"></a>
+
 This project is licensed under the [MIT LICENSE](LICENSE).
+See the **LICENSE file** for details.
 
-###### [Back to Top](#top)
 
 
-## Acknowledgments 
-Inspired by India's Smart City Mission
 
-Built with love by open-source contributors during GSSoC 2025
+## Acknowledgments
+<a id="acknowledgments"></a>
+Inspired by India's Smart City Mission.
+Built with love by open-source contributors during GSSoC 2025.
 
-###### [Back to Top](#top)
-
+<p align="center">
+  <a href="#top"> Back to Top</a>
+</p>
 
