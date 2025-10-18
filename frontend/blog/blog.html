@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wardha Metro Flow Project - Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+  <!-- Floating Particles Background -->
+  <div class="particles-bg" id="particlesBg"></div>
+
+  <div class="container">
+    <!-- Premium Header -->
+    <header class="blog-header">
+      <div class="header-content">
+        <div class="header-badge">🚆 METRO INNOVATION HUB</div>
+        <h1 class="header-title">
+          <span class="gradient-text">Wardha Metro</span>
+          <span class="header-subtitle">Future of Urban Transit</span>
+        </h1>
+        <p class="header-description">
+          Explore cutting-edge insights, sustainability innovations, and smart transportation technologies transforming urban mobility.
+        </p>
+        <div class="header-stats">
+          <div class="stat-item">
+            <span class="stat-number" id="totalPosts">0</span>
+            <span class="stat-label">Articles</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="totalReads">2.5K+</span>
+            <span class="stat-label">Readers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Updated</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Featured Showcase Section -->
+    <section class="showcase-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="title-icon">✨</span>
+          Featured Highlights
+        </h2>
+        <div class="section-line"></div>
+      </div>
+      
+      <div class="showcase-grid">
+        <div class="showcase-item big" data-aos="fade-up">
+          <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800" alt="AI Traffic" />
+          <div class="showcase-overlay">
+            <span class="showcase-badge">🤖 AI POWERED</span>
+            <h3>AI-Powered Metro Operations</h3>
+            <p>Discover how artificial intelligence optimizes Wardha's metro systems to enhance commuter efficiency and safety.</p>
+            <div class="showcase-tags">
+              <span>#AI</span>
+              <span>#Innovation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-item" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600" alt="Solar" />
+          <div class="showcase-overlay">
+            <span class="showcase-badge">🌱 ECO FRIENDLY</span>
+            <h3>Green Energy Initiative</h3>
+            <div class="showcase-tags">
+              <span>#Solar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-item" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1520975918318-7bcbf6b35d3c?w=600" alt="Planning" />
+          <div class="showcase-overlay">
+            <span class="showcase-badge">🎯 VISION 2030</span>
+            <h3>Urban Planning</h3>
+            <div class="showcase-tags">
+              <span>#Future</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-item" data-aos="fade-up" data-aos-delay="300">
+          <img src="https://images.unsplash.com/photo-1532619187608-e5375cab36aa?w=600" alt="Smart Ticketing" />
+          <div class="showcase-overlay">
+            <span class="showcase-badge">💳 SMART TECH</span>
+            <h3>Digital Ticketing</h3>
+            <div class="showcase-tags">
+              <span>#Contactless</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search and Controls -->
+    <div class="controls-section">
+      <div class="search-container">
+        <div class="search-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search articles, authors, topics..." />
+        </div>
+        
+        <div class="filter-wrapper">
+          <select id="categoryFilter" class="filter-select">
+            <option value="all">All Categories</option>
+            <option value="Technology">🤖 Technology</option>
+            <option value="Updates">📰 Updates</option>
+            <option value="Infrastructure">🏗️ Infrastructure</option>
+            <option value="Sustainability">🌱 Sustainability</option>
+            <option value="Planning">📊 Planning</option>
+          </select>
+        </div>
+
+        <button class="btn-create" onclick="toggleCreatePost()">
+          <span class="btn-icon">➕</span>
+          <span>Create Post</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Create Post Form -->
+    <section id="createPostSection" class="create-post-section" style="display: none;">
+      <div class="form-container">
+        <div class="form-header">
+          <h2>✍️ Create New Article</h2>
+          <p>Share your insights and stories with the Wardha Metro community</p>
+        </div>
+
+        <form id="createPostForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>
+                <span class="label-icon">📝</span>
+                Article Title
+              </label>
+              <input type="text" id="postTitle" placeholder="Enter an engaging title..." required />
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label>
+                <span class="label-icon">👤</span>
+                Author Name
+              </label>
+              <input type="text" id="postAuthor" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label>
+                <span class="label-icon">🏷️</span>
+                Category
+              </label>
+              <select id="postCategory" required>
+                <option value="Technology">Technology</option>
+                <option value="Updates">Updates</option>
+                <option value="Sustainability">Sustainability</option>
+                <option value="Planning">Planning</option>
+                <option value="Infrastructure">Infrastructure</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <span class="label-icon">🖼️</span>
+              Cover Image URL
+            </label>
+            <input type="url" id="postImage" placeholder="https://images.unsplash.com/..." required />
+            <small>Tip: Use high-quality images from Unsplash or Pexels</small>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <span class="label-icon">📄</span>
+              Summary
+            </label>
+            <textarea id="postPreview" rows="3" placeholder="Write a compelling summary (2-3 sentences)..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <span class="label-icon">📰</span>
+              Full Content
+            </label>
+            <textarea id="postContent" rows="8" placeholder="Write your article content here..." required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-cancel" onclick="toggleCreatePost()">Cancel</button>
+            <button type="submit" class="btn-submit">
+              <span>🚀</span>
+              Publish Article
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section id="blogGrid" class="blog-grid"></section>
+  </div>
+
+  <!-- Enhanced Modal -->
+  <div id="blogModal" class="modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <div class="modal-content">
+        <img id="modalImage" class="modal-image" src="" alt="Blog" />
+        
+        <div class="modal-body">
+          <div class="modal-meta-top">
+            <span id="modalCategory" class="modal-category-badge"></span>
+            <div class="modal-actions-top">
+              <button class="action-btn-modal" onclick="sharePost()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                  <polyline points="16 6 12 2 8 6"></polyline>
+                  <line x1="12" y1="2" x2="12" y2="15"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h1 id="modalTitle" class="modal-title"></h1>
+          
+          <div class="modal-meta">
+            <div class="meta-author">
+              <div class="author-avatar">👤</div>
+              <div>
+                <div class="author-name" id="modalAuthor"></div>
+                <div class="author-date" id="modalDate"></div>
+              </div>
+            </div>
+            <div class="modal-stats">
+              <span class="stat-item-modal">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <span id="modalLikes">0</span>
+              </span>
+              <span class="stat-item-modal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span id="modalCommentCount">0</span>
+              </span>
+            </div>
+          </div>
+
+          <div id="modalText" class="modal-text"></div>
+
+          <div class="comments-section">
+            <h3 class="comments-title">💬 Comments</h3>
+            <div class="comment-input-wrapper">
+              <input type="text" id="commentInput" placeholder="Share your thoughts..." />
+              <button class="btn-comment" onclick="addComment()">Post</button>
+            </div>
+            <div id="commentsList" class="comments-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="blog.js"></script>
+</body>
+</html>
