@@ -108,6 +108,58 @@ body {
     background-color: #c2410c;
 }
 
+
+/* ===== Dropdown Styles ===== */
+.main-nav ul li.dropdown {
+    position: relative;
+}
+
+/* Hide dropdown initially */
+.main-nav ul li .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--nav-bg);
+    list-style: none;
+    min-width: 180px;
+    padding: 0;
+    margin: 0;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+/* Dropdown links */
+.main-nav ul li .dropdown-menu li a {
+    display: block;
+    padding: 0.8rem 1.2rem;
+    text-decoration: none;
+    color: var(--nav-text);
+    font-weight: 500;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    background-color: var(--nav-bg);
+}
+
+/* Hover effect on dropdown items */
+.main-nav ul li .dropdown-menu li a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Show dropdown on hover */
+.main-nav ul li.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Keep nav-link hover consistent */
+.main-nav ul li.dropdown > .nav-link:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+
 /* Main Navigation Bar Styles */
 .main-nav {
     background-color: var(--nav-bg);
