@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Center - Wardha Metro Flow</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/navbar.css">
+    <link rel="stylesheet" href="../components/footer.css">
+    <link rel="stylesheet" href="media.css">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Wardha Metro in the Spotlight</h1>
+                <p class="hero-subtitle">Experience our journey through visuals, stories, and innovation</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="250">0</div>
+                        <div class="stat-label">Media Items</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="45">0</div>
+                        <div class="stat-label">Videos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="180">0</div>
+                        <div class="stat-label">Photos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="32">0</div>
+                        <div class="stat-label">Press Releases</div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Spotlight Carousel Section -->
+        <section class="spotlight-carousel-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-images"></i> Wardha Metro in Motion</h2>
+                    <p>Swipe through our visual journey</p>
+                </div>
+                
+                <div class="carousel-wrapper" aria-roledescription="carousel" aria-live="polite" aria-atomic="false">
+                    <!-- Auto-scrolling Belt Container -->
+                    <div class="carousel-container">
+                    <div class="carousel-belt" id="spotlight-belt" role="region" aria-label="Spotlight carousel">
+                        <!-- Original Images (8 total) -->
+                        <div class="carousel-card" id="carousel-slide-0" data-index="0">
+                            <img src="../assets/metro1.jpg" alt="Modern Metro Train">
+                            <div class="card-overlay">
+                                <p class="card-title">Modern Fleet</p>
+                                <span class="card-date">Oct 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" id="carousel-slide-1" data-index="1">
+                            <img src="../assets/metro2.jpg" alt="Station Architecture">
+                            <div class="card-overlay">
+                                <p class="card-title">Station Design</p>
+                                <span class="card-date">Sep 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" id="carousel-slide-2" data-index="2">
+                            <img src="../assets/metro3.jpg" alt="Construction Progress">
+                            <div class="card-overlay">
+                                <p class="card-title">Construction Phase</p>
+                                <span class="card-date">Aug 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" id="carousel-slide-3" data-index="3">
+                            <img src="../assets/metro1.jpg" alt="Inauguration Ceremony">
+                            <div class="card-overlay">
+                                <p class="card-title">Grand Opening</p>
+                                <span class="card-date">Jul 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" id="carousel-slide-4" data-index="4">
+                            <img src="../assets/metro2.jpg" alt="Passenger Experience">
+                            <div class="card-overlay">
+                                <p class="card-title">Passenger Journey</p>
+                                <span class="card-date">Jun 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" id="carousel-slide-5" data-index="5">
+                            <img src="../assets/metro3.jpg" alt="Technology Hub">
+                            <div class="card-overlay">
+                                <p class="card-title">Tech Infrastructure</p>
+                                <span class="card-date">May 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" id="carousel-slide-6" data-index="6">
+                            <img src="../assets/metro1.jpg" alt="Route Network">
+                            <div class="card-overlay">
+                                <p class="card-title">Metro Network</p>
+                                <span class="card-date">Apr 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" id="carousel-slide-7" data-index="7">
+                            <img src="../assets/metro2.jpg" alt="Night Operations">
+                            <div class="card-overlay">
+                                <p class="card-title">Night Service</p>
+                                <span class="card-date">Mar 2024</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Duplicate Images for Seamless Loop (8 more) -->
+                        <div class="carousel-card" data-index="8">
+                            <img src="../assets/metro1.jpg" alt="Modern Metro Train">
+                            <div class="card-overlay">
+                                <p class="card-title">Modern Fleet</p>
+                                <span class="card-date">Oct 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" data-index="9">
+                            <img src="../assets/metro2.jpg" alt="Station Architecture">
+                            <div class="card-overlay">
+                                <p class="card-title">Station Design</p>
+                                <span class="card-date">Sep 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" data-index="10">
+                            <img src="../assets/metro3.jpg" alt="Construction Progress">
+                            <div class="card-overlay">
+                                <p class="card-title">Construction Phase</p>
+                                <span class="card-date">Aug 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" data-index="11">
+                            <img src="../assets/metro1.jpg" alt="Inauguration Ceremony">
+                            <div class="card-overlay">
+                                <p class="card-title">Grand Opening</p>
+                                <span class="card-date">Jul 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" data-index="12">
+                            <img src="../assets/metro2.jpg" alt="Passenger Experience">
+                            <div class="card-overlay">
+                                <p class="card-title">Passenger Journey</p>
+                                <span class="card-date">Jun 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" data-index="13">
+                            <img src="../assets/metro3.jpg" alt="Technology Hub">
+                            <div class="card-overlay">
+                                <p class="card-title">Tech Infrastructure</p>
+                                <span class="card-date">May 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" data-index="14">
+                            <img src="../assets/metro1.jpg" alt="Route Network">
+                            <div class="card-overlay">
+                                <p class="card-title">Metro Network</p>
+                                <span class="card-date">Apr 2024</span>
+                            </div>
+                        </div>
+                        <div class="carousel-card" data-index="15">
+                            <img src="../assets/metro2.jpg" alt="Night Operations">
+                            <div class="card-overlay">
+                                <p class="card-title">Night Service</p>
+                                <span class="card-date">Mar 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                <!-- Indicator Dots -->
+                <div class="carousel-indicators" role="group" aria-label="Carousel navigation">
+                    <button class="dot active" data-slide="0" role="button" aria-label="Go to slide 1" aria-controls="carousel-slide-0" aria-selected="true" tabindex="0"></button>
+                    <button class="dot" data-slide="1" role="button" aria-label="Go to slide 2" aria-controls="carousel-slide-1" aria-selected="false" tabindex="-1"></button>
+                    <button class="dot" data-slide="2" role="button" aria-label="Go to slide 3" aria-controls="carousel-slide-2" aria-selected="false" tabindex="-1"></button>
+                    <button class="dot" data-slide="3" role="button" aria-label="Go to slide 4" aria-controls="carousel-slide-3" aria-selected="false" tabindex="-1"></button>
+                    <button class="dot" data-slide="4" role="button" aria-label="Go to slide 5" aria-controls="carousel-slide-4" aria-selected="false" tabindex="-1"></button>
+                    <button class="dot" data-slide="5" role="button" aria-label="Go to slide 6" aria-controls="carousel-slide-5" aria-selected="false" tabindex="-1"></button>
+                    <button class="dot" data-slide="6" role="button" aria-label="Go to slide 7" aria-controls="carousel-slide-6" aria-selected="false" tabindex="-1"></button>
+                    <button class="dot" data-slide="7" role="button" aria-label="Go to slide 8" aria-controls="carousel-slide-7" aria-selected="false" tabindex="-1"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Tabs -->
+        <section class="filter-section">
+            <div class="container">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">
+                        <i class="fas fa-th"></i> All Media
+                    </button>
+                    <button class="filter-tab" data-filter="photos">
+                        <i class="fas fa-camera"></i> Photo Gallery
+                    </button>
+                    <button class="filter-tab" data-filter="videos">
+                        <i class="fas fa-video"></i> Video Gallery
+                    </button>
+                    <button class="filter-tab" data-filter="press">
+                        <i class="fas fa-newspaper"></i> Press Releases
+                    </button>
+                    <button class="filter-tab" data-filter="news">
+                        <i class="fas fa-rss"></i> News Coverage
+                    </button>
+                    <button class="filter-tab" data-filter="infographics">
+                        <i class="fas fa-chart-bar"></i> Infographics
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section class="media-section photo-gallery-section" data-category="photos">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-camera-retro"></i> Photo Gallery</h2>
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="masonry" aria-label="Switch to masonry view"><i class="fas fa-th-large"></i></button>
+                        <button class="view-btn" data-view="grid" aria-label="Switch to grid view"><i class="fas fa-th"></i></button>
+                    </div>
+                </div>
+                <div class="photo-grid masonry-view">
+                    <div class="photo-item" data-category="construction">
+                        <img src="../assets/metro1.jpg" alt="Metro Construction">
+                        <div class="photo-overlay">
+                            <h3>Construction Phase 1</h3>
+                            <p><i class="far fa-calendar"></i> 15 Oct 2024</p>
+                            <button class="photo-action-btn" aria-label="View larger"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="photo-item" data-category="events">
+                        <img src="../assets/metro2.jpg" alt="Inauguration Event">
+                        <div class="photo-overlay">
+                            <h3>Grand Inauguration</h3>
+                            <p><i class="far fa-calendar"></i> 10 Oct 2024</p>
+                            <button class="photo-action-btn" aria-label="View larger"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="photo-item" data-category="operations">
+                        <img src="../assets/metro3.jpg" alt="Daily Operations">
+                        <div class="photo-overlay">
+                            <h3>Daily Operations</h3>
+                            <p><i class="far fa-calendar"></i> 5 Oct 2024</p>
+                            <button class="photo-action-btn" aria-label="View larger"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="photo-item" data-category="infrastructure">
+                        <img src="../assets/metro1.jpg" alt="Station Infrastructure">
+                        <div class="photo-overlay">
+                            <h3>Modern Infrastructure</h3>
+                            <p><i class="far fa-calendar"></i> 1 Oct 2024</p>
+                            <button class="photo-action-btn" aria-label="View larger"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="photo-item" data-category="community">
+                        <img src="../assets/metro2.jpg" alt="Community Engagement">
+                        <div class="photo-overlay">
+                            <h3>Community Connect</h3>
+                            <p><i class="far fa-calendar"></i> 28 Sep 2024</p>
+                            <button class="photo-action-btn" aria-label="View larger"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="photo-item" data-category="construction">
+                        <img src="../assets/metro3.jpg" alt="Track Installation">
+                        <div class="photo-overlay">
+                            <h3>Track Installation</h3>
+                            <p><i class="far fa-calendar"></i> 20 Sep 2024</p>
+                            <button class="photo-action-btn" aria-label="View larger"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="load-more-container">
+                    <button class="btn-load-more"><i class="fas fa-plus"></i> Load More Photos</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Gallery Section -->
+        <section class="media-section video-gallery-section" data-category="videos">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-film"></i> Video Gallery</h2>
+                </div>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="../assets/metro1.jpg" alt="Metro Promotional Video">
+                            <button class="play-overlay" aria-label="Play video: Wardha Metro - The Future is Here">
+                                <i class="fas fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                            <span class="video-duration">3:45</span>
+                        </div>
+                        <div class="video-info">
+                            <h3>Wardha Metro - The Future is Here</h3>
+                            <p><i class="fas fa-eye"></i> 12.5K views • 2 weeks ago</p>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="../assets/metro2.jpg" alt="Construction Timelapse">
+                            <button class="play-overlay" aria-label="Play video: Construction Time-lapse: 2 Years in 5 Minutes">
+                                <i class="fas fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                            <span class="video-duration">5:20</span>
+                        </div>
+                        <div class="video-info">
+                            <h3>Construction Time-lapse: 2 Years in 5 Minutes</h3>
+                            <p><i class="fas fa-eye"></i> 8.3K views • 1 month ago</p>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="../assets/metro3.jpg" alt="Safety Guidelines">
+                            <button class="play-overlay" aria-label="Play video: Passenger Safety Guidelines">
+                                <i class="fas fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                            <span class="video-duration">2:15</span>
+                        </div>
+                        <div class="video-info">
+                            <h3>Passenger Safety Guidelines</h3>
+                            <p><i class="fas fa-eye"></i> 15.2K views • 3 weeks ago</p>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="../assets/metro1.jpg" alt="Virtual Tour">
+                            <button class="play-overlay" aria-label="Play video: 360° Virtual Station Tour">
+                                <i class="fas fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                            <span class="video-duration">4:30</span>
+                        </div>
+                        <div class="video-info">
+                            <h3>360° Virtual Station Tour</h3>
+                            <p><i class="fas fa-eye"></i> 20.1K views • 1 week ago</p>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="../assets/metro2.jpg" alt="Behind the Scenes">
+                            <button class="play-overlay" aria-label="Play video: Behind the Scenes: Control Room">
+                                <i class="fas fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                            <span class="video-duration">6:10</span>
+                        </div>
+                        <div class="video-info">
+                            <h3>Behind the Scenes: Control Room</h3>
+                            <p><i class="fas fa-eye"></i> 9.8K views • 2 weeks ago</p>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="../assets/metro3.jpg" alt="Testimonials">
+                            <button class="play-overlay" aria-label="Play video: Passenger Testimonials">
+                                <i class="fas fa-play-circle" aria-hidden="true"></i>
+                            </button>
+                            <span class="video-duration">3:00</span>
+                        </div>
+                        <div class="video-info">
+                            <h3>Passenger Testimonials</h3>
+                            <p><i class="fas fa-eye"></i> 11.4K views • 4 days ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Press Releases Section -->
+        <section class="media-section press-releases-section" data-category="press">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-alt"></i> Press Releases</h2>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search press releases..." id="pressSearch" aria-label="Search press releases">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="press-timeline">
+                    <div class="press-item">
+                        <div class="press-date-badge">
+                            <span class="date">15</span>
+                            <span class="month">OCT</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <div class="press-content">
+                            <span class="press-category">Milestone</span>
+                            <h3>Wardha Metro Completes 1 Million Passenger Journeys</h3>
+                            <p>The Wardha Metro Rail project has achieved a significant milestone by completing 1 million passenger journeys since its inauguration...</p>
+                            <div class="press-actions">
+                                <button class="btn-press-action"><i class="fas fa-eye"></i> Read Full</button>
+                                <button class="btn-press-action"><i class="fas fa-download"></i> Download PDF</button>
+                                <button class="btn-press-action"><i class="fas fa-share-alt"></i> Share</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="press-item">
+                        <div class="press-date-badge">
+                            <span class="date">10</span>
+                            <span class="month">OCT</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <div class="press-content">
+                            <span class="press-category expansion">Expansion</span>
+                            <h3>New Green Line Extension Approved</h3>
+                            <p>The government has approved the extension of the Green Line to connect three additional districts, expanding the metro network by 15 kilometers...</p>
+                            <div class="press-actions">
+                                <button class="btn-press-action"><i class="fas fa-eye"></i> Read Full</button>
+                                <button class="btn-press-action"><i class="fas fa-download"></i> Download PDF</button>
+                                <button class="btn-press-action"><i class="fas fa-share-alt"></i> Share</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="press-item">
+                        <div class="press-date-badge">
+                            <span class="date">5</span>
+                            <span class="month">OCT</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <div class="press-content">
+                            <span class="press-category safety">Safety</span>
+                            <h3>Wardha Metro Launches Enhanced Safety Measures</h3>
+                            <p>In response to passenger feedback, Wardha Metro has implemented advanced safety protocols including AI-powered surveillance and emergency response systems...</p>
+                            <div class="press-actions">
+                                <button class="btn-press-action"><i class="fas fa-eye"></i> Read Full</button>
+                                <button class="btn-press-action"><i class="fas fa-download"></i> Download PDF</button>
+                                <button class="btn-press-action"><i class="fas fa-share-alt"></i> Share</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="press-item">
+                        <div class="press-date-badge">
+                            <span class="date">28</span>
+                            <span class="month">SEP</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <div class="press-content">
+                            <span class="press-category announcement">Announcement</span>
+                            <h3>Monthly Pass Prices Reduced for Students</h3>
+                            <p>Wardha Metro announces a 30% reduction in monthly pass prices for students, making metro travel more affordable and accessible...</p>
+                            <div class="press-actions">
+                                <button class="btn-press-action"><i class="fas fa-eye"></i> Read Full</button>
+                                <button class="btn-press-action"><i class="fas fa-download"></i> Download PDF</button>
+                                <button class="btn-press-action"><i class="fas fa-share-alt"></i> Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Coverage Section -->
+        <section class="media-section news-coverage-section" data-category="news">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-newspaper"></i> Media Coverage</h2>
+                </div>
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-source">
+                            <img src="https://via.placeholder.com/100x40/ea580c/FFFFFF?text=Times" alt="News Source">
+                        </div>
+                        <h3>Wardha Metro: A Model for Tier-2 Cities</h3>
+                        <p class="news-excerpt">The Wardha Metro project has set a new benchmark for metro rail systems in tier-2 cities across India...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> 12 Oct 2024</span>
+                            <span class="news-source-badge">Print</span>
+                        </div>
+                        <a href="#" class="news-link">Read on Source <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-source">
+                            <img src="https://via.placeholder.com/100x40/16a34a/FFFFFF?text=News24" alt="News Source">
+                        </div>
+                        <h3>Green Transportation Revolution in Wardha</h3>
+                        <p class="news-excerpt">How Wardha Metro is reducing carbon emissions and promoting sustainable urban transport...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> 8 Oct 2024</span>
+                            <span class="news-source-badge tv">TV</span>
+                        </div>
+                        <a href="#" class="news-link">Read on Source <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-source">
+                            <img src="https://via.placeholder.com/100x40/3b82f6/FFFFFF?text=Digital" alt="News Source">
+                        </div>
+                        <h3>Tech-First Approach Makes Wardha Metro Stand Out</h3>
+                        <p class="news-excerpt">AI-powered systems and digital integration place Wardha Metro ahead of its peers...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> 3 Oct 2024</span>
+                            <span class="news-source-badge online">Online</span>
+                        </div>
+                        <a href="#" class="news-link">Read on Source <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-source">
+                            <img src="https://via.placeholder.com/100x40/f59e0b/FFFFFF?text=Radio" alt="News Source">
+                        </div>
+                        <h3>Passenger Satisfaction Reaches All-Time High</h3>
+                        <p class="news-excerpt">Latest survey shows 94% passenger satisfaction rate, making it one of the most loved metro systems...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> 29 Sep 2024</span>
+                            <span class="news-source-badge radio">Radio</span>
+                        </div>
+                        <a href="#" class="news-link">Read on Source <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Infographics Section -->
+        <section class="media-section infographics-section" data-category="infographics">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-pie"></i> Infographics & Data</h2>
+                    <p>Interactive data visualizations and insights about Wardha Metro</p>
+                </div>
+                
+                <!-- Featured Infographic -->
+                <div class="featured-infographic">
+                    <div class="featured-content">
+                        <div class="featured-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-route"></i></div>
+                                <div class="stat-info">
+                                    <h3>18</h3>
+                                    <p>Metro Stations</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                                <div class="stat-info">
+                                    <h3>1.2M+</h3>
+                                    <p>Passenger Journeys</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-leaf"></i></div>
+                                <div class="stat-info">
+                                    <h3>45%</h3>
+                                    <p>Carbon Reduction</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                                <div class="stat-info">
+                                    <h3>6 min</h3>
+                                    <p>Avg Wait Time</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featured-chart">
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-line"></i>
+                                <h4>Real-time Passenger Flow</h4>
+                                <p>Live data visualization</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infographic Cards Grid -->
+                <div class="infographic-grid">
+                    <div class="infographic-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <div class="card-title">
+                                <h3>Route Network</h3>
+                                <p>Complete metro network analysis</p>
+                            </div>
+                        </div>
+                        <div class="card-preview">
+                            <div class="preview-chart">
+                                <div class="chart-bars">
+                                    <div class="bar" style="height: 60%"></div>
+                                    <div class="bar" style="height: 80%"></div>
+                                    <div class="bar" style="height: 45%"></div>
+                                    <div class="bar" style="height: 90%"></div>
+                                    <div class="bar" style="height: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="action-btn primary"><i class="fas fa-expand"></i> View Full</button>
+                            <button class="action-btn secondary"><i class="fas fa-download"></i> Download</button>
+                        </div>
+                    </div>
+
+                    <div class="infographic-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="card-title">
+                                <h3>Passenger Analytics</h3>
+                                <p>Detailed passenger flow insights</p>
+                            </div>
+                        </div>
+                        <div class="card-preview">
+                            <div class="preview-chart">
+                                <div class="pie-chart">
+                                    <div class="pie-slice" style="--percentage: 35%; --color: #ea580c;"></div>
+                                    <div class="pie-slice" style="--percentage: 25%; --color: #16a34a;"></div>
+                                    <div class="pie-slice" style="--percentage: 20%; --color: #3b82f6;"></div>
+                                    <div class="pie-slice" style="--percentage: 20%; --color: #f59e0b;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="action-btn primary"><i class="fas fa-expand"></i> View Full</button>
+                            <button class="action-btn secondary"><i class="fas fa-download"></i> Download</button>
+                        </div>
+                    </div>
+
+                    <div class="infographic-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="card-title">
+                                <h3>Environmental Impact</h3>
+                                <p>Sustainability metrics and CO₂ savings</p>
+                            </div>
+                        </div>
+                        <div class="card-preview">
+                            <div class="preview-chart">
+                                <div class="progress-ring">
+                                    <div class="progress-circle" style="--progress: 75%;">
+                                        <span class="progress-text">75%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="action-btn primary"><i class="fas fa-expand"></i> View Full</button>
+                            <button class="action-btn secondary"><i class="fas fa-download"></i> Download</button>
+                        </div>
+                    </div>
+
+                    <div class="infographic-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="card-title">
+                                <h3>Safety Metrics</h3>
+                                <p>Safety performance and incident tracking</p>
+                            </div>
+                        </div>
+                        <div class="card-preview">
+                            <div class="preview-chart">
+                                <div class="safety-indicators">
+                                    <div class="indicator">
+                                        <div class="indicator-dot safe"></div>
+                                        <span>99.8%</span>
+                                    </div>
+                                    <div class="indicator">
+                                        <div class="indicator-dot safe"></div>
+                                        <span>Zero</span>
+                                    </div>
+                                    <div class="indicator">
+                                        <div class="indicator-dot safe"></div>
+                                        <span>24/7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="action-btn primary"><i class="fas fa-expand"></i> View Full</button>
+                            <button class="action-btn secondary"><i class="fas fa-download"></i> Download</button>
+                        </div>
+                    </div>
+
+                    <div class="infographic-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="card-title">
+                                <h3>Performance Metrics</h3>
+                                <p>Operational efficiency and timing data</p>
+                            </div>
+                        </div>
+                        <div class="card-preview">
+                            <div class="preview-chart">
+                                <div class="timeline-chart">
+                                    <div class="timeline-bar">
+                                        <div class="timeline-fill" style="width: 85%"></div>
+                                    </div>
+                                    <div class="timeline-labels">
+                                        <span>On-time: 85%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="action-btn primary"><i class="fas fa-expand"></i> View Full</button>
+                            <button class="action-btn secondary"><i class="fas fa-download"></i> Download</button>
+                        </div>
+                    </div>
+
+                    <div class="infographic-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-trending-up"></i>
+                            </div>
+                            <div class="card-title">
+                                <h3>Growth Trends</h3>
+                                <p>Ridership growth and future projections</p>
+                            </div>
+                        </div>
+                        <div class="card-preview">
+                            <div class="preview-chart">
+                                <div class="trend-chart">
+                                    <div class="trend-line">
+                                        <div class="trend-point" style="left: 20%; bottom: 30%"></div>
+                                        <div class="trend-point" style="left: 40%; bottom: 50%"></div>
+                                        <div class="trend-point" style="left: 60%; bottom: 70%"></div>
+                                        <div class="trend-point" style="left: 80%; bottom: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="action-btn primary"><i class="fas fa-expand"></i> View Full</button>
+                            <button class="action-btn secondary"><i class="fas fa-download"></i> Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Kit Section -->
+        <section class="media-kit-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-briefcase"></i> Media Kit & Resources</h2>
+                    <p>Resources for journalists, media professionals, and content creators</p>
+                </div>
+                <div class="media-kit-grid">
+                    <div class="kit-item">
+                        <div class="kit-icon"><i class="fas fa-image"></i></div>
+                        <h3>Official Logos</h3>
+                        <p>High-resolution logos in various formats (PNG, SVG, EPS)</p>
+                        <span class="file-size">2.5 MB</span>
+                        <button class="btn-download"><i class="fas fa-download"></i> Download</button>
+                    </div>
+                    <div class="kit-item">
+                        <div class="kit-icon"><i class="fas fa-palette"></i></div>
+                        <h3>Brand Guidelines</h3>
+                        <p>Complete brand identity and usage guidelines</p>
+                        <span class="file-size">8.3 MB</span>
+                        <button class="btn-download"><i class="fas fa-download"></i> Download</button>
+                    </div>
+                    <div class="kit-item">
+                        <div class="kit-icon"><i class="fas fa-file-pdf"></i></div>
+                        <h3>Fact Sheet</h3>
+                        <p>Key statistics, timelines, and project information</p>
+                        <span class="file-size">1.2 MB</span>
+                        <button class="btn-download"><i class="fas fa-download"></i> Download</button>
+                    </div>
+                    <div class="kit-item">
+                        <div class="kit-icon"><i class="fas fa-camera"></i></div>
+                        <h3>Press Photos</h3>
+                        <p>High-resolution professional photographs (ZIP)</p>
+                        <span class="file-size">45 MB</span>
+                        <button class="btn-download"><i class="fas fa-download"></i> Download</button>
+                    </div>
+                    <div class="kit-item">
+                        <div class="kit-icon"><i class="fas fa-archive"></i></div>
+                        <h3>Press Release Archive</h3>
+                        <p>Complete archive of all press releases</p>
+                        <span class="file-size">12 MB</span>
+                        <button class="btn-download"><i class="fas fa-download"></i> Download</button>
+                    </div>
+                    <div class="kit-item">
+                        <div class="kit-icon"><i class="fas fa-phone"></i></div>
+                        <h3>Media Contact</h3>
+                        <p>Press officer contact information</p>
+                        <span class="file-size">Contact Info</span>
+                        <button class="btn-download"><i class="fas fa-envelope"></i> Get in Touch</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="spacer"></div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <button class="lightbox-close"><i class="fas fa-times"></i></button>
+        <button class="lightbox-nav prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-nav next"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDate"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/main.js"></script>
+    <script src="media.js"></script>
+</body>
+</html>
+
