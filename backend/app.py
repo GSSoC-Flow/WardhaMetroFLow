@@ -1,4 +1,7 @@
 import os
+import logging
+import traceback
+import uuid
 from datetime import datetime
 from flask import Flask, request, jsonify
 from models.models import db , Station, Route, PassengerLog
@@ -7,6 +10,15 @@ import pandas as pd
 from services import metro_service
 from flask import request
 from flask_cors import CORS, cross_origin
+from sklearn.ensemble import RandomForestRegressor
+import numpy as np
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 app= Flask(__name__)
 CORS(app)
@@ -15,9 +27,59 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 DB_PATH = os.path.join(BASE_DIR, 'database', 'wardha.db')
 service = metro_service.MetroService()
 
+# Global flags for model state
+model = None
+model_loaded = False
+model_type = None  # 'production' or 'dummy'
+
 # Corrected model path - added ../
 model_path = os.path.join(os.path.dirname(__file__), '../ai-models/models/passenger_flow_model.pkl')
-model = joblib.load(model_path)
+
+# Check if dummy model should be used (via environment variable)
+USE_DUMMY_MODEL = os.getenv('USE_DUMMY_MODEL', 'false').lower() == 'true'
+
+# Load model with explicit error handling
+try:
+    model = joblib.load(model_path)
+    model_loaded = True
+    model_type = 'production'
+    logger.info("✅ Production ML model loaded successfully from: %s", model_path)
+except Exception as e:
+    logger.error("❌ Failed to load production ML model from: %s", model_path)
+    logger.error("Error type: %s", type(e).__name__)
+    logger.error("Error message: %s", str(e))
+    logger.error("Full traceback:\n%s", traceback.format_exc())
+    
+    # Only create dummy model if explicitly enabled via environment variable
+    if USE_DUMMY_MODEL:
+        logger.warning("⚠️  USE_DUMMY_MODEL=true detected. Creating dummy model for development/testing...")
+        logger.warning("⚠️  THIS IS NOT SUITABLE FOR PRODUCTION USE!")
+        
+        try:
+            # Create and train a clearly documented dummy model
+            # This model generates random predictions and should ONLY be used for testing
+            np.random.seed(42)
+            X_dummy = np.random.rand(100, 3)  # Features: hour, day_of_week, station_id
+            y_dummy = np.random.randint(50, 500, 100)  # Target: passenger flow (50-500 range)
+            
+            model = RandomForestRegressor(n_estimators=10, random_state=42, max_depth=3)
+            model.fit(X_dummy, y_dummy)
+            
+            model_loaded = True
+            model_type = 'dummy'
+            logger.warning("⚠️  Dummy model created and trained with synthetic data")
+            logger.warning("⚠️  Model type: RandomForestRegressor (10 estimators, max_depth=3)")
+            logger.warning("⚠️  Training data: 100 random samples, passenger flow range: 50-500")
+        except Exception as dummy_error:
+            logger.error("❌ Failed to create dummy model: %s", str(dummy_error))
+            logger.error("Full traceback:\n%s", traceback.format_exc())
+            model_loaded = False
+            model_type = None
+    else:
+        logger.error("❌ No model available. Set USE_DUMMY_MODEL=true to use a dummy model for testing.")
+        logger.error("❌ Application will start but predictions will return 503 Service Unavailable.")
+        model_loaded = False
+        model_type = None
 
 os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
@@ -152,8 +214,49 @@ stations = {
     'hanuman-tekdi': {'name':'Hanuman Tekdi','coordinates':[20.768315,78.5982003],'connections':['tukdoji-maharaj-square','bajaj-institute-of-technology']}
 }
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    """
+    Health check endpoint for monitoring service availability.
+    Returns healthy status only when production model is loaded.
+    """
+    if not model_loaded:
+        return jsonify({
+            "status": "unhealthy",
+            "model_loaded": False,
+            "model_type": None,
+            "message": "ML model is not available. Predictions cannot be made.",
+            "details": f"Model path: {model_path}. Set USE_DUMMY_MODEL=true for testing."
+        }), 503
+    
+    health_status = "healthy" if model_type == "production" else "degraded"
+    http_status = 200 if model_type == "production" else 200  # Return 200 for both, but with different status
+    
+    return jsonify({
+        "status": health_status,
+        "model_loaded": True,
+        "model_type": model_type,
+        "message": f"Service is running with {model_type} model.",
+        "warning": "Using dummy model - not suitable for production!" if model_type == "dummy" else None
+    }), http_status
+
+
 @app.route('/predict_flow', methods=['POST'])
 def predict_passenger_flow():
+    """
+    Predict passenger flow based on hour, day of week, and station ID.
+    Returns 503 if no model is available.
+    """
+    # Check if model is loaded
+    if not model_loaded:
+        logger.error("Prediction request received but model is not loaded")
+        return jsonify({
+            "error": "Service unavailable",
+            "message": "ML model is not loaded. Predictions cannot be made.",
+            "model_loaded": False,
+            "status": "error"
+        }), 503
+    
     try:
         data = request.json
         required = ['hour', 'day_of_week', 'station_id']
@@ -168,15 +271,41 @@ def predict_passenger_flow():
         
         prediction = model.predict(input_data)
         
-        return jsonify({
+        response = {
             "predicted_passengers": int(prediction[0]),
             "input_data": data,
             "model": "RandomForestRegressor",
+            "model_type": model_type,
             "status": "success"
-        })
+        }
+        
+        # Add warning if using dummy model
+        if model_type == "dummy":
+            response["warning"] = (
+                "⚠️ PREDICTION FROM DUMMY MODEL - NOT RELIABLE! "
+                "This prediction is generated from a model trained on synthetic random data. "
+                "For production use, ensure the actual trained model is available."
+            )
+            logger.warning("Prediction made using dummy model for input: %s", data)
+        
+        return jsonify(response)
     
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        # Generate unique error ID for correlation
+        error_id = str(uuid.uuid4())
+        
+        # Log detailed error information with error ID
+        logger.error("Error ID: %s - Error during prediction: %s", error_id, str(e))
+        logger.error("Error ID: %s - Exception type: %s", error_id, type(e).__name__)
+        logger.error("Error ID: %s - Full traceback:\n%s", error_id, traceback.format_exc())
+        
+        # Return generic error message with error ID to client
+        return jsonify({
+            "error": "Internal server error",
+            "error_id": error_id,
+            "message": "An unexpected error occurred. Please contact support with the error ID.",
+            "status": "error"
+        }), 500
 
 @app.get("/stations")
 def get_all_stations():
