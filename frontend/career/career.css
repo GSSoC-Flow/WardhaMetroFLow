@@ -1,0 +1,456 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1c1917;
+    color: #e7e5e4;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 3px solid #ea580c;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: #ea580c;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #d6d3d1;
+    line-height: 1.8;
+}
+
+/* Section Styles */
+section {
+    padding: 60px 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #ea580c;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Search Bar */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 50px 15px 20px;
+    background-color: #292524;
+    border: 2px solid #44403c;
+    border-radius: 50px;
+    color: #e7e5e4;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #ea580c;
+    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ea580c;
+    font-size: 1.2rem;
+}
+
+/* Job Cards Grid */
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.job-card {
+    background: linear-gradient(135deg, #292524 0%, #1c1917 100%);
+    border: 2px solid #44403c;
+    border-radius: 15px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ea580c, #fb923c);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.job-card:hover {
+    border-color: #ea580c;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(234, 88, 12, 0.3);
+}
+
+.job-card:hover::before {
+    transform: scaleX(1);
+}
+
+.job-title {
+    font-size: 1.5rem;
+    color: #fb923c;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.job-description {
+    color: #d6d3d1;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.job-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.job-location, .job-type {
+    background-color: #44403c;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #fbbf24;
+}
+
+.apply-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ea580c, #fb923c);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.apply-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(234, 88, 12, 0.4);
+}
+
+/* Internship Section */
+.internship-section {
+    background: linear-gradient(135deg, #292524 0%, #1c1917 100%);
+    border-radius: 20px;
+    padding: 50px;
+    text-align: center;
+    border: 2px solid #44403c;
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.internship-section p {
+    font-size: 1.1rem;
+    color: #d6d3d1;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.intern-btn {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #ea580c, #fb923c);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.intern-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(234, 88, 12, 0.4);
+}
+
+/* Application Process */
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.step {
+    text-align: center;
+    padding: 30px;
+    background: #292524;
+    border-radius: 15px;
+    border: 2px solid #44403c;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.step:hover {
+    border-color: #ea580c;
+    transform: translateY(-5px);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #ea580c, #fb923c);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+    color: white;
+}
+
+.step h3 {
+    color: #fb923c;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.step p {
+    color: #d6d3d1;
+    font-size: 0.95rem;
+}
+
+/* Contact Section */
+.contact-section {
+    background: linear-gradient(135deg, #292524 0%, #1c1917 100%);
+    border-radius: 20px;
+    padding: 50px;
+    text-align: center;
+    border: 2px solid #44403c;
+    margin: 40px auto;
+    max-width: 700px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.contact-item {
+    font-size: 1.2rem;
+    color: #d6d3d1;
+}
+
+.contact-item span {
+    color: #ea580c;
+    font-weight: 600;
+}
+
+.contact-btn {
+    padding: 12px 30px;
+    background: transparent;
+    color: #ea580c;
+    border: 2px solid #ea580c;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.contact-btn:hover {
+    background: #ea580c;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #292524 0%, #1c1917 100%);
+    margin: 5% auto;
+    padding: 40px;
+    border: 2px solid #ea580c;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    color: #ea580c;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #fb923c;
+}
+
+.modal h2 {
+    color: #ea580c;
+    margin-bottom: 20px;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: #d6d3d1;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px;
+    background-color: #1c1917;
+    border: 2px solid #44403c;
+    border-radius: 8px;
+    color: #e7e5e4;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ea580c;
+}
+
+.submit-btn {
+    padding: 15px;
+    background: linear-gradient(135deg, #ea580c, #fb923c);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(234, 88, 12, 0.4);
+}
+
+/* No Results Message */
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: #a8a29e;
+    font-size: 1.2rem;
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .jobs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .internship-section,
+    .contact-section {
+        padding: 30px 20px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+}
