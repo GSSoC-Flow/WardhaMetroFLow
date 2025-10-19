@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚇 WardhaMetroFlow
+# WardhaMetroFlow
 ### *AI-Powered Smart Metro Simulation for Wardha City*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -13,31 +13,31 @@
 
 </div>
 
----
 
-## 🌟 Featured Screenshots
+
+##  Featured Screenshots
 
 <div align="center">
 
-### 🏠 Landing Page
+###  Landing Page
 <img width="1270" height="648" alt="WardhaMetroFlow Landing Page" src="https://github.com/user-attachments/assets/07d3c974-c09c-4e96-8be0-8dd6639913aa" />
 
-### 🗺️ Interactive Metro Map
+###  Interactive Metro Map
 <img width="1241" height="533" alt="Interactive Metro Map with Route Planning" src="https://github.com/user-attachments/assets/8dde2f40-ef84-4e00-a3a3-7e306946654c" />
 
-### 📊 Admin Dashboard
+###  Admin Dashboard
 <img width="1040" height="535" alt="Admin Dashboard with Analytics" src="https://github.com/user-attachments/assets/c45f96d5-2ea3-4f0f-946e-90c733d9250a" />
 
-### 🗺️ Metro Network Structure
+###  Metro Network Structure
 <img width="635" height="573" alt="Wardha Metro Network Map" src="https://github.com/user-attachments/assets/62e5754c-a74a-4926-a3f6-af0b012091fa" />
 
-**[🗺️ Interactive Map Link](https://www.google.com/maps/d/u/3/edit?mid=1c4r4UD15ZKHhCvG5O3ZN_JOQdhHPspM&usp=sharing)**
+**[ Interactive Map Link](https://www.google.com/maps/d/u/3/edit?mid=1c4r4UD15ZKHhCvG5O3ZN_JOQdhHPspM&usp=sharing)**
 
 </div>
 
----
 
-## 🤝 Join Our Community
+
+##  Join Our Community
 
 <div align="center">
 
@@ -47,82 +47,82 @@
 
 </div>
 
----
 
-## 📋 Table of Contents
 
-- [🎯 Project Overview](#-project-overview)
-- [✨ Key Features](#-key-features)
-- [🏗️ System Architecture](#️-system-architecture)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [🚀 Quick Start](#-quick-start)
-- [📁 Project Structure](#-project-structure)
-- [🤖 AI & Machine Learning](#-ai--machine-learning)
-- [🌐 API Documentation](#-api-documentation)
-- [📱 Frontend Applications](#-frontend-applications)
-- [🔧 Development Setup](#-development-setup)
-- [📊 Database Schema](#-database-schema)
-- [🎨 UI/UX Features](#-uiux-features)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [🙏 Acknowledgments](#-acknowledgments)
+## � Table of Contents
 
----
+- [ Project Overview](#-project-overview)
+- [ Key Features](#-key-features)
+- [ System Architecture](#️-system-architecture)
+- [ Tech Stack](#️-tech-stack)
+- [ Quick Start](#-quick-start)
+- [ Project Structure](#-project-structure)
+- [ AI & Machine Learning](#-ai--machine-learning)
+- [ API Documentation](#-api-documentation)
+- [ Frontend Applications](#-frontend-applications)
+- [ Development Setup](#-development-setup)
+- [ Database Schema](#-database-schema)
+- [ UI/UX Features](#-uiux-features)
+- [ Contributing](#-contributing)
+- [ License](#-license)
+- [ Acknowledgments](#-acknowledgments)
 
-## 🎯 Project Overview
+
+
+##  Project Overview
 
 **WardhaMetroFlow** is a comprehensive AI-powered metro simulation platform designed specifically for **Wardha city**, Maharashtra, India. This project demonstrates how artificial intelligence can revolutionize urban mobility and public transportation management in emerging smart cities.
 
-### 🌍 Vision
+###  Vision
 To create **smarter, more efficient, and commuter-friendly metro systems** that leverage AI for:
 - **Real-time traffic optimization**
 - **Predictive passenger flow analysis**
 - **Intelligent route planning**
 - **Proactive congestion management**
 
-### 🎯 Target Users
-- **🚶‍♂️ Commuters**: Plan optimal routes with AI-powered suggestions
-- **👨‍💼 Metro Administrators**: Monitor and manage metro operations
-- **🏛️ City Planners**: Analyze traffic patterns for infrastructure development
-- **🔬 Researchers**: Study urban mobility patterns and AI applications
+###  Target Users
+- ** Commuters**: Plan optimal routes with AI-powered suggestions
+- ** Metro Administrators**: Monitor and manage metro operations
+- ** City Planners**: Analyze traffic patterns for infrastructure development
+- ** Researchers**: Study urban mobility patterns and AI applications
 
----
 
-## ✨ Key Features
 
-### 🚶‍♂️ **Passenger Experience**
-- **🗺️ Interactive Route Planning**: AI-powered route optimization with real-time updates
-- **⏱️ Smart Timing**: Estimated arrival times with congestion-aware suggestions
-- **📱 Multi-Platform Access**: Web, mobile-responsive, and voice-enabled interfaces
-- **🎬 Live Simulation**: Watch your journey unfold in real-time
-- **🌡️ Congestion Heatmaps**: Visualize crowd levels across stations
-- **💰 Fare Estimation**: Transparent pricing with distance-based calculations
+##  Key Features
 
-### 👨‍💼 **Administrative Dashboard**
-- **📊 Real-time Analytics**: Live passenger flow monitoring across all stations
-- **🤖 AI Predictions**: Machine learning models for traffic forecasting
-- **📈 Performance Metrics**: Comprehensive KPIs and operational insights
-- **🚨 Alert System**: Proactive notifications for congestion and delays
-- **📋 Station Management**: Complete CRUD operations for metro stations
-- **📊 Data Visualization**: Interactive charts and graphs for decision-making
+###  **Passenger Experience**
+- ** Interactive Route Planning**: AI-powered route optimization with real-time updates
+- ** Smart Timing**: Estimated arrival times with congestion-aware suggestions
+- **� Multi-Platform Access**: Web, mobile-responsive, and voice-enabled interfaces
+- ** Live Simulation**: Watch your journey unfold in real-time
+- ** Congestion Heatmaps**: Visualize crowd levels across stations
+- ** Fare Estimation**: Transparent pricing with distance-based calculations
 
-### 🎨 **Media & Communication**
-- **📸 Photo Gallery**: Construction progress, events, and operations
-- **🎥 Video Content**: Project documentaries and promotional materials
-- **📰 Press Releases**: Official announcements and updates
-- **📊 Infographics**: Data visualizations and project statistics
-- **🌐 Multi-language Support**: English and Marathi interfaces
+###  **Administrative Dashboard**
+- ** Real-time Analytics**: Live passenger flow monitoring across all stations
+- ** AI Predictions**: Machine learning models for traffic forecasting
+- ** Performance Metrics**: Comprehensive KPIs and operational insights
+- ** Alert System**: Proactive notifications for congestion and delays
+- ** Station Management**: Complete CRUD operations for metro stations
+- ** Data Visualization**: Interactive charts and graphs for decision-making
 
-### 🤖 **AI-Powered Intelligence**
-- **🧠 Passenger Flow Prediction**: Random Forest models for traffic forecasting
-- **🎯 Route Optimization**: Dijkstra's algorithm with real-time adjustments
-- **📊 Congestion Analysis**: Heatmap visualizations with ML insights
-- **⏰ Time Series Forecasting**: Predictive analytics for capacity planning
-- **🔍 Pattern Recognition**: Identifying peak hours and usage trends
+###  **Media & Communication**
+- ** Photo Gallery**: Construction progress, events, and operations
+- ** Video Content**: Project documentaries and promotional materials
+- ** Press Releases**: Official announcements and updates
+- ** Infographics**: Data visualizations and project statistics
+- ** Multi-language Support**: English and Marathi interfaces
 
----
+###  **AI-Powered Intelligence**
+- ** Passenger Flow Prediction**: Random Forest models for traffic forecasting
+- ** Route Optimization**: Dijkstra's algorithm with real-time adjustments
+- ** Congestion Analysis**: Heatmap visualizations with ML insights
+- ** Time Series Forecasting**: Predictive analytics for capacity planning
+- ** Pattern Recognition**: Identifying peak hours and usage trends
 
-## 🏗️ System Architecture
+
+
+##  System Architecture
 
 <div align="center">
 
@@ -169,18 +169,18 @@ graph TB
 
 </div>
 
-### 🔄 **Data Flow**
+### � **Data Flow**
 1. **Frontend** sends user requests to **Backend APIs**
 2. **Backend** processes requests using **AI models** and **database queries**
 3. **AI models** provide predictions for passenger flow and route optimization
 4. **Database** stores station data, routes, and passenger logs
 5. **Real-time updates** flow back to frontend for live visualization
 
----
 
-## 🛠️ Tech Stack
 
-### 🎨 **Frontend Technologies**
+##  Tech Stack
+
+###  **Frontend Technologies**
 | Category | Technology | Purpose |
 |----------|------------|---------|
 | **Core** | HTML5, CSS3, JavaScript (ES6+) | Base web technologies |
@@ -190,7 +190,7 @@ graph TB
 | **UI Components** | Font Awesome, Google Fonts | Icons and typography |
 | **Build Tools** | Live Server, Browser DevTools | Development workflow |
 
-### ⚙️ **Backend Technologies**
+###  **Backend Technologies**
 | Category | Technology | Purpose |
 |----------|------------|---------|
 | **API Framework** | Flask 2.0+, FastAPI 0.100+ | RESTful API development |
@@ -199,7 +199,7 @@ graph TB
 | **CORS** | Flask-CORS | Cross-origin resource sharing |
 | **Server** | Python HTTP Server | Development server |
 
-### 🤖 **AI & Machine Learning**
+###  **AI & Machine Learning**
 | Category | Technology | Purpose |
 |----------|------------|---------|
 | **ML Framework** | scikit-learn | Machine learning algorithms |
@@ -208,7 +208,7 @@ graph TB
 | **Visualization** | Streamlit | ML app interfaces |
 | **Algorithms** | Random Forest, Dijkstra | Prediction and optimization |
 
-### 🎥 **Media & Visualization**
+###  **Media & Visualization**
 | Category | Technology | Purpose |
 |----------|------------|---------|
 | **Web Framework** | Streamlit | Interactive ML applications |
@@ -216,17 +216,17 @@ graph TB
 | **Charts** | Plotly | Interactive data charts |
 | **Media** | HTML5 Video, CSS Animations | Rich media content |
 
----
 
-## 🚀 Quick Start
 
-### 📋 **Prerequisites**
+##  Quick Start
+
+###  **Prerequisites**
 - **Python 3.8+** with pip
 - **Modern web browser** (Chrome, Firefox, Safari, Edge)
 - **Git** for version control
 - **Text editor** (VS Code recommended)
 
-### 🔧 **Installation Steps**
+###  **Installation Steps**
 
 #### 1. **Clone the Repository**
 ```bash
@@ -286,21 +286,20 @@ streamlit run congestion_heatmap.py
 streamlit run fare_estimation.py
 ```
 
-### 🎯 **Access Points**
-- **🏠 Main Website**: `http://localhost:8000/landing/landing.html`
-- **🚶‍♂️ Passenger Portal**: `http://localhost:8000/passenger/passenger.html`
-- **👨‍💼 Admin Dashboard**: `http://localhost:8000/admin/admin.html`
-- **📸 Media Center**: `http://localhost:8000/media/media.html`
-- **🔧 API Documentation**: `http://localhost:5000/docs` (FastAPI)
+###  **Access Points**
+- ** Main Website**: `http://localhost:8000/landing/landing.html`
+- ** Passenger Portal**: `http://localhost:8000/passenger/passenger.html`
+- ** Admin Dashboard**: `http://localhost:8000/admin/admin.html`
+- ** Media Center**: `http://localhost:8000/media/media.html`
+- ** API Documentation**: `http://localhost:5000/docs` (FastAPI)
 
----
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 WardhaMetroFlow/
 │
-├── 🎨 frontend/                    # Frontend applications
+├── � frontend/                    # Frontend applications
 │   ├── landing/                    # Landing page
 │   │   ├── landing.html           # Main homepage
 │   │   ├── landing.css            # Landing page styles
@@ -338,7 +337,7 @@ WardhaMetroFlow/
 │       ├── main.js                # Common utilities
 │       └── global.js              # Global functions
 │
-├── ⚙️ backend/                     # Backend services
+├──  backend/                     # Backend services
 │   ├── app.py                     # Flask main application
 │   ├── main.py                    # FastAPI main application
 │   ├── requirements.txt           # Python dependencies
@@ -356,7 +355,7 @@ WardhaMetroFlow/
 │       ├── __init__.py
 │       └── metro_service.py      # Metro operations
 │
-├── 🤖 ai-models/                  # AI/ML components
+├──  ai-models/                  # AI/ML components
 │   ├── passenger_flow_model.py    # ML model training
 │   ├── congestion_heatmap.py      # Congestion visualization
 │   ├── fare_estimation.py         # Fare calculation
@@ -364,34 +363,34 @@ WardhaMetroFlow/
 │   └── models/                    # Trained models
 │       └── passenger_flow_model.pkl
 │
-├── 📊 database/                   # Database files
+├──  database/                   # Database files
 │   └── wardha.db                  # SQLite database
 │
-├── 📁 api_models/                 # Model artifacts
+├──  api_models/                 # Model artifacts
 │   ├── model.pkl                  # Pre-trained model
 │   └── train_model.ipynb         # Training notebook
 │
-├── 🖼️ static/                     # Static assets
+├──  static/                     # Static assets
 │   └── Architecture.png           # System architecture diagram
 │
-├── 📄 Documentation
+├── Documentation
 │   ├── README.md                  # This file
 │   ├── contributing.md           # Contribution guidelines
 │   ├── code_of_conduct.md         # Code of conduct
 │   └── contributors.md           # Contributor list
 │
-└── 🔧 Configuration
+└──  Configuration
     ├── .gitignore                 # Git ignore rules
     ├── LICENSE                    # MIT License
     ├── requirements.txt           # Root dependencies
     └── vercel.json                # Deployment config
 ```
 
----
 
-## 🤖 AI & Machine Learning
 
-### 🧠 **Machine Learning Models**
+##  AI & Machine Learning
+
+###  **Machine Learning Models**
 
 #### **1. Passenger Flow Prediction Model**
 - **Algorithm**: Random Forest Regressor
@@ -426,7 +425,7 @@ if day in [5, 6]:  # Saturday, Sunday
 - **Visualization**: Color-coded congestion levels
 - **Updates**: Live refresh every 30 seconds
 
-### 📊 **AI Applications**
+###  **AI Applications**
 
 #### **Streamlit Applications**
 1. **Passenger Route Planner** (`wardha_passenger_view.py`)
@@ -447,15 +446,15 @@ if day in [5, 6]:  # Saturday, Sunday
    - Crowd level indicators
    - Travel time estimation
 
----
 
-## 🌐 API Documentation
+
+## � API Documentation
 
 ### 🔗 **Base URLs**
 - **Flask API**: `http://localhost:5000`
 - **FastAPI**: `http://localhost:5000/docs` (Interactive docs)
 
-### 📡 **Endpoints**
+### � **Endpoints**
 
 #### **Passenger Flow Prediction**
 ```http
@@ -520,48 +519,48 @@ GET /stations?from=datta-Meghe-Institute&to=wardha-junction
 }
 ```
 
-### 🔧 **Error Handling**
+###  **Error Handling**
 - **400 Bad Request**: Missing required fields
 - **404 Not Found**: Station not found
 - **500 Internal Server Error**: Model prediction failure
 
----
 
-## 📱 Frontend Applications
 
-### 🏠 **Landing Page** (`/landing/landing.html`)
+##  Frontend Applications
+
+###  **Landing Page** (`/landing/landing.html`)
 - **Hero Section**: Full-screen slideshow with metro imagery
 - **Features Showcase**: Key project highlights
 - **Navigation**: Multi-language support (English/Marathi)
 - **Responsive Design**: Mobile-first approach
 - **Interactive Elements**: Smooth animations and transitions
 
-### 🚶‍♂️ **Passenger Portal** (`/passenger/passenger.html`)
+###  **Passenger Portal** (`/passenger/passenger.html`)
 - **Route Planner**: Interactive station selection
 - **Interactive Map**: Leaflet.js integration with metro network
 - **Real-time Updates**: Live congestion and timing information
 - **Journey Simulation**: Visual representation of metro journey
 - **Fare Calculator**: Transparent pricing display
 
-### 👨‍💼 **Admin Dashboard** (`/admin/admin.html`)
+###  **Admin Dashboard** (`/admin/admin.html`)
 - **Analytics Dashboard**: Comprehensive KPIs and metrics
 - **Station Management**: CRUD operations for metro stations
 - **Passenger Flow Monitoring**: Real-time traffic visualization
 - **Predictive Analytics**: AI-powered forecasting
 - **Alert System**: Proactive notifications
 
-### 📸 **Media Center** (`/media/media.html`)
+###  **Media Center** (`/media/media.html`)
 - **Photo Gallery**: Construction progress and events
 - **Video Content**: Project documentaries and promotions
 - **Press Releases**: Official announcements
 - **Infographics**: Data visualizations and statistics
 - **Interactive Carousel**: Auto-scrolling image showcase
 
----
 
-## 🔧 Development Setup
 
-### 🛠️ **Development Environment**
+##  Development Setup
+
+###  **Development Environment**
 
 #### **Backend Development**
 ```bash
@@ -604,7 +603,7 @@ streamlit run ai-models/wardha_passenger_view.py
 python ai-models/evaluate_model.py
 ```
 
-### 🐳 **Docker Setup** (Optional)
+###  **Docker Setup** (Optional)
   ```bash
 # Build Docker image
 docker build -t wardhametroflow .
@@ -616,7 +615,7 @@ docker run -p 5000:5000 -p 8000:8000 wardhametroflow
 docker-compose up -d
 ```
 
-### 🔧 **Environment Variables**
+###  **Environment Variables**
   ```bash
 # Create .env file
 FLASK_ENV=development
@@ -625,11 +624,11 @@ DATABASE_URL=sqlite:///wardha.db
 MODEL_PATH=ai-models/models/passenger_flow_model.pkl
 ```
 
----
 
-## 📊 Database Schema
 
-### 🗄️ **Tables**
+##  Database Schema
+
+###  **Tables**
 
 #### **Stations Table**
 ```sql
@@ -671,7 +670,7 @@ CREATE TABLE passenger_logs (
 );
 ```
 
-### 📈 **Sample Data**
+###  **Sample Data**
 ```sql
 -- Insert sample stations
 INSERT INTO stations (id, name, coordinates, connections) VALUES
@@ -680,41 +679,41 @@ INSERT INTO stations (id, name, coordinates, connections) VALUES
 ('wardha-junction', 'Wardha Junction', '[20.7310431, 78.5923619]', '["master-colony", "bajaj-square", "ram-nagar"]');
 ```
 
----
 
-## 🎨 UI/UX Features
 
-### 🎨 **Design System**
+##  UI/UX Features
+
+###  **Design System**
 - **Color Palette**: Orange (#ea580c), Green (#16a34a), Blue (#3b82f6)
 - **Typography**: Inter font family for modern readability
 - **Spacing**: Consistent 8px grid system
 - **Components**: Reusable UI components with consistent styling
 
-### 📱 **Responsive Design**
+###  **Responsive Design**
 - **Mobile First**: Optimized for mobile devices
 - **Breakpoints**: 768px, 1024px, 1200px
 - **Touch Friendly**: Large tap targets and gestures
 - **Performance**: Optimized images and lazy loading
 
-### ♿ **Accessibility Features**
+###  **Accessibility Features**
 - **ARIA Labels**: Screen reader compatibility
 - **Keyboard Navigation**: Full keyboard support
 - **Color Contrast**: WCAG 2.1 AA compliance
 - **Alt Text**: Descriptive image alternatives
 
-### 🎭 **Interactive Elements**
+###  **Interactive Elements**
 - **Smooth Animations**: CSS transitions and transforms
 - **Hover Effects**: Visual feedback on interactions
 - **Loading States**: Progress indicators and skeletons
 - **Error Handling**: User-friendly error messages
 
----
 
-## 🤝 Contributing
+
+##  Contributing
 
 We welcome contributions from developers of all skill levels! Here's how you can help:
 
-### 🚀 **Getting Started**
+###  **Getting Started**
 1. **Fork** the repository
 2. **Clone** your fork: `git clone https://github.com/YOUR_USERNAME/WardhaMetroFlow.git`
 3. **Create** a feature branch: `git checkout -b feature/amazing-feature`
@@ -723,7 +722,7 @@ We welcome contributions from developers of all skill levels! Here's how you can
 6. **Push** to your branch: `git push origin feature/amazing-feature`
 7. **Open** a Pull Request
 
-### 🎯 **Contribution Areas**
+###  **Contribution Areas**
 
 #### **Backend Development** (30 points)
 - API endpoint development
@@ -749,7 +748,7 @@ We welcome contributions from developers of all skill levels! Here's how you can
 - API documentation
 - Tutorial creation
 
-### 🐛 **Bug Reports**
+###  **Bug Reports**
 When reporting bugs, please include:
 - **Environment**: OS, browser, Python version
 - **Steps to reproduce**: Clear, numbered steps
@@ -757,27 +756,27 @@ When reporting bugs, please include:
 - **Actual behavior**: What actually happens
 - **Screenshots**: Visual evidence if applicable
 
-### 💡 **Feature Requests**
+###  **Feature Requests**
 For new features, please:
 - **Check existing issues** first
 - **Describe the use case** clearly
 - **Provide mockups** if possible
 - **Consider implementation complexity**
 
-### 📋 **Code Standards**
+###  **Code Standards**
 - **Python**: Follow PEP 8 guidelines
 - **JavaScript**: Use ES6+ features
 - **CSS**: Use BEM methodology
 - **Commits**: Use conventional commit messages
 - **Testing**: Write tests for new features
 
----
 
-## 📄 License
+
+##  License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-### 📜 **License Summary**
+###  **License Summary**
 - ✅ **Commercial use** allowed
 - ✅ **Modification** allowed
 - ✅ **Distribution** allowed
@@ -785,40 +784,40 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - ❌ **Liability** not provided
 - ❌ **Warranty** not provided
 
----
 
-## 🙏 Acknowledgments
 
-### 🌟 **Inspiration**
+##  Acknowledgments
+
+###  **Inspiration**
 - **India's Smart City Mission** - Vision for sustainable urban development
 - **Open Source Community** - Collaborative development principles
 - **Wardha City** - The beautiful city that inspired this project
 
-### 👥 **Contributors**
-Built with ❤️ by the **GSSoC 2025** contributors and the open-source community.
+###  **Contributors**
+Built with love by the **GSSoC 2025** contributors and the open-source community.
 
-### 🏛️ **Special Thanks**
+###  **Special Thanks**
 - **Government of India** - Smart City Mission initiative
 - **Maharashtra Government** - State support for innovation
 - **Wardha District Administration** - Local insights and data
 - **Open Source Libraries** - All the amazing tools that made this possible
 
-### 📚 **Resources**
+###  **Resources**
 - [Smart Cities Mission Data Portal](https://smartcities.data.gov.in/)
 - [Maharashtra Tourism](https://www.maharashtratourism.gov.in/)
 - [Wardha District](https://wardha.gov.in/)
 
----
+
 
 <div align="center">
 
-### 🚇 **Ready to revolutionize urban mobility?**
+###  **Ready to revolutionize urban mobility?**
 
 [![Star this repo](https://img.shields.io/badge/⭐-Star%20this%20repo-yellow?style=for-the-badge)](https://github.com/GSSoC-Flow/WardhaMetroFlow)
 [![Fork this repo](https://img.shields.io/badge/🍴-Fork%20this%20repo-blue?style=for-the-badge)](https://github.com/GSSoC-Flow/WardhaMetroFlow/fork)
 [![Watch this repo](https://img.shields.io/badge/👀-Watch%20this%20repo-green?style=for-the-badge)](https://github.com/GSSoC-Flow/WardhaMetroFlow)
 
-**Join us in building the future of smart transportation! 🚀**
+**Join us in building the future of smart transportation! **
 
 ---
 
