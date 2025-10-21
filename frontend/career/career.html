@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Wardha Metro Flow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="career.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>Careers at Wardha Metro Flow</h1>
+            <p>Join us in building the future of sustainable urban transportation! At Wardha Metro Flow, we believe in empowering innovation, teamwork, and green technology. Explore exciting opportunities to be part of a project that's transforming city mobility through smart solutions and AI-driven systems.</p>
+        </div>
+    </div>
+
+    <!-- Current Openings Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Current Openings</h2>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search for job roles, skills, or locations...">
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <div class="jobs-grid" id="jobsGrid">
+                <div class="job-card" data-keywords="software developer ai systems machine learning python">
+                    <h3 class="job-title">Software Developer – AI Systems</h3>
+                    <p class="job-description">Design and develop cutting-edge AI algorithms for metro flow optimization, passenger prediction, and intelligent traffic management systems.</p>
+                    <div class="job-meta">
+                        <span class="job-location">📍 Wardha</span>
+                        <span class="job-type">💼 Full-time</span>
+                    </div>
+                    <button class="apply-btn" onclick="openModal('Software Developer – AI Systems')">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-keywords="frontend developer react javascript ui ux web">
+                    <h3 class="job-title">Frontend Developer (React.js / JavaScript)</h3>
+                    <p class="job-description">Build responsive and interactive user interfaces for our passenger portal, admin dashboard, and real-time metro tracking applications.</p>
+                    <div class="job-meta">
+                        <span class="job-location">📍 Remote</span>
+                        <span class="job-type">💼 Full-time</span>
+                    </div>
+                    <button class="apply-btn" onclick="openModal('Frontend Developer (React.js / JavaScript)')">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-keywords="data analyst insights analytics python sql visualization">
+                    <h3 class="job-title">Data Analyst – Metro Flow Insights</h3>
+                    <p class="job-description">Analyze passenger data, metro traffic patterns, and operational metrics to provide actionable insights for improving system efficiency.</p>
+                    <div class="job-meta">
+                        <span class="job-location">📍 Wardha</span>
+                        <span class="job-type">💼 Full-time</span>
+                    </div>
+                    <button class="apply-btn" onclick="openModal('Data Analyst – Metro Flow Insights')">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-keywords="civil engineer infrastructure planning construction design">
+                    <h3 class="job-title">Civil Engineer – Infrastructure Planning</h3>
+                    <p class="job-description">Lead infrastructure design and development for metro stations, track layouts, and sustainable construction practices for urban transit.</p>
+                    <div class="job-meta">
+                        <span class="job-location">📍 Wardha</span>
+                        <span class="job-type">💼 Full-time</span>
+                    </div>
+                    <button class="apply-btn" onclick="openModal('Civil Engineer – Infrastructure Planning')">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-keywords="ui ux designer passenger portal interface design figma">
+                    <h3 class="job-title">UI/UX Designer – Passenger Portal</h3>
+                    <p class="job-description">Create intuitive and user-friendly designs for mobile apps and web platforms that enhance passenger experience and accessibility.</p>
+                    <div class="job-meta">
+                        <span class="job-location">📍 Remote</span>
+                        <span class="job-type">💼 Full-time</span>
+                    </div>
+                    <button class="apply-btn" onclick="openModal('UI/UX Designer – Passenger Portal')">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-keywords="project manager operations coordination planning">
+                    <h3 class="job-title">Project Manager – Operations</h3>
+                    <p class="job-description">Coordinate cross-functional teams, manage timelines, and ensure successful delivery of metro system implementations and upgrades.</p>
+                    <div class="job-meta">
+                        <span class="job-location">📍 Wardha</span>
+                        <span class="job-type">💼 Full-time</span>
+                    </div>
+                    <button class="apply-btn" onclick="openModal('Project Manager – Operations')">Apply Now</button>
+                </div>
+            </div>
+
+            <div class="no-results" id="noResults">
+                No matching positions found. Try a different search term.
+            </div>
+        </div>
+    </section>
+
+    <!-- Internship Section -->
+    <section>
+        <div class="container">
+            <div class="internship-section">
+                <h2 class="section-title">Internship Opportunities</h2>
+                <p>Wardha Metro Flow welcomes students and fresh graduates to join as interns. Learn from real-world projects, contribute to our metro simulation system, and gain experience in sustainable transport innovation.</p>
+                <button class="intern-btn" onclick="alert('Redirecting to internship application form...')">View Internship Details</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Process Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">How to Apply</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Browse Positions</h3>
+                    <p>Explore available positions and find the role that matches your skills and passion.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Submit Application</h3>
+                    <p>Click "Apply Now" and fill out the application form with your details and resume.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Interview Process</h3>
+                    <p>Shortlisted candidates will be contacted via email for the next steps.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Join Our Team</h3>
+                    <p>Join our mission to build smarter, more sustainable cities!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section>
+        <div class="container">
+            <div class="contact-section">
+                <h2 class="section-title">Need Assistance?</h2>
+                <p>For queries, reach out to our HR team:</p>
+                <div class="contact-info">
+                    <div class="contact-item">📧 <span>careers@wardhametroflow.org</span></div>
+                    <div class="contact-item">☎️ <span>+91 98765 43210</span></div>
+                </div>
+                <button class="contact-btn" onclick="openContactModal()">Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Apply for Position</h2>
+            <form class="modal-form" onsubmit="submitApplication(event)">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Years of Experience</label>
+                    <input type="number" id="experience" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="coverLetter">Why do you want to join us?</label>
+                    <textarea id="coverLetter" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="career.js"></script>
+</body>
+</html>
