@@ -4,11 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers - Wardha Metro Flow</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../components/global.css">
+    <link rel="stylesheet" href="../components/navbar.css" />
+
     <link rel="stylesheet" href="career.css">
 </head>
 <body>
-    <!-- Hero Section -->
+    
+    <div id="navbar-placeholder"></div>
+
     <div class="hero">
         <div class="container">
             <h1>Careers at Wardha Metro Flow</h1>
@@ -16,14 +25,13 @@
         </div>
     </div>
 
-    <!-- Current Openings Section -->
     <section>
         <div class="container">
             <h2 class="section-title">Current Openings</h2>
             
             <div class="search-container">
                 <input type="text" class="search-input" id="searchInput" placeholder="Search for job roles, skills, or locations...">
-                <span class="search-icon">🔍</span>
+                <span class="search-icon"><i class="fas fa-search"></i></span>
             </div>
 
             <div class="jobs-grid" id="jobsGrid">
@@ -31,8 +39,8 @@
                     <h3 class="job-title">Software Developer – AI Systems</h3>
                     <p class="job-description">Design and develop cutting-edge AI algorithms for metro flow optimization, passenger prediction, and intelligent traffic management systems.</p>
                     <div class="job-meta">
-                        <span class="job-location">📍 Wardha</span>
-                        <span class="job-type">💼 Full-time</span>
+                        <span class="job-location"><i class="fas fa-map-marker-alt"></i> Wardha</span>
+                        <span class="job-type"><i class="fas fa-briefcase"></i> Full-time</span>
                     </div>
                     <button class="apply-btn" onclick="openModal('Software Developer – AI Systems')">Apply Now</button>
                 </div>
@@ -41,8 +49,8 @@
                     <h3 class="job-title">Frontend Developer (React.js / JavaScript)</h3>
                     <p class="job-description">Build responsive and interactive user interfaces for our passenger portal, admin dashboard, and real-time metro tracking applications.</p>
                     <div class="job-meta">
-                        <span class="job-location">📍 Remote</span>
-                        <span class="job-type">💼 Full-time</span>
+                        <span class="job-location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        <span class="job-type"><i class="fas fa-briefcase"></i> Full-time</span>
                     </div>
                     <button class="apply-btn" onclick="openModal('Frontend Developer (React.js / JavaScript)')">Apply Now</button>
                 </div>
@@ -51,8 +59,8 @@
                     <h3 class="job-title">Data Analyst – Metro Flow Insights</h3>
                     <p class="job-description">Analyze passenger data, metro traffic patterns, and operational metrics to provide actionable insights for improving system efficiency.</p>
                     <div class="job-meta">
-                        <span class="job-location">📍 Wardha</span>
-                        <span class="job-type">💼 Full-time</span>
+                        <span class="job-location"><i class="fas fa-map-marker-alt"></i> Wardha</span>
+                        <span class="job-type"><i class="fas fa-briefcase"></i> Full-time</span>
                     </div>
                     <button class="apply-btn" onclick="openModal('Data Analyst – Metro Flow Insights')">Apply Now</button>
                 </div>
@@ -61,8 +69,8 @@
                     <h3 class="job-title">Civil Engineer – Infrastructure Planning</h3>
                     <p class="job-description">Lead infrastructure design and development for metro stations, track layouts, and sustainable construction practices for urban transit.</p>
                     <div class="job-meta">
-                        <span class="job-location">📍 Wardha</span>
-                        <span class="job-type">💼 Full-time</span>
+                        <span class="job-location"><i class="fas fa-map-marker-alt"></i> Wardha</span>
+                        <span class="job-type"><i class="fas fa-briefcase"></i> Full-time</span>
                     </div>
                     <button class="apply-btn" onclick="openModal('Civil Engineer – Infrastructure Planning')">Apply Now</button>
                 </div>
@@ -71,8 +79,8 @@
                     <h3 class="job-title">UI/UX Designer – Passenger Portal</h3>
                     <p class="job-description">Create intuitive and user-friendly designs for mobile apps and web platforms that enhance passenger experience and accessibility.</p>
                     <div class="job-meta">
-                        <span class="job-location">📍 Remote</span>
-                        <span class="job-type">💼 Full-time</span>
+                        <span class="job-location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        <span class="job-type"><i class="fas fa-briefcase"></i> Full-time</span>
                     </div>
                     <button class="apply-btn" onclick="openModal('UI/UX Designer – Passenger Portal')">Apply Now</button>
                 </div>
@@ -81,8 +89,8 @@
                     <h3 class="job-title">Project Manager – Operations</h3>
                     <p class="job-description">Coordinate cross-functional teams, manage timelines, and ensure successful delivery of metro system implementations and upgrades.</p>
                     <div class="job-meta">
-                        <span class="job-location">📍 Wardha</span>
-                        <span class="job-type">💼 Full-time</span>
+                        <span class="job-location"><i class="fas fa-map-marker-alt"></i> Wardha</span>
+                        <span class="job-type"><i class="fas fa-briefcase"></i> Full-time</span>
                     </div>
                     <button class="apply-btn" onclick="openModal('Project Manager – Operations')">Apply Now</button>
                 </div>
@@ -94,7 +102,6 @@
         </div>
     </section>
 
-    <!-- Internship Section -->
     <section>
         <div class="container">
             <div class="internship-section">
@@ -105,7 +112,6 @@
         </div>
     </section>
 
-    <!-- Application Process Section -->
     <section>
         <div class="container">
             <h2 class="section-title">How to Apply</h2>
@@ -134,22 +140,20 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section>
         <div class="container">
             <div class="contact-section">
                 <h2 class="section-title">Need Assistance?</h2>
                 <p>For queries, reach out to our HR team:</p>
                 <div class="contact-info">
-                    <div class="contact-item">📧 <span>careers@wardhametroflow.org</span></div>
-                    <div class="contact-item">☎️ <span>+91 98765 43210</span></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i> <span>careers@wardhametroflow.org</span></div>
+                    <div class="contact-item"><i class="fas fa-phone"></i> <span>+91 98765 43210</span></div>
                 </div>
                 <button class="contact-btn" onclick="openContactModal()">Contact Us</button>
             </div>
         </div>
     </section>
 
-    <!-- Application Modal -->
     <div id="applicationModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -159,7 +163,7 @@
                     <label for="fullName">Full Name *</label>
                     <input type="text" id="fullName" required>
                 </div>
-                <div class="form-group">
+                <div class="form-form-group">
                     <label for="email">Email *</label>
                     <input type="email" id="email" required>
                 </div>
@@ -180,6 +184,20 @@
         </div>
     </div>
 
+    <div id="footer-placeholder"></div>
+
+    <script src="../scripts/main.js"></script>
     <script src="career.js"></script>
+
+    <script>
+      fetch('../components/navbar.html')
+        .then(res => res.text())
+        .then(html => document.getElementById('navbar-placeholder').innerHTML = html);
+  
+      fetch('../components/footer.html')
+        .then(res => res.text())
+        .then(html => document.getElementById('footer-placeholder').innerHTML = html);
+    </script>
+
 </body>
 </html>
