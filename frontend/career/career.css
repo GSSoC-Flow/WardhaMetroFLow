@@ -1,33 +1,22 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #1c1917;
-    color: #e7e5e4;
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #1c1917 0%, #292524 100%);
-    padding: 80px 20px;
+    /* Assuming --gradient-surface is in global.css */
+    background: var(--gradient-surface, linear-gradient(135deg, #1c1917 0%, #292524 100%));
     text-align: center;
-    border-bottom: 3px solid #ea580c;
+    border-bottom: 3px solid var(--color-primary, #ea580c);
+    
+    /* === MODIFIED FOR FULL-SCREEN === */
+    height: 100vh; /* Set height to fill viewport */
+    padding: 0 20px; /* Adjusted padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero h1 {
     font-size: 3rem;
-    color: #ea580c;
+    color: var(--color-primary, #ea580c);
     margin-bottom: 20px;
     font-weight: 700;
 }
@@ -36,7 +25,7 @@ body {
     font-size: 1.1rem;
     max-width: 800px;
     margin: 0 auto;
-    color: #d6d3d1;
+    color: var(--color-text-secondary, #d6d3d1);
     line-height: 1.8;
 }
 
@@ -47,7 +36,7 @@ section {
 
 .section-title {
     font-size: 2.5rem;
-    color: #ea580c;
+    color: var(--color-primary, #ea580c);
     margin-bottom: 30px;
     text-align: center;
     font-weight: 600;
@@ -63,17 +52,18 @@ section {
 .search-input {
     width: 100%;
     padding: 15px 50px 15px 20px;
-    background-color: #292524;
-    border: 2px solid #44403c;
+    background-color: var(--color-surface, #292524);
+    border: 2px solid var(--color-border, #44403c);
     border-radius: 50px;
-    color: #e7e5e4;
+    color: var(--color-text-primary, #e7e5e4);
     font-size: 1rem;
     transition: all 0.3s ease;
 }
 
 .search-input:focus {
     outline: none;
-    border-color: #ea580c;
+    border-color: var(--color-primary, #ea580c);
+    /* Assuming a --shadow-focus variable, otherwise fallback */
     box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
 }
 
@@ -82,7 +72,7 @@ section {
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    color: #ea580c;
+    color: var(--color-primary, #ea580c);
     font-size: 1.2rem;
 }
 
@@ -95,8 +85,8 @@ section {
 }
 
 .job-card {
-    background: linear-gradient(135deg, #292524 0%, #1c1917 100%);
-    border: 2px solid #44403c;
+    background: var(--gradient-surface, linear-gradient(135deg, #292524 0%, #1c1917 100%));
+    border: 2px solid var(--color-border, #44403c);
     border-radius: 15px;
     padding: 30px;
     transition: all 0.3s ease;
@@ -112,13 +102,14 @@ section {
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, #ea580c, #fb923c);
+    /* Assuming --gradient-primary is in global.css */
+    background: var(--gradient-primary, linear-gradient(90deg, #ea580c, #fb923c));
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
 
 .job-card:hover {
-    border-color: #ea580c;
+    border-color: var(--color-primary, #ea580c);
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(234, 88, 12, 0.3);
 }
@@ -129,13 +120,13 @@ section {
 
 .job-title {
     font-size: 1.5rem;
-    color: #fb923c;
+    color: var(--color-primary-light, #fb923c);
     margin-bottom: 15px;
     font-weight: 600;
 }
 
 .job-description {
-    color: #d6d3d1;
+    color: var(--color-text-secondary, #d6d3d1);
     margin-bottom: 20px;
     font-size: 0.95rem;
 }
@@ -148,18 +139,23 @@ section {
 }
 
 .job-location, .job-type {
-    background-color: #44403c;
+    background-color: var(--color-border, #44403c);
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.85rem;
-    color: #fbbf24;
+    color: var(--color-accent, #fbbf24);
+    
+    /* === ADDED FOR ICON ALIGNMENT === */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .apply-btn {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #ea580c, #fb923c);
-    color: white;
+    background: var(--gradient-primary, linear-gradient(135deg, #ea580c, #fb923c));
+    color: var(--color-text-on-primary, white);
     border: none;
     border-radius: 8px;
     font-size: 1rem;
@@ -175,26 +171,26 @@ section {
 
 /* Internship Section */
 .internship-section {
-    background: linear-gradient(135deg, #292524 0%, #1c1917 100%);
+    background: var(--gradient-surface, linear-gradient(135deg, #292524 0%, #1c1917 100%));
     border-radius: 20px;
     padding: 50px;
     text-align: center;
-    border: 2px solid #44403c;
+    border: 2px solid var(--color-border, #44403c);
     margin: 40px auto;
     max-width: 900px;
 }
 
 .internship-section p {
     font-size: 1.1rem;
-    color: #d6d3d1;
+    color: var(--color-text-secondary, #d6d3d1);
     margin-bottom: 30px;
     line-height: 1.8;
 }
 
 .intern-btn {
     padding: 15px 40px;
-    background: linear-gradient(135deg, #ea580c, #fb923c);
-    color: white;
+    background: var(--gradient-primary, linear-gradient(135deg, #ea580c, #fb923c));
+    color: var(--color-text-on-primary, white);
     border: none;
     border-radius: 50px;
     font-size: 1.1rem;
@@ -219,22 +215,22 @@ section {
 .step {
     text-align: center;
     padding: 30px;
-    background: #292524;
+    background: var(--color-surface, #292524);
     border-radius: 15px;
-    border: 2px solid #44403c;
+    border: 2px solid var(--color-border, #44403c);
     transition: all 0.3s ease;
     position: relative;
 }
 
 .step:hover {
-    border-color: #ea580c;
+    border-color: var(--color-primary, #ea580c);
     transform: translateY(-5px);
 }
 
 .step-number {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #ea580c, #fb923c);
+    background: var(--gradient-primary, linear-gradient(135deg, #ea580c, #fb923c));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -242,27 +238,27 @@ section {
     font-size: 1.8rem;
     font-weight: 700;
     margin: 0 auto 20px;
-    color: white;
+    color: var(--color-text-on-primary, white);
 }
 
 .step h3 {
-    color: #fb923c;
+    color: var(--color-primary-light, #fb923c);
     margin-bottom: 10px;
     font-size: 1.2rem;
 }
 
 .step p {
-    color: #d6d3d1;
+    color: var(--color-text-secondary, #d6d3d1);
     font-size: 0.95rem;
 }
 
 /* Contact Section */
 .contact-section {
-    background: linear-gradient(135deg, #292524 0%, #1c1917 100%);
+    background: var(--gradient-surface, linear-gradient(135deg, #292524 0%, #1c1917 100%));
     border-radius: 20px;
     padding: 50px;
     text-align: center;
-    border: 2px solid #44403c;
+    border: 2px solid var(--color-border, #44403c);
     margin: 40px auto;
     max-width: 700px;
 }
@@ -276,19 +272,25 @@ section {
 
 .contact-item {
     font-size: 1.2rem;
-    color: #d6d3d1;
+    color: var(--color-text-secondary, #d6d3d1);
+
+    /* === ADDED FOR ICON ALIGNMENT === */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .contact-item span {
-    color: #ea580c;
+    color: var(--color-primary, #ea580c);
     font-weight: 600;
 }
 
 .contact-btn {
     padding: 12px 30px;
     background: transparent;
-    color: #ea580c;
-    border: 2px solid #ea580c;
+    color: var(--color-primary, #ea580c);
+    border: 2px solid var(--color-primary, #ea580c);
     border-radius: 50px;
     font-size: 1rem;
     font-weight: 600;
@@ -298,8 +300,8 @@ section {
 }
 
 .contact-btn:hover {
-    background: #ea580c;
-    color: white;
+    background: var(--color-primary, #ea580c);
+    color: var(--color-text-on-primary, white);
     transform: translateY(-3px);
 }
 
@@ -312,7 +314,8 @@ section {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    /* Assuming --color-overlay is in global.css */
+    background-color: var(--color-overlay, rgba(0, 0, 0, 0.8));
     animation: fadeIn 0.3s ease;
 }
 
@@ -322,10 +325,10 @@ section {
 }
 
 .modal-content {
-    background: linear-gradient(135deg, #292524 0%, #1c1917 100%);
+    background: var(--gradient-surface, linear-gradient(135deg, #292524 0%, #1c1917 100%));
     margin: 5% auto;
     padding: 40px;
-    border: 2px solid #ea580c;
+    border: 2px solid var(--color-primary, #ea580c);
     border-radius: 20px;
     width: 90%;
     max-width: 600px;
@@ -344,7 +347,7 @@ section {
 }
 
 .close {
-    color: #ea580c;
+    color: var(--color-primary, #ea580c);
     float: right;
     font-size: 35px;
     font-weight: bold;
@@ -353,11 +356,11 @@ section {
 }
 
 .close:hover {
-    color: #fb923c;
+    color: var(--color-primary-light, #fb923c);
 }
 
 .modal h2 {
-    color: #ea580c;
+    color: var(--color-primary, #ea580c);
     margin-bottom: 20px;
 }
 
@@ -373,7 +376,7 @@ section {
 }
 
 .form-group label {
-    color: #d6d3d1;
+    color: var(--color-text-secondary, #d6d3d1);
     margin-bottom: 8px;
     font-weight: 500;
 }
@@ -381,11 +384,12 @@ section {
 .form-group input,
 .form-group textarea {
     padding: 12px;
-    background-color: #1c1917;
-    border: 2px solid #44403c;
+    background-color: var(--color-background, #1c1917);
+    border: 2px solid var(--color-border, #44403c);
     border-radius: 8px;
-    color: #e7e5e4;
-    font-family: 'Inter', sans-serif;
+    color: var(--color-text-primary, #e7e5e4);
+    /* Assuming --font-primary is in global.css */
+    font-family: var(--font-primary, 'Inter', sans-serif);
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
@@ -393,13 +397,13 @@ section {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #ea580c;
+    border-color: var(--color-primary, #ea580c);
 }
 
 .submit-btn {
     padding: 15px;
-    background: linear-gradient(135deg, #ea580c, #fb923c);
-    color: white;
+    background: var(--gradient-primary, linear-gradient(135deg, #ea580c, #fb923c));
+    color: var(--color-text-on-primary, white);
     border: none;
     border-radius: 8px;
     font-size: 1.1rem;
@@ -417,7 +421,7 @@ section {
 .no-results {
     text-align: center;
     padding: 40px;
-    color: #a8a29e;
+    color: var(--color-text-muted, #a8a29e);
     font-size: 1.2rem;
     display: none;
 }
