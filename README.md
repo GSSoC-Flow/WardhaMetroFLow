@@ -13,11 +13,13 @@
 
 </div>
 
+<div align="center">
 
-
+###  Project Video
+[video link](https://drive.google.com/file/d/1-PeHJucawMCLcZH6oIZxXjpRmKp2zQj9/view?pli=1)
 ##  Featured Screenshots
 
-<div align="center">
+
 
 ###  Landing Page
 <img width="1270" height="648" alt="WardhaMetroFlow Landing Page" src="https://github.com/user-attachments/assets/07d3c974-c09c-4e96-8be0-8dd6639913aa" />
@@ -25,13 +27,10 @@
 ###  Interactive Metro Map
 <img width="1241" height="533" alt="Interactive Metro Map with Route Planning" src="https://github.com/user-attachments/assets/8dde2f40-ef84-4e00-a3a3-7e306946654c" />
 
-###  Project Video
-[video link](https://drive.google.com/file/d/1-PeHJucawMCLcZH6oIZxXjpRmKp2zQj9/view?pli=1)
-
 ###  Metro Network Structure
 <img width="635" height="573" alt="Wardha Metro Network Map" src="https://github.com/user-attachments/assets/62e5754c-a74a-4926-a3f6-af0b012091fa" />
 
-**[ Interactive Map Link](https://www.google.com/maps/d/u/3/edit?mid=1c4r4UD15ZKHhCvG5O3ZN_JOQdhHPspM&usp=sharing)**
+**[Map Link](https://www.google.com/maps/d/u/3/edit?mid=1c4r4UD15ZKHhCvG5O3ZN_JOQdhHPspM&usp=sharing)**
 
 </div>
 
