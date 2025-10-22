@@ -25,8 +25,8 @@
 ###  Interactive Metro Map
 <img width="1241" height="533" alt="Interactive Metro Map with Route Planning" src="https://github.com/user-attachments/assets/8dde2f40-ef84-4e00-a3a3-7e306946654c" />
 
-###  Admin Dashboard
-<img width="1040" height="535" alt="Admin Dashboard with Analytics" src="https://github.com/user-attachments/assets/c45f96d5-2ea3-4f0f-946e-90c733d9250a" />
+###  Project Video
+[video link](https://drive.google.com/file/d/1-PeHJucawMCLcZH6oIZxXjpRmKp2zQj9/view?pli=1)
 
 ###  Metro Network Structure
 <img width="635" height="573" alt="Wardha Metro Network Map" src="https://github.com/user-attachments/assets/62e5754c-a74a-4926-a3f6-af0b012091fa" />
