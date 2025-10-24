@@ -80,10 +80,10 @@ To create **smarter, more efficient, and commuter-friendly metro systems** that 
 - **Proactive congestion management**
 
 ###  Target Users
-- ** Commuters**: Plan optimal routes with AI-powered suggestions
-- ** Metro Administrators**: Monitor and manage metro operations
-- ** City Planners**: Analyze traffic patterns for infrastructure development
-- ** Researchers**: Study urban mobility patterns and AI applications
+- **Commuters**: Plan optimal routes with AI-powered suggestions
+- **Metro Administrators**: Monitor and manage metro operations
+- **City Planners**: Analyze traffic patterns for infrastructure development
+- **Researchers**: Study urban mobility patterns and AI applications
 
 
 
