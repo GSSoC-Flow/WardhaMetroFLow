@@ -80,44 +80,44 @@ To create **smarter, more efficient, and commuter-friendly metro systems** that 
 - **Proactive congestion management**
 
 ###  Target Users
-- ** Commuters**: Plan optimal routes with AI-powered suggestions
-- ** Metro Administrators**: Monitor and manage metro operations
-- ** City Planners**: Analyze traffic patterns for infrastructure development
-- ** Researchers**: Study urban mobility patterns and AI applications
+- **Commuters**: Plan optimal routes with AI-powered suggestions
+- **Metro Administrators**: Monitor and manage metro operations
+- **City Planners**: Analyze traffic patterns for infrastructure development
+- **Researchers**: Study urban mobility patterns and AI applications
 
 
 
 ##  Key Features
 
 ###  **Passenger Experience**
-- ** Interactive Route Planning**: AI-powered route optimization with real-time updates
-- ** Smart Timing**: Estimated arrival times with congestion-aware suggestions
-- **� Multi-Platform Access**: Web, mobile-responsive, and voice-enabled interfaces
-- ** Live Simulation**: Watch your journey unfold in real-time
-- ** Congestion Heatmaps**: Visualize crowd levels across stations
-- ** Fare Estimation**: Transparent pricing with distance-based calculations
+- **Interactive Route Planning**: AI-powered route optimization with real-time updates
+- **Smart Timing**: Estimated arrival times with congestion-aware suggestions
+- **Multi-Platform Access**: Web, mobile-responsive, and voice-enabled interfaces
+- **Live Simulation**: Watch your journey unfold in real-time
+- **Congestion Heatmaps**: Visualize crowd levels across stations
+- **Fare Estimation**: Transparent pricing with distance-based calculations
 
 ###  **Administrative Dashboard**
-- ** Real-time Analytics**: Live passenger flow monitoring across all stations
-- ** AI Predictions**: Machine learning models for traffic forecasting
-- ** Performance Metrics**: Comprehensive KPIs and operational insights
-- ** Alert System**: Proactive notifications for congestion and delays
-- ** Station Management**: Complete CRUD operations for metro stations
-- ** Data Visualization**: Interactive charts and graphs for decision-making
+- **Real-time Analytics**: Live passenger flow monitoring across all stations
+- **AI Predictions**: Machine learning models for traffic forecasting
+- **Performance Metrics**: Comprehensive KPIs and operational insights
+- **Alert System**: Proactive notifications for congestion and delays
+- **Station Management**: Complete CRUD operations for metro stations
+- **Data Visualization**: Interactive charts and graphs for decision-making
 
 ###  **Media & Communication**
-- ** Photo Gallery**: Construction progress, events, and operations
-- ** Video Content**: Project documentaries and promotional materials
-- ** Press Releases**: Official announcements and updates
-- ** Infographics**: Data visualizations and project statistics
-- ** Multi-language Support**: English and Marathi interfaces
+- **Photo Gallery**: Construction progress, events, and operations
+- **Video Content**: Project documentaries and promotional materials
+- **Press Releases**: Official announcements and updates
+- **Infographics**: Data visualizations and project statistics
+- **Multi-language Support**: English and Marathi interfaces
 
 ###  **AI-Powered Intelligence**
-- ** Passenger Flow Prediction**: Random Forest models for traffic forecasting
-- ** Route Optimization**: Dijkstra's algorithm with real-time adjustments
-- ** Congestion Analysis**: Heatmap visualizations with ML insights
-- ** Time Series Forecasting**: Predictive analytics for capacity planning
-- ** Pattern Recognition**: Identifying peak hours and usage trends
+- **Passenger Flow Prediction**: Random Forest models for traffic forecasting
+- **Route Optimization**: Dijkstra's algorithm with real-time adjustments
+- **Congestion Analysis**: Heatmap visualizations with ML insights
+- **Time Series Forecasting**: Predictive analytics for capacity planning
+- **Pattern Recognition**: Identifying peak hours and usage trends
 
 
 
@@ -286,11 +286,11 @@ streamlit run fare_estimation.py
 ```
 
 ###  **Access Points**
-- ** Main Website**: `http://localhost:8000/landing/landing.html`
-- ** Passenger Portal**: `http://localhost:8000/passenger/passenger.html`
-- ** Admin Dashboard**: `http://localhost:8000/admin/admin.html`
-- ** Media Center**: `http://localhost:8000/media/media.html`
-- ** API Documentation**: `http://localhost:5000/docs` (FastAPI)
+- **Main Website**: `http://localhost:8000/landing/landing.html`
+- **Passenger Portal**: `http://localhost:8000/passenger/passenger.html`
+- **Admin Dashboard**: `http://localhost:8000/admin/admin.html`
+- **Media Center**: `http://localhost:8000/media/media.html`
+- **API Documentation**: `http://localhost:5000/docs` (FastAPI)
 
 
 ##  Project Structure
