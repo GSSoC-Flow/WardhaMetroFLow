@@ -428,8 +428,29 @@ section {
   .hero-content h1 {
     font-size: 2rem;
   }
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
   .stats-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  .stat-card {
+    padding: 1.5rem;
+  }
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  .stat-label {
+    font-size: 0.95rem;
+  }
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+  .features-grid, .vision-mission-grid, .team-grid {
+    grid-template-columns: 1fr;
   }
   .timeline::before {
     left: 0;
@@ -440,5 +461,50 @@ section {
   }
   .timeline-dot {
     left: 0;
+  }
+  .floating-icons span {
+    font-size: 1.5rem;
+  }
+  .overview-content {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+  .hero-content p {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+  .container {
+    padding: 0 15px;
+  }
+  .stat-number {
+    font-size: 2rem;
+  }
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+  .scroll-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  section {
+    padding: 3rem 0;
+  }
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.7rem;
+  }
+  .feature-card h4 {
+    font-size: 1.1rem;
+  }
+  .team-image {
+    font-size: 3rem;
+    height: 200px;
   }
 }
