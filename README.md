@@ -260,6 +260,16 @@ python app.py
 ```
 **Backend will be available at:** `http://localhost:5000`
 
+#### Database Setup
+The application uses SQLite for local data storage. The database file is automatically created when you first run the backend server. No manual setup is required.
+
+**For new contributors:**
+1. Ensure you have write permissions in the project directory.
+2. Run the backend server (`python app.py`) - this will create `database/wardha.db` automatically.
+3. The database contains tables for stations, routes, and passenger logs.
+
+**Note:** Database files (*.db) are ignored by Git to prevent committing sensitive or large binary data. Each contributor should create their own local database.
+
 #### 3. **Frontend Setup**
 ```bash
 # Navigate to frontend directory

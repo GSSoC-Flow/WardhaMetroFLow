@@ -10,7 +10,14 @@ import pandas as pd
 from services import metro_service
 from flask import request
 from flask_cors import CORS, cross_origin
-from sklearn.ensemble import RandomForestRegressor
+try:
+    from sklearn.ensemble import RandomForestRegressor
+    SKLEARN_AVAILABLE = True
+except Exception:
+    # scikit-learn may not be installable in some environments (Windows without build tools).
+    # We'll fall back to a tiny numpy-based DummyRegressor when necessary.
+    RandomForestRegressor = None
+    SKLEARN_AVAILABLE = False
 import numpy as np
 
 # Configure logging
@@ -49,27 +56,43 @@ except Exception as e:
     logger.error("Error type: %s", type(e).__name__)
     logger.error("Error message: %s", str(e))
     logger.error("Full traceback:\n%s", traceback.format_exc())
-    
+
     # Only create dummy model if explicitly enabled via environment variable
     if USE_DUMMY_MODEL:
         logger.warning("⚠️  USE_DUMMY_MODEL=true detected. Creating dummy model for development/testing...")
         logger.warning("⚠️  THIS IS NOT SUITABLE FOR PRODUCTION USE!")
-        
+
         try:
-            # Create and train a clearly documented dummy model
-            # This model generates random predictions and should ONLY be used for testing
-            np.random.seed(42)
-            X_dummy = np.random.rand(100, 3)  # Features: hour, day_of_week, station_id
-            y_dummy = np.random.randint(50, 500, 100)  # Target: passenger flow (50-500 range)
-            
-            model = RandomForestRegressor(n_estimators=10, random_state=42, max_depth=3)
-            model.fit(X_dummy, y_dummy)
-            
-            model_loaded = True
-            model_type = 'dummy'
-            logger.warning("⚠️  Dummy model created and trained with synthetic data")
-            logger.warning("⚠️  Model type: RandomForestRegressor (10 estimators, max_depth=3)")
-            logger.warning("⚠️  Training data: 100 random samples, passenger flow range: 50-500")
+            # If scikit-learn is available, create a small RandomForestRegressor for testing
+            if SKLEARN_AVAILABLE and RandomForestRegressor is not None:
+                np.random.seed(42)
+                X_dummy = np.random.rand(100, 3)  # Features: hour, day_of_week, station_id
+                y_dummy = np.random.randint(50, 500, 100)  # Target: passenger flow (50-500 range)
+
+                model = RandomForestRegressor(n_estimators=10, random_state=42, max_depth=3)
+                model.fit(X_dummy, y_dummy)
+
+                model_loaded = True
+                model_type = 'dummy'
+                logger.warning("⚠️  Dummy sklearn model created and trained with synthetic data")
+            else:
+                # scikit-learn is not available — provide a very small predictable DummyRegressor
+                class DummyRegressor:
+                    def predict(self, X):
+                        # X may be a pandas DataFrame or array-like — return a simple deterministic value
+                        try:
+                            n = len(X)
+                        except Exception:
+                            n = 1
+                        # Return a vector of 150 passengers for each input row
+                        return np.full((n,), 150)
+
+                model = DummyRegressor()
+                model_loaded = True
+                model_type = 'dummy'
+                logger.warning("⚠️  Dummy numpy-based model provided (scikit-learn not available)")
+
+            logger.warning("⚠️  Model type: %s", model_type)
         except Exception as dummy_error:
             logger.error("❌ Failed to create dummy model: %s", str(dummy_error))
             logger.error("Full traceback:\n%s", traceback.format_exc())
